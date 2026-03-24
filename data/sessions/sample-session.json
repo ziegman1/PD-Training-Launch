@@ -1,0 +1,71 @@
+{
+  "sessionId": "sample-foundation",
+  "programName": "Launch",
+  "title": "Architecture sample — core slide fields",
+  "subtitle": "Foundation",
+  "slides": [
+    {
+      "id": "slide-intro",
+      "title": "One shared slide body",
+      "bullets": [
+        "Presentation, Trainer, and Participant reuse the same content",
+        "Trainer and participant layers sit beside or below — they do not fork the slide copy",
+        "Switch modes anytime without reloading"
+      ],
+      "emphasis": "Single source of truth for what the room sees.",
+      "trainerNotes": "Settle the room. Name the three modes and where each role might sit—projector vs laptop vs phone.",
+      "timing": "2–3 min",
+      "promptQuestions": [
+        "Where do you expect to use each mode this week?",
+        "What would distract you on the projector screen?"
+      ],
+      "transitionCue": "When heads nod, advance—this is setup, not debate.",
+      "interactionType": "pairShare",
+      "interaction": "With a partner: which mode will you use first when you rehearse this at home?"
+    },
+    {
+      "id": "slide-reflection",
+      "title": "Participant mode: reflection",
+      "bullets": [
+        "Capture thoughts without changing the slide",
+        "Inputs are per-slide and local to this device",
+        "Export or sync can come later via the same state shape"
+      ],
+      "emphasis": "Reflect, don’t decorate.",
+      "trainerNotes": "Give 60–90 seconds of silence. Watch for people stuck—offer one starter phrase.",
+      "timing": "3–4 min",
+      "promptQuestions": [
+        "Who heard something worth stealing from a neighbor?"
+      ],
+      "transitionCue": "Invite one or two brief shares, then move on.",
+      "interactionType": "reflection",
+      "interaction": "In one or two sentences: what tension do you feel between partnership and “fundraising” language?"
+    },
+    {
+      "id": "slide-fillin",
+      "title": "Participant mode: fill-in",
+      "bullets": [
+        "Structured blanks keep exercises scannable",
+        "Same slide for audience; answers stay on participant devices",
+        "Great for conviction statements and reframes"
+      ],
+      "trainerNotes": "Read the prompt once. Let them write before you comment—preserve their own wording.",
+      "timing": "2 min",
+      "transitionCue": "Optional: pair share using their completed sentence.",
+      "interactionType": "fillIn",
+      "fillInFields": [
+        {
+          "id": "a",
+          "label": "Partnership Development is about raising",
+          "placeholder": "partners / relationships / …"
+        },
+        {
+          "id": "b",
+          "label": "not merely raising",
+          "placeholder": "money / transactions / …"
+        }
+      ],
+      "interaction": "Complete the sentences in your own words."
+    }
+  ]
+}

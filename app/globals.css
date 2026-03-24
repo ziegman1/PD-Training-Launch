@@ -1,26 +1,220 @@
 @import "tailwindcss";
 
+/* --------------------------------------------------------------------------
+   Launch design system — Tailwind @theme (v4)
+   Red (#8c191b): reserved for rare critical emphasis only — do not use for decoration.
+   -------------------------------------------------------------------------- */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --launch-navy: #1c252e;
+  --launch-steel: #83b0da;
+  --launch-soft: #afc9d9;
+  --launch-primary: #ffffff;
+  --launch-secondary: #eae5e1;
+  --launch-muted: #888d8a;
+  --launch-gold: #edb73e;
+  --launch-red: #8c191b;
+  --launch-neutral: #414041;
+
+  --background: var(--launch-navy);
+  --foreground: var(--launch-primary);
 }
 
 @theme inline {
+  /* —— Colors —— */
+  --color-launch-navy: #1c252e;
+  --color-launch-steel: #83b0da;
+  --color-launch-soft: #afc9d9;
+  --color-launch-primary: #ffffff;
+  --color-launch-secondary: #eae5e1;
+  --color-launch-muted: #888d8a;
+  --color-launch-gold: #edb73e;
+  --color-launch-red: #8c191b;
+  --color-launch-neutral: #414041;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  /* —— Typography (Geist from layout) —— */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Slide hierarchy */
+  --text-slide-title: clamp(2.125rem, 4.8vw + 0.85rem, 4.1rem);
+  --text-slide-title--line-height: 1.08;
+  --text-slide-title--letter-spacing: -0.02em;
+  --text-slide-title--font-weight: 700;
+
+  --text-slide-emphasis: clamp(1.2rem, 1.8vw + 0.75rem, 1.85rem);
+  --text-slide-emphasis--line-height: 1.3;
+  --text-slide-emphasis--font-weight: 600;
+
+  /* Pull-quote / keynote emphasis */
+  --text-slide-emphasis-display: clamp(1.35rem, 2.5vw + 0.55rem, 2.35rem);
+  --text-slide-emphasis-display--line-height: 1.34;
+  --text-slide-emphasis-display--font-weight: 600;
+
+  --text-slide-bullet: clamp(1.05rem, 0.9vw + 0.85rem, 1.3rem);
+  --text-slide-bullet--line-height: 1.5;
+  --text-slide-bullet--font-weight: 500;
+
+  /* UI / trainer / participant */
+  --text-launch-body: 0.9375rem;
+  --text-launch-body--line-height: 1.55;
+
+  --text-launch-label: 0.65rem;
+  --text-launch-label--line-height: 1rem;
+  --text-launch-label--letter-spacing: 0.22em;
+  --text-launch-label--font-weight: 700;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@utility launch-eyebrow {
+  font-size: var(--text-launch-label);
+  line-height: var(--text-launch-label--line-height);
+  font-weight: var(--text-launch-label--font-weight);
+  letter-spacing: var(--text-launch-label--letter-spacing);
+  text-transform: uppercase;
+}
+
+@utility launch-key-phrase {
+  text-shadow:
+    0 0 18px rgba(237, 183, 62, 0.45),
+    0 0 42px rgba(237, 183, 62, 0.15);
+}
+
+@utility launch-emphasis-text {
+  text-shadow:
+    0 0 28px rgba(237, 183, 62, 0.22),
+    0 0 56px rgba(237, 183, 62, 0.1),
+    0 1px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* Full-viewport depth: navy → near-black */
+@utility launch-gradient-bg {
+  background:
+    radial-gradient(ellipse 120% 80% at 50% -20%, rgba(131, 176, 218, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 90% 70% at 80% 100%, rgba(0, 0, 0, 0.45) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 60% at 10% 90%, rgba(0, 0, 0, 0.35) 0%, transparent 45%),
+    linear-gradient(165deg, #1c252e 0%, #121920 42%, #0a0d11 78%, #050607 100%);
+}
+
+/* --------------------------------------------------------------------------
+   Teams screen share: presentation tab uses .present-share-boost on <main>.
+   Keep standard + interactive (discussion / pair / reflection) visually aligned.
+   -------------------------------------------------------------------------- */
+
+.present-share-boost h2.text-slide-title {
+  font-size: clamp(2.35rem, 5.5vw + 0.75rem, 4.35rem);
+  line-height: 1.06;
+}
+
+/* Bullet lists (standard + interactive moments) */
+.present-share-boost ul.text-slide-bullet {
+  font-size: clamp(1.12rem, 1.2vw + 0.95rem, 1.4rem);
+  line-height: 1.55;
+}
+
+/* Extra stage breathing room when sharing (standard + interactive layouts) */
+.present-share-boost [data-slide-stage]:not([data-presentation-viewport="locked"]) {
+  padding-top: clamp(3rem, 6vh, 5.5rem);
+  padding-bottom: clamp(3rem, 6vh, 5.5rem);
+}
+
+/* Viewport-locked deck: no page scroll — padding comes from SlideContainer + flex fit */
+.present-share-boost [data-slide-stage][data-presentation-viewport="locked"] h2.text-slide-title {
+  /* ~5% lower cap than prior 2.8rem — keeps title strong; emphasis reads as focal */
+  font-size: clamp(1.62rem, 3.35vw + 0.5rem, 2.66rem);
+  line-height: 1.08;
+}
+
+.present-share-boost [data-presentation-viewport="locked"] ul.slide-viewport-bullet-list {
+  font-size: clamp(0.98rem, 0.78vw + 0.8rem, 1.16rem);
+  line-height: 1.48;
+}
+
+/* Continuation groups: isolate bullet stack so padding rows don’t trigger unrelated reflow */
+.present-share-boost [data-presentation-continuation-lock="true"] ul.slide-viewport-bullet-list {
+  contain: layout;
+}
+
+.present-share-boost [data-presentation-viewport="locked"] .launch-emphasis-text {
+  /* Slightly larger + bold vs. body slide type — focal handoff from title, still below title scale */
+  font-size: clamp(1.06rem, 1.46vw + 0.56rem, 1.58rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.025em;
+}
+
+.present-share-boost [data-presentation-viewport="locked"] .moment-prompt-text {
+  font-size: clamp(0.98rem, 0.78vw + 0.8rem, 1.16rem);
+  line-height: 1.46;
+}
+
+.present-share-boost [data-presentation-viewport="locked"] .slide-scripture-body {
+  font-size: clamp(0.94rem, 0.72vw + 0.74rem, 1.08rem);
+  line-height: 1.46;
+}
+
+.present-share-boost [data-presentation-viewport="locked"] .slide-supporting-block-text {
+  font-size: clamp(0.94rem, 0.72vw + 0.74rem, 1.1rem);
+  line-height: 1.46;
+}
+
+/* Override generous min-height so reflection fits the locked frame */
+.present-share-boost [data-presentation-viewport="locked"] textarea.moment-reflection-input {
+  min-height: 3.75rem;
+  max-height: min(26vh, 11rem);
+}
+
+/* Discussion / pair-share / reflection prompt copy — same band as slide bullets */
+.present-share-boost .moment-prompt-text {
+  font-size: clamp(1.12rem, 1.2vw + 0.95rem, 1.4rem);
+}
+
+/* Standard slide “Together” box — was smaller than bullets */
+.present-share-boost .slide-supporting-block-text {
+  font-size: clamp(1.08rem, 1.15vw + 0.92rem, 1.38rem);
+  line-height: 1.55;
+}
+
+/* Scripture block on standard slides */
+.present-share-boost .slide-scripture-body {
+  font-size: clamp(1.08rem, 1.15vw + 0.92rem, 1.38rem);
+  line-height: 1.55;
+}
+
+/* Gold emphasis — standard + interactive; overrides Tailwind clamps on motion.p */
+.present-share-boost .launch-emphasis-text {
+  font-size: clamp(1.28rem, 2.2vw + 0.72rem, 2.05rem) !important;
+  line-height: 1.32 !important;
+}
+
+/* Pair-share avatars — readable at distance */
+.present-share-boost .moment-pair-avatar {
+  width: clamp(2.65rem, 5vw, 3rem);
+  height: clamp(2.65rem, 5vw, 3rem);
+  font-size: clamp(0.8rem, 0.9vw + 0.65rem, 0.95rem);
+}
+
+.present-share-boost .moment-pair-row .text-launch-muted {
+  font-size: clamp(1rem, 1vw + 0.8rem, 1.2rem);
+}
+
+/* Reflection input — match slide bullet scale (overrides fieldStyles text-sm/md:text-base) */
+.present-share-boost textarea.moment-reflection-input {
+  font-size: clamp(1.02rem, 1.05vw + 0.88rem, 1.25rem);
+  line-height: 1.5;
+  min-height: clamp(11rem, 22vh, 13rem);
+}
+
+/* Card micro-labels inside moment bodies */
+.present-share-boost .moment-body > .launch-eyebrow:first-child {
+  font-size: clamp(0.68rem, 0.35vw + 0.62rem, 0.72rem);
+  letter-spacing: 0.18em;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #050607;
+  color: var(--launch-primary);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
