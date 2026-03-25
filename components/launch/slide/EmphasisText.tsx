@@ -1,12 +1,13 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 type EmphasisTextProps = {
   children: ReactNode;
   className?: string;
   spacious?: boolean;
+  style?: CSSProperties;
 };
 
 /**
@@ -16,11 +17,13 @@ export function EmphasisText({
   children,
   className = "",
   spacious = true,
+  style,
 }: EmphasisTextProps) {
   const reduceMotion = useReducedMotion();
 
   return (
     <motion.p
+      style={style}
       initial={reduceMotion ? false : { opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{

@@ -8,12 +8,14 @@
       "id": "slide-intro",
       "title": "One shared slide body",
       "bullets": [
-        "Presentation, Trainer, and Participant reuse the same content",
-        "Trainer and participant layers sit beside or below — they do not fork the slide copy",
-        "Switch modes anytime without reloading"
+        "Three modes",
+        "Shared body",
+        "Switch anytime"
       ],
       "emphasis": "Single source of truth for what the room sees.",
-      "trainerNotes": "Settle the room. Name the three modes and where each role might sit—projector vs laptop vs phone.",
+      "trainerCadence": "Welcome—let's take a minute to settle. I'm going to name three modes we use in Launch—presentation, trainer, and participant—and where each one usually lives: the projector screen everyone sees, your private trainer view, and each person's own device.\n\nYou don't need to decide your whole workflow right now; I just want the map in your head.",
+      "trainerTransition": "When that feels clear enough, go ahead and advance—we'll keep this as setup, not a long debate.",
+      "trainerScriptNotes": "- Calm, practical tone; reduce tech anxiety.\n- Name projector vs laptop vs phone explicitly.\n- Watch for people who feel behind—reassure them.",
       "timing": "2–3 min",
       "promptQuestions": [
         "Where do you expect to use each mode this week?",
@@ -27,12 +29,14 @@
       "id": "slide-reflection",
       "title": "Participant mode: reflection",
       "bullets": [
-        "Capture thoughts without changing the slide",
-        "Inputs are per-slide and local to this device",
-        "Export or sync can come later via the same state shape"
+        "Local input",
+        "Per device",
+        "Quiet write"
       ],
       "emphasis": "Reflect, don’t decorate.",
-      "trainerNotes": "Give 60–90 seconds of silence. Watch for people stuck—offer one starter phrase.",
+      "trainerCadence": "I'm going to give you a full minute of quiet—maybe ninety seconds—just to write what you're actually thinking. You don't owe anyone a polished sentence yet.\n\nIf your mind goes blank, start with this: \"What I'm feeling about partnership language is…\"",
+      "trainerTransition": "When time's up, I'll invite one or two brief shares if the room has energy for it—then we'll move on.",
+      "trainerScriptNotes": "- Protect silence; resist filling it.\n- Offer one starter phrase only if several people look frozen.\n- Keep shares short if you open the mic.",
       "timing": "3–4 min",
       "promptQuestions": [
         "Who heard something worth stealing from a neighbor?"
@@ -45,27 +49,26 @@
       "id": "slide-fillin",
       "title": "Participant mode: fill-in",
       "bullets": [
-        "Structured blanks keep exercises scannable",
-        "Same slide for audience; answers stay on participant devices",
-        "Great for conviction statements and reframes"
+        "Blank lines",
+        "Same slide",
+        "Private answers"
       ],
-      "trainerNotes": "Read the prompt once. Let them write before you comment—preserve their own wording.",
+      "trainerCadence": "You'll see blanks on your screen—I'm going to read the instructions once, slowly, and then I want you to fill them in with your own words. There isn't a trick answer here; I'm after honest wording.\n\nGive yourself permission to be plain. Simple language usually means you actually believe it.",
+      "trainerTransition": "If you have extra time, you can pair up and read your lines to each other—but we can also move on cleanly.",
+      "trainerScriptNotes": "- Read prompt once; avoid commentary while they write.\n- Normalize messy drafts.\n- Optional pair share only if time allows.",
       "timing": "2 min",
       "transitionCue": "Optional: pair share using their completed sentence.",
       "interactionType": "fillIn",
-      "fillInFields": [
-        {
-          "id": "a",
-          "label": "Partnership Development is about raising",
-          "placeholder": "partners / relationships / …"
-        },
-        {
-          "id": "b",
-          "label": "not merely raising",
-          "placeholder": "money / transactions / …"
-        }
-      ],
-      "interaction": "Complete the sentences in your own words."
+      "interaction": "Complete the sentence in your own words.",
+      "interactionData": {
+        "prompt": "Partnership Development is about raising ________, not merely raising ________.",
+        "answers": [
+          "partners",
+          "money"
+        ],
+        "helperText": "Plain language is fine—use words that feel true to you.",
+        "optional": false
+      }
     }
   ]
 }

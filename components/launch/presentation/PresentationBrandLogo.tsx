@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Presentation route only — absolutely positioned inside `PRESENTATION_STAGE_CLASS` (900px grid).
+ * Presentation route only — absolutely positioned inside `PRESENTATION_STAGE_CLASS` (wide stage rail).
  * Asset: `public/brand/team-expansion-logo-white.png`.
  */
 import { motion, useAnimationControls, useReducedMotion } from "framer-motion";

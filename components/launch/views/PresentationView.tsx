@@ -9,6 +9,7 @@ import { Slide } from "@/components/launch/slide/Slide";
 import {
   PRESENTATION_GRID_WRAPPER_CLASS,
   PRESENTATION_STAGE_CLASS,
+  PRESENTATION_STAGE_SHELL_CLASS,
 } from "@/components/launch/slide/presentationSlideLayout";
 
 /**
@@ -62,19 +63,24 @@ export function PresentationView() {
           className="present-share-boost relative flex min-h-0 flex-1 flex-col overflow-hidden"
         >
           <div className={PRESENTATION_GRID_WRAPPER_CLASS}>
-            <div className={PRESENTATION_STAGE_CLASS}>
-              {/*
-                Grid-aligned overlay: `left-0` is the padded content edge of the 900px column,
-                not the viewport. Does not consume flex space — slide centering unchanged.
-              */}
+            <div className={PRESENTATION_STAGE_SHELL_CLASS}>
               <div
-                className="pointer-events-none absolute left-0 top-[calc(clamp(1.5rem,3vh,2.25rem)+0.625rem)] z-[35]"
+                className="presentation-stage-depth pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-2xl"
                 aria-hidden
-              >
-                <PresentationBrandLogo />
-              </div>
-              <div className="relative z-0 flex min-h-0 flex-1 flex-col overflow-hidden">
-                <Slide slide={audienceSlide} containerClassName="min-h-0 flex-1" />
+              />
+              <div className={PRESENTATION_STAGE_CLASS}>
+                {/*
+                  Logo aligns to the stage’s padded content edge (not the full viewport).
+                */}
+                <div
+                  className="pointer-events-none absolute left-0 top-[calc(clamp(1.5rem,3vh,2.25rem)+0.625rem)] z-[35]"
+                  aria-hidden
+                >
+                  <PresentationBrandLogo />
+                </div>
+                <div className="relative z-0 flex min-h-0 flex-1 flex-col overflow-hidden">
+                  <Slide slide={audienceSlide} containerClassName="min-h-0 flex-1" />
+                </div>
               </div>
             </div>
           </div>

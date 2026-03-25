@@ -2,23 +2,25 @@
 
 import { useLaunchSession } from "@/contexts/LaunchSessionContext";
 import type { AudienceLaunchSlide } from "@/types/launch";
-import { fieldClassName } from "@/components/launch/participant/fieldStyles";
+import { participantSlideKey } from "@/lib/participantSlideKey";
+import { workbookFieldClassName } from "@/components/launch/participant/fieldStyles";
 
 export function ReflectionBlock({ slide }: { slide: AudienceLaunchSlide }) {
   const { participantAnswers, setParticipantAnswer } = useLaunchSession();
-  const value = participantAnswers[slide.id]?.reflection ?? "";
+  const slideKey = participantSlideKey(slide);
+  const value = participantAnswers[slideKey]?.reflection ?? "";
 
   return (
     <label className="block text-left">
-      <span className="launch-eyebrow text-launch-muted">Reflection</span>
+      <span className="text-base font-semibold text-launch-secondary">Reflection</span>
       <textarea
-        className={`${fieldClassName} min-h-[140px] resize-y`}
-        placeholder="Type here…"
+        className={`${workbookFieldClassName} min-h-[12rem] resize-y`}
+        placeholder="Write freely—this stays on your device…"
         value={value}
         onChange={(e) =>
-          setParticipantAnswer(slide.id, "reflection", e.target.value)
+          setParticipantAnswer(slideKey, "reflection", e.target.value)
         }
-        rows={5}
+        rows={8}
       />
     </label>
   );

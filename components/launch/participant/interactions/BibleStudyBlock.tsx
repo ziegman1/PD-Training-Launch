@@ -3,7 +3,8 @@
 import { useCallback, useMemo } from "react";
 import { useLaunchSession } from "@/contexts/LaunchSessionContext";
 import type { AudienceLaunchSlide, BibleStudyGroup } from "@/types/launch";
-import { fieldClassName } from "@/components/launch/participant/fieldStyles";
+import { participantSlideKey } from "@/lib/participantSlideKey";
+import { workbookFieldClassName } from "@/components/launch/participant/fieldStyles";
 import {
   BIBLICAL_FOUNDATIONS_LIBRARY,
   type BibleStudyLibraryCategory,
@@ -23,25 +24,25 @@ const noteLabels: {
     suffix: "principles",
     label: "3–5 key principles",
     placeholder: "List 3–5 principles you see in the text…",
-    rows: 4,
+    rows: 5,
   },
   {
     suffix: "god",
     label: "What this reveals about God",
     placeholder: "…",
-    rows: 3,
+    rows: 4,
   },
   {
     suffix: "assumptions",
     label: "Assumptions corrected",
     placeholder: "What ideas does this passage challenge?",
-    rows: 3,
+    rows: 4,
   },
   {
     suffix: "takeaway",
     label: "Takeaway",
     placeholder: "One thing to share with the larger group…",
-    rows: 2,
+    rows: 3,
   },
 ];
 
@@ -75,7 +76,7 @@ function AssignmentSection({
 }) {
   return (
     <section
-      className="sticky top-0 z-[2] space-y-4 rounded-xl border-2 border-launch-gold/40 bg-launch-navy/95 p-4 shadow-lg shadow-black/20 backdrop-blur-md md:p-5"
+      className="space-y-5 rounded-2xl border-2 border-launch-gold/40 bg-launch-navy/40 p-5 shadow-lg shadow-black/15 md:p-7"
       aria-labelledby="bible-study-assignment-heading"
     >
       <h3
@@ -86,11 +87,11 @@ function AssignmentSection({
       </h3>
 
       <label className="block">
-        <span className="text-sm font-medium text-launch-secondary">
+        <span className="text-base font-semibold text-launch-secondary">
           Assigned topic
         </span>
         <select
-          className={`${fieldClassName} mt-1 cursor-pointer`}
+          className={`${workbookFieldClassName} cursor-pointer`}
           value={selectedGroupId}
           onChange={(e) => onSelectGroup(e.target.value)}
         >
@@ -132,8 +133,8 @@ function AssignmentSection({
 
 function LibraryAccordion({ categories }: { categories: BibleStudyLibraryCategory[] }) {
   return (
-    <div className="max-h-[min(28rem,50vh)] overflow-y-auto overscroll-y-contain rounded-lg border border-launch-neutral/30 bg-black/15 pr-1">
-      <div className="px-3 py-1 md:px-4">
+    <div className="rounded-xl border border-launch-neutral/30 bg-black/20">
+      <div className="px-3 py-2 md:px-4 md:py-3">
         {categories.map((cat) => (
           <details
             key={cat.id}
@@ -162,7 +163,8 @@ function LibraryAccordion({ categories }: { categories: BibleStudyLibraryCategor
 
 export function BibleStudyBlock({ slide }: { slide: AudienceLaunchSlide }) {
   const { participantAnswers, setParticipantAnswer } = useLaunchSession();
-  const answers = participantAnswers[slide.id] ?? {};
+  const slideKey = participantSlideKey(slide);
+  const answers = participantAnswers[slideKey] ?? {};
   const groups = slide.bibleStudyGroups;
 
   const parsed = Number.parseInt(answers[ROW_COUNT_KEY] ?? "1", 10);
@@ -179,24 +181,24 @@ export function BibleStudyBlock({ slide }: { slide: AudienceLaunchSlide }) {
   const setRowCount = useCallback(
     (n: number) => {
       const next = Math.min(MAX_ROWS, Math.max(1, n));
-      setParticipantAnswer(slide.id, ROW_COUNT_KEY, String(next));
+      setParticipantAnswer(slideKey, ROW_COUNT_KEY, String(next));
     },
-    [setParticipantAnswer, slide.id],
+    [setParticipantAnswer, slideKey],
   );
 
   const onSelectGroup = useCallback(
     (id: string) => {
-      setParticipantAnswer(slide.id, SELECTED_GROUP_KEY, id);
+      setParticipantAnswer(slideKey, SELECTED_GROUP_KEY, id);
       const g = groups?.find((x) => x.id === id);
       if (g) {
-        setParticipantAnswer(slide.id, fieldId(0, "topic"), g.topic);
+        setParticipantAnswer(slideKey, fieldId(0, "topic"), g.topic);
       }
     },
-    [groups, setParticipantAnswer, slide.id],
+    [groups, setParticipantAnswer, slideKey],
   );
 
   return (
-    <div className="space-y-8 text-left">
+    <div className="space-y-10 text-left md:space-y-12">
       {groups && groups.length > 0 ? (
         <AssignmentSection
           groups={groups}
@@ -212,15 +214,15 @@ export function BibleStudyBlock({ slide }: { slide: AudienceLaunchSlide }) {
         </p>
       )}
 
-      <section className="space-y-4" aria-labelledby="bible-study-notes-heading">
+      <section className="space-y-6" aria-labelledby="bible-study-notes-heading">
         <div>
           <h3
             id="bible-study-notes-heading"
-            className="launch-eyebrow text-launch-gold/90"
+            className="text-lg font-bold tracking-tight text-launch-primary md:text-xl"
           >
             Your study notes
           </h3>
-          <p className="mt-2 text-xs leading-relaxed text-launch-muted">
+          <p className="mt-3 text-sm leading-relaxed text-launch-muted md:text-base">
             Capture what you discussed in your group. Add another block if you track more than one
             theme.
           </p>
@@ -249,24 +251,24 @@ export function BibleStudyBlock({ slide }: { slide: AudienceLaunchSlide }) {
         {Array.from({ length: rowCount }, (_, row) => (
           <div
             key={row}
-            className="rounded-xl border border-launch-neutral/35 bg-black/20 p-4 md:p-5"
+            className="rounded-2xl border border-launch-neutral/35 bg-black/25 p-5 md:p-7"
           >
-            <p className="launch-eyebrow text-launch-gold/90">
+            <p className="text-sm font-semibold uppercase tracking-[0.12em] text-launch-gold/90">
               {rowCount > 1 ? `Study block ${row + 1}` : "Notes"}
             </p>
-            <div className="mt-4 space-y-4">
+            <div className="mt-6 space-y-7">
               {noteLabels.map(({ suffix, label, placeholder, rows: r }) => {
                 const id = fieldId(row, suffix);
                 return (
                   <label key={id} className="block">
-                    <span className="text-sm font-medium text-launch-secondary">{label}</span>
+                    <span className="text-base font-semibold text-launch-secondary">{label}</span>
                     <textarea
-                      className={`${fieldClassName} mt-1 resize-y`}
-                      style={{ minHeight: `${r * 1.35}rem` }}
+                      className={`${workbookFieldClassName} resize-y`}
+                      style={{ minHeight: `${r * 1.5}rem` }}
                       placeholder={placeholder}
                       rows={r}
                       value={answers[id] ?? ""}
-                      onChange={(e) => setParticipantAnswer(slide.id, id, e.target.value)}
+                      onChange={(e) => setParticipantAnswer(slideKey, id, e.target.value)}
                     />
                   </label>
                 );
@@ -277,13 +279,16 @@ export function BibleStudyBlock({ slide }: { slide: AudienceLaunchSlide }) {
       </section>
 
       <section
-        className="space-y-3 rounded-xl border border-launch-neutral/30 bg-launch-navy/20 p-4 md:p-5"
+        className="space-y-4 rounded-2xl border border-launch-neutral/30 bg-launch-navy/25 p-5 md:p-7"
         aria-labelledby="bible-study-library-heading"
       >
-        <h3 id="bible-study-library-heading" className="launch-eyebrow text-launch-steel/90">
+        <h3
+          id="bible-study-library-heading"
+          className="text-lg font-bold tracking-tight text-launch-steel/95 md:text-xl"
+        >
           Explore More (Optional)
         </h3>
-        <p className="text-xs leading-relaxed text-launch-muted">
+        <p className="text-sm leading-relaxed text-launch-muted md:text-base">
           This section is optional for further study beyond your assigned group.
         </p>
         <LibraryAccordion categories={BIBLICAL_FOUNDATIONS_LIBRARY} />

@@ -6,14 +6,17 @@ import type { AudienceLaunchSlide, LaunchSlide } from "@/types/launch";
  */
 export function toAudienceSlide(slide: LaunchSlide): AudienceLaunchSlide {
   const {
-    trainerNotes: _trainerNotes,
+    trainerCadence: _trainerCadence,
+    trainerTransition: _trainerTransition,
+    trainerScriptNotes: _trainerScriptNotes,
     timing: _timing,
     pauseCue: _pauseCue,
     promptQuestions: _promptQuestions,
-    prompts: _prompts,
     discussionHandoff: _discussionHandoff,
     transitionCue: _transitionCue,
     breakout: _breakout,
+    progressiveReveal: _progressiveReveal,
+    progressiveRevealLeadIn: _progressiveRevealLeadIn,
     ...audience
   } = slide;
   return audience;

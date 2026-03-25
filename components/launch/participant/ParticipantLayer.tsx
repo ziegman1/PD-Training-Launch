@@ -5,9 +5,12 @@ import { useLaunchSession } from "@/contexts/LaunchSessionContext";
 import {
   getSlideInteraction,
   getSlideMomentType,
+  getSlidePromptLines,
+  promptsFullyRevealed,
   resolveParticipantInteractionType,
 } from "@/lib/slideContent";
 import { getParticipantInteraction } from "@/components/launch/participant/interactionRegistry";
+import { WorkbookContextHeader } from "@/components/launch/participant/WorkbookContextHeader";
 
 type ParticipantLayerProps = {
   slide: AudienceLaunchSlide;
@@ -20,59 +23,134 @@ export function ParticipantLayer({ slide, className = "" }: ParticipantLayerProp
   const resolvedType = resolveParticipantInteractionType(slide);
   const Block = getParticipantInteraction(resolvedType);
   const interaction = getSlideInteraction(slide);
+  const slidePrompts = getSlidePromptLines(slide).slice(0, 8);
+  const promptRevealLimit =
+    slidePrompts.length > 0
+      ? typeof slide.promptRevealVisibleCount === "number"
+        ? Math.min(
+            slidePrompts.length,
+            Math.max(0, Math.floor(slide.promptRevealVisibleCount)),
+          )
+        : slidePrompts.length
+      : 0;
   const promptOnSlide = moment !== "standard";
   const reflectionOnSlide = moment === "reflection";
   const breakoutRooms =
     sessionSlide?.id === slide.id && sessionSlide.breakout?.enabled;
 
   return (
-    <aside
-      className={`flex min-h-screen flex-col gap-6 overflow-y-auto bg-launch-navy/25 p-5 md:gap-7 md:p-7 lg:max-h-dvh lg:min-h-screen lg:w-[min(22rem,38vw)] lg:shrink-0 ${className}`}
-      aria-label="Workbook notes and activities"
+    <div
+      className={`flex w-full flex-col gap-10 md:gap-12 ${className}`.trim()}
+      aria-label="Workbook"
     >
-      <div>
-        <p className="launch-eyebrow text-launch-steel/90">Your notes</p>
-        {breakoutRooms && (
-          <p className="mt-2 border-l-2 border-launch-steel/35 pl-3 text-xs leading-relaxed text-launch-steel/90">
-            {slide.interactionType === "bibleStudy" ? (
-              <>
-                Your facilitator may place you in a Teams breakout. Select your
-                assigned theme at the top, capture notes in the middle, and use
-                Explore More only if you want extra passages afterward.
-              </>
-            ) : (
-              <>
-                Your facilitator may place you in a short Teams breakout for this
-                activity. The main slide has your discussion or reflection prompt.
-              </>
-            )}
-          </p>
-        )}
-        {slide.interactionType === "bibleStudy" && !breakoutRooms && (
-          <p className="mt-2 border-l-2 border-launch-steel/35 pl-3 text-xs leading-relaxed text-launch-steel/90">
-            Your assignment and the optional study library are in the blocks
-            below—start with Your Study Assignment, then your notes.
-          </p>
-        )}
-        {reflectionOnSlide && (
-          <p className="mt-3 text-sm leading-relaxed text-launch-muted">
-            Write your reflection on the main slide. Use the space below only if you
-            want extra notes.
-          </p>
-        )}
-        {promptOnSlide && !reflectionOnSlide && !breakoutRooms && (
-          <p className="mt-3 text-sm leading-relaxed text-launch-muted">
-            The prompt is on the slide. Add optional notes underneath.
-          </p>
-        )}
-        {!promptOnSlide && interaction && (
-          <p className="mt-3 text-lg font-medium leading-relaxed text-launch-secondary md:text-xl">
-            {interaction}
-          </p>
-        )}
-      </div>
+      <WorkbookContextHeader slide={slide} />
 
-      <Block slide={slide} />
-    </aside>
+      {(breakoutRooms ||
+        (slide.interactionType === "bibleStudy" && !breakoutRooms) ||
+        reflectionOnSlide ||
+        (promptOnSlide && !reflectionOnSlide && !breakoutRooms) ||
+        (!promptOnSlide && interaction) ||
+        slidePrompts.length > 0) && (
+        <section
+          className="rounded-xl border border-launch-steel/20 bg-launch-navy/30 px-4 py-4 md:px-5 md:py-5"
+          aria-label="Facilitator context"
+        >
+          {breakoutRooms && (
+            <p className="text-sm leading-relaxed text-launch-steel/95 md:text-base">
+              {slide.interactionType === "bibleStudy" ? (
+                <>
+                  Your facilitator may place you in a Teams breakout. Select your
+                  assigned theme below, write your notes in the middle section, and open
+                  Explore More only if you want extra passages afterward.
+                </>
+              ) : (
+                <>
+                  Your facilitator may open a short breakout for this activity. Use
+                  this page for your notes—the live prompt matches what you see in the
+                  meeting.
+                </>
+              )}
+            </p>
+          )}
+          {slide.interactionType === "bibleStudy" && !breakoutRooms && (
+            <p className="text-sm leading-relaxed text-launch-steel/95 md:text-base">
+              Start with <span className="text-launch-soft/95">Your Study Assignment</span>,
+              then capture your notes. Explore More is optional.
+            </p>
+          )}
+          {reflectionOnSlide && (
+            <p className="text-sm leading-relaxed text-launch-steel/95 md:text-base">
+              Use the writing area below for your reflection. Take the time you need;
+              your answers stay on this device.
+            </p>
+          )}
+          {promptOnSlide && !reflectionOnSlide && !breakoutRooms && (
+            <p className="text-sm leading-relaxed text-launch-steel/95 md:text-base">
+              The activity prompt matches what your facilitator is showing. Add your
+              responses in the fields below.
+            </p>
+          )}
+          {slidePrompts.length > 0 && (
+            <div className={interaction || promptOnSlide ? "mt-5 border-t border-launch-steel/25 pt-5" : ""}>
+              <p className="launch-eyebrow text-launch-muted">
+                For the room (mirrors the slide)
+              </p>
+              <ul className="mt-3 space-y-3 text-base leading-relaxed text-launch-secondary md:text-lg">
+                {slidePrompts.map((line, i) => {
+                  const revealed = i < promptRevealLimit;
+                  return (
+                    <li
+                      key={`${i}-${line.slice(0, 48)}`}
+                      className={`flex gap-3 ${
+                        revealed ? "" : "pointer-events-none opacity-0"
+                      }`.trim()}
+                      aria-hidden={!revealed}
+                    >
+                      <span
+                        className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-launch-gold/45 text-xs font-semibold text-launch-gold"
+                        aria-hidden
+                      >
+                        {i + 1}
+                      </span>
+                      <span>{line}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+
+          {!promptOnSlide && interaction && (
+            <div
+              className={[
+                slidePrompts.length > 0
+                  ? "mt-5 border-t border-launch-steel/25 pt-5"
+                  : "",
+                slidePrompts.length > 0 && !promptsFullyRevealed(slide)
+                  ? "pointer-events-none opacity-0"
+                  : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+              aria-hidden={
+                slidePrompts.length > 0 && !promptsFullyRevealed(slide)
+                  ? true
+                  : undefined
+              }
+            >
+              <p className="launch-eyebrow text-launch-muted">On this slide</p>
+              <p className="mt-3 text-lg font-medium leading-relaxed text-launch-secondary md:text-xl">
+                {interaction}
+              </p>
+            </div>
+          )}
+        </section>
+      )}
+
+      <section aria-label="Your work" className="space-y-2">
+        <p className="launch-eyebrow text-launch-gold/90">Your workbook</p>
+        <Block slide={slide} />
+      </section>
+    </div>
   );
 }

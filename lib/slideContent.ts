@@ -9,11 +9,27 @@ export function getSlideInteraction(slide: AudienceLaunchSlide): string | undefi
   return s ? s : undefined;
 }
 
+/** Participant / presentation prompts (after normalize merge). */
+export function getSlidePromptLines(slide: AudienceLaunchSlide): string[] {
+  if (!Array.isArray(slide.prompts) || slide.prompts.length === 0) return [];
+  return slide.prompts.map((p) => String(p));
+}
+
+/** True when every slide prompt is allowed to show (progressive reveal complete or not used). */
+export function promptsFullyRevealed(slide: AudienceLaunchSlide): boolean {
+  const lines = getSlidePromptLines(slide);
+  if (lines.length === 0) return true;
+  const v = slide.promptRevealVisibleCount;
+  if (v == null) return true;
+  return v >= lines.length;
+}
+
 /**
  * Participant UI mode: explicit `interactionType`, else inferred from content.
  */
 export function resolveInteractionType(slide: AudienceLaunchSlide): InteractionType {
   if (slide.interactionType) return slide.interactionType;
+  if (slide.interactionData?.prompt?.trim()) return "fillIn";
   if (slide.fillInFields?.length) return "fillIn";
   if (getSlideInteraction(slide)) return "discussion";
   return "none";

@@ -22,13 +22,16 @@ export function ParticipantChrome({
       data-launch-surface="workbook"
       className="shrink-0 border-b border-launch-soft/10 px-5 py-5 md:px-8 md:py-6"
     >
-      <p className="launch-eyebrow text-launch-muted">Companion workbook</p>
+      <p className="launch-eyebrow text-launch-muted">Workbook</p>
       <p className="launch-eyebrow mt-3 text-launch-gold">{programLine}</p>
       <h1 className="mt-2 text-base font-medium leading-snug text-launch-secondary md:text-lg">
         {sessionTitle}
       </h1>
-      <p className="mt-3 max-w-xl text-xs leading-relaxed text-launch-muted md:text-sm">
-        For your notes while you follow the session — the live slides are shared separately.
+      <p className="mt-3 max-w-2xl text-xs leading-relaxed text-launch-muted md:text-sm">
+        Slides are shared in your meeting (Teams, etc.). Use{" "}
+        <span className="text-launch-soft/90">Prev</span> /{" "}
+        <span className="text-launch-soft/90">Next</span> at the bottom to stay on the same
+        beat as the group.
       </p>
       <div
         className="mt-5 h-1 w-full max-w-md overflow-hidden rounded-full bg-launch-neutral/50"

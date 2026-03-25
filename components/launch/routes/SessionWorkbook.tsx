@@ -7,10 +7,11 @@ import { LaunchSessionProvider } from "@/contexts/LaunchSessionContext";
 import { WorkbookView } from "@/components/launch/views/WorkbookView";
 
 export function SessionWorkbook({ session }: { session: LaunchSession }) {
+  const guided = Boolean(session.workbook?.sections?.length);
   return (
     <LaunchSessionProvider
       session={session}
-      syncDeck
+      syncDeck={!guided}
       initialMode="participant"
     >
       <WorkbookView />

@@ -2,23 +2,27 @@
 
 import { useLaunchSession } from "@/contexts/LaunchSessionContext";
 import type { AudienceLaunchSlide } from "@/types/launch";
-import { fieldClassName } from "@/components/launch/participant/fieldStyles";
+import { participantSlideKey } from "@/lib/participantSlideKey";
+import { workbookFieldClassName } from "@/components/launch/participant/fieldStyles";
 
 export function PairShareBlock({ slide }: { slide: AudienceLaunchSlide }) {
   const { participantAnswers, setParticipantAnswer } = useLaunchSession();
-  const value = participantAnswers[slide.id]?.pairShare ?? "";
+  const slideKey = participantSlideKey(slide);
+  const value = participantAnswers[slideKey]?.pairShare ?? "";
 
   return (
     <label className="block text-left">
-      <span className="launch-eyebrow text-launch-muted">After you debrief</span>
+      <span className="text-base font-semibold text-launch-secondary">
+        After you debrief
+      </span>
       <textarea
-        className={`${fieldClassName} min-h-[100px] resize-y`}
+        className={`${workbookFieldClassName} min-h-[9rem] resize-y`}
         placeholder="One thing you heard from your partner…"
         value={value}
         onChange={(e) =>
-          setParticipantAnswer(slide.id, "pairShare", e.target.value)
+          setParticipantAnswer(slideKey, "pairShare", e.target.value)
         }
-        rows={4}
+        rows={6}
       />
     </label>
   );

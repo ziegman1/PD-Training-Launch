@@ -2,23 +2,27 @@
 
 import { useLaunchSession } from "@/contexts/LaunchSessionContext";
 import type { AudienceLaunchSlide } from "@/types/launch";
-import { fieldClassName } from "@/components/launch/participant/fieldStyles";
+import { participantSlideKey } from "@/lib/participantSlideKey";
+import { workbookFieldClassName } from "@/components/launch/participant/fieldStyles";
 
 export function DiscussionBlock({ slide }: { slide: AudienceLaunchSlide }) {
   const { participantAnswers, setParticipantAnswer } = useLaunchSession();
-  const value = participantAnswers[slide.id]?.discussion ?? "";
+  const slideKey = participantSlideKey(slide);
+  const value = participantAnswers[slideKey]?.discussion ?? "";
 
   return (
     <label className="block text-left">
-      <span className="launch-eyebrow text-launch-muted">Notes (optional)</span>
+      <span className="text-base font-semibold text-launch-secondary">
+        Your notes (optional)
+      </span>
       <textarea
-        className={`${fieldClassName} min-h-[100px] resize-y`}
+        className={`${workbookFieldClassName} min-h-[9rem] resize-y`}
         placeholder="Capture ideas from discussion…"
         value={value}
         onChange={(e) =>
-          setParticipantAnswer(slide.id, "discussion", e.target.value)
+          setParticipantAnswer(slideKey, "discussion", e.target.value)
         }
-        rows={4}
+        rows={6}
       />
     </label>
   );

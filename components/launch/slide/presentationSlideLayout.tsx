@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { highlightKeyPhrases } from "@/components/launch/slide/highlightKeyPhrases";
+import { renderSlideRichText } from "@/components/launch/slide/highlightKeyPhrases";
 
 /**
  * Presentation content strategy (Launch / Teams):
@@ -13,17 +13,24 @@ import { highlightKeyPhrases } from "@/components/launch/slide/highlightKeyPhras
  * - **Interactive** cards (discussion / pair / reflection / prayer) use `PRESENTATION_INTERACTIVE_RAIL_WRAPPER_CLASS`
  *   so prompt copy matches bullet rail width—same BR clear space without left-shifting the column.
  *
- * Presentation Mode: centered ~900px column — use in `PresentationView`.
- * Horizontal padding matches slide content inset; locked `SlideContainer` uses `px-0`.
+ * Presentation Mode: wide cinematic stage (`max-w` ~90vw, capped) with a readable inner rail
+ * (`PRESENTATION_RAIL_MAX_CLASS` on bullets/scripture/cards). Horizontal gutter leaves ambient
+ * `launch-gradient-bg` visible; locked `SlideContainer` uses `px-0` inside the rail.
  */
 export const PRESENTATION_GRID_WRAPPER_CLASS =
-  "mx-auto flex min-h-0 w-full max-w-[900px] flex-1 flex-col px-4 sm:px-5 md:px-6";
+  "mx-auto flex min-h-0 w-full max-w-[min(90vw,82rem)] flex-1 flex-col px-2.5 py-2 sm:px-3 sm:py-2.5 md:px-4";
 
 /**
- * Fills the grid below padding: relative positioning context for the brand overlay + slide stack.
+ * Rounded “lighter blue” stage panel inside the grid — sits on the deep navy viewport canvas.
+ */
+export const PRESENTATION_STAGE_SHELL_CLASS =
+  "relative isolate flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden rounded-2xl border border-launch-steel/[0.11] bg-gradient-to-b from-[#283542]/[0.97] via-[#222c38]/[0.98] to-[#1a222c]/[0.99] shadow-[inset_0_1px_0_0_rgba(175,201,217,0.08),0_0_0_1px_rgba(0,0,0,0.22),0_28px_64px_-18px_rgba(0,0,0,0.42)]";
+
+/**
+ * Fills the shell: relative positioning context for depth texture, brand overlay + slide stack.
  */
 export const PRESENTATION_STAGE_CLASS =
-  "relative flex min-h-0 w-full flex-1 flex-col overflow-hidden";
+  "relative z-[1] flex min-h-0 w-full flex-1 flex-col overflow-hidden";
 
 /**
  * Lower stack wrapper (scripture / bullets / together): full column width; horizontal inset
@@ -31,7 +38,7 @@ export const PRESENTATION_STAGE_CLASS =
  */
 export const PRESENTATION_TEAMS_LOWER_SAFE_CLASS = "w-full shrink-0";
 
-/** Slide body stack inside the grid — full width of the 900px parent (no duplicate max-width / pad). */
+/** Slide body stack — full width of the stage (text rail capped separately via `PRESENTATION_RAIL_MAX_CLASS`). */
 export const PRESENTATION_COLUMN_CLASS =
   "flex w-full min-h-0 flex-col items-center";
 
@@ -43,11 +50,11 @@ export const PRESENTATION_RAIL_MAX_CLASS =
   "max-w-[min(38.75rem,100%)] [@media(max-height:720px)]:max-w-[min(32.5rem,100%)]";
 
 export const PRESENTATION_SECTION_HEADER_CLASS =
-  "mb-2.5 flex w-full flex-col items-center gap-2 text-center sm:mb-3";
+  "mb-3 flex w-full flex-col items-center gap-2 text-center sm:mb-3.5";
 
 /** Moment label (Discussion / Reflection / …) above title */
 export const PRESENTATION_MOMENT_LABEL_CLASS =
-  "mb-2.5 shrink-0 text-center sm:mb-3";
+  "mb-3 shrink-0 text-center sm:mb-3.5";
 
 /**
  * Title: large, bold, centered. Large space below when more content follows (48–72px band).
@@ -65,7 +72,7 @@ export function presentationTitleClass(hasContentBelow: boolean): string {
 export function presentationEmphasisWrapClass(hasContentBelow: boolean): string {
   return [
     "flex w-full shrink-0 justify-center px-1 text-center sm:px-2",
-    hasContentBelow ? "mb-[clamp(2.1rem,3.75vh,3.15rem)]" : "",
+    hasContentBelow ? "mb-[clamp(2.35rem,3.95vh,3.35rem)]" : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -77,14 +84,14 @@ export function presentationScriptureWrapClass(hasContentBelow: boolean): string
     "w-full shrink-0 text-left",
     PRESENTATION_RAIL_MAX_CLASS,
     "mx-auto",
-    hasContentBelow ? "mb-[clamp(1.6rem,3vh,2.45rem)]" : "",
+    hasContentBelow ? "mb-[clamp(1.85rem,3.15vh,2.6rem)]" : "",
   ]
     .filter(Boolean)
     .join(" ");
 }
 
 /** Space after bullet list when a together box follows */
-export const PRESENTATION_AFTER_BULLETS_MB = "mb-[clamp(1.1rem,2.15vh,1.65rem)]";
+export const PRESENTATION_AFTER_BULLETS_MB = "mb-[clamp(1.25rem,2.35vh,1.8rem)]";
 
 export const PRESENTATION_TOGETHER_BOX_CLASS = [
   "w-full rounded-lg border border-launch-neutral/35 bg-launch-navy/50 px-4 py-3 text-left sm:px-5 sm:py-3.5",
@@ -107,7 +114,7 @@ export const PRESENTATION_INTERACTIVE_RAIL_WRAPPER_CLASS = [
 
 /** Space between hero stack (title / emphasis / bullets) and the interactive card */
 export const PRESENTATION_INTERACTIVE_AFTER_STACK_MB =
-  "mt-[clamp(1rem,2.35vh,1.5rem)]";
+  "mt-[clamp(1.15rem,2.5vh,1.65rem)]";
 
 type PresentationBulletListProps = {
   bullets: string[];
@@ -117,58 +124,100 @@ type PresentationBulletListProps = {
    * tallest slide in the `continuationGroup` (only bullet text changes between advances).
    */
   lockedVisualRowTarget?: number;
+  /**
+   * Progressive reveal: show this many bullets at full opacity; remaining rows stay in the DOM
+   * with opacity 0 (layout-stable). Omit or set >= bullets.length to show all.
+   */
+  visibleBulletCount?: number;
+  /** Override body `font-size` (rem) for list text. */
+  fontSizeRem?: number;
   /** e.g. margin after list when followed by another block */
   className?: string;
 };
 
 /**
- * Global bullet treatment: left-aligned in a centered rail; optional visual break after 2nd item when ≥4 bullets.
+ * Global bullet treatment: left-aligned in a centered rail; even vertical rhythm between rows.
  */
 export function PresentationBulletList({
   bullets,
   phrases,
   lockedVisualRowTarget,
+  visibleBulletCount,
+  fontSizeRem,
   className = "",
 }: PresentationBulletListProps) {
-  const grouped = bullets.length >= 4;
   const padCount =
     lockedVisualRowTarget != null
       ? Math.max(0, lockedVisualRowTarget - bullets.length)
       : 0;
+  const revealLimit =
+    visibleBulletCount == null
+      ? bullets.length
+      : Math.min(
+          bullets.length,
+          Math.max(0, Math.floor(visibleBulletCount)),
+        );
+
+  /** Reserve vertical space for the max row count in a continuation group (avoids jumps between slides). */
+  const lockedRows = lockedVisualRowTarget ?? 0;
+  const bulletRegionMinStyle =
+    lockedRows > 0
+      ? ({
+          minHeight:
+            "calc(var(--presentation-bullet-row, 2.875rem) * " +
+            String(lockedRows) +
+            " + var(--presentation-bullet-gap, 0.875rem) * " +
+            String(Math.max(0, lockedRows - 1)) +
+            ")",
+        } as const)
+      : undefined;
+  const listStyle =
+    bulletRegionMinStyle || fontSizeRem != null
+      ? {
+          ...bulletRegionMinStyle,
+          ...(fontSizeRem != null
+            ? { fontSize: `${fontSizeRem}rem` }
+            : {}),
+        }
+      : undefined;
 
   return (
     <ul
       role="list"
+      style={listStyle}
       className={[
-        "slide-viewport-bullet-list text-slide-bullet w-full list-none text-left font-medium leading-snug text-launch-secondary/95",
+        "slide-viewport-bullet-list text-slide-bullet w-full list-none text-left font-medium leading-snug text-launch-secondary/95 [contain:layout]",
         PRESENTATION_RAIL_MAX_CLASS,
-        "mx-auto pl-1 sm:pl-1.5",
-        "space-y-2.5 sm:space-y-3",
-        grouped
-          ? [
-              /* Clearer break between first pair (“not”) and rest (“is”) */
-              "[&>li:nth-child(2)]:mb-6 sm:[&>li:nth-child(2)]:mb-7 md:[&>li:nth-child(2)]:mb-8",
-              /* First group slightly quieter so the shift reads conceptually */
-              "[&>li:nth-child(-n+2)>span:last-child]:opacity-[0.88]",
-              "[&>li:nth-child(-n+2)>span:first-of-type]:opacity-75",
-            ].join(" ")
-          : "",
+        "mx-auto min-h-0 pl-1 sm:pl-1.5",
+        "space-y-3 sm:space-y-3.5",
         className,
       ]
         .filter(Boolean)
         .join(" ")}
     >
-      {bullets.map((b, i) => (
-        <li key={`b-${i}-${b}`} className="flex items-start gap-4 sm:gap-[1.125rem]">
-          <span
-            className="mt-[0.45em] h-1.5 w-1.5 shrink-0 rotate-45 bg-launch-gold"
-            aria-hidden
-          />
-          <span className="min-w-0 flex-1 text-left">
-            {highlightKeyPhrases(b, phrases)}
-          </span>
-        </li>
-      ))}
+      {bullets.map((b, i) => {
+        const revealed = i < revealLimit;
+        return (
+          <li
+            key={`b-${i}-${b}`}
+            className={[
+              "flex items-start gap-4 sm:gap-[1.125rem]",
+              revealed ? "" : "pointer-events-none opacity-0",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+            aria-hidden={!revealed}
+          >
+            <span
+              className="mt-[0.45em] h-1.5 w-1.5 shrink-0 rotate-45 bg-launch-gold"
+              aria-hidden
+            />
+            <span className="min-w-0 flex-1 text-left">
+              {renderSlideRichText(b, phrases, `bu-${i}-`)}
+            </span>
+          </li>
+        );
+      })}
       {Array.from({ length: padCount }, (_, i) => (
         <li
           key={`_lockpad-${i}`}
@@ -177,6 +226,118 @@ export function PresentationBulletList({
         >
           <span
             className="mt-[0.45em] h-1.5 w-1.5 shrink-0 rotate-45 bg-launch-gold opacity-0"
+            aria-hidden
+          />
+          <span className="min-h-[1.48em] min-w-0 flex-1 text-left opacity-0">
+            {"\u00A0"}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+type PresentationPromptListProps = {
+  prompts: string[];
+  phrases?: string[];
+  lockedVisualRowTarget?: number;
+  visiblePromptCount?: number;
+  fontSizeRem?: number;
+  className?: string;
+};
+
+/**
+ * Room / participant questions — same layout contract as bullets (DOM-stable opacity reveal).
+ */
+export function PresentationPromptList({
+  prompts,
+  phrases,
+  lockedVisualRowTarget,
+  visiblePromptCount,
+  fontSizeRem,
+  className = "",
+}: PresentationPromptListProps) {
+  const padCount =
+    lockedVisualRowTarget != null
+      ? Math.max(0, lockedVisualRowTarget - prompts.length)
+      : 0;
+  const revealLimit =
+    visiblePromptCount == null
+      ? prompts.length
+      : Math.min(
+          prompts.length,
+          Math.max(0, Math.floor(visiblePromptCount)),
+        );
+
+  const lockedRows = lockedVisualRowTarget ?? 0;
+  const regionMinStyle =
+    lockedRows > 0
+      ? ({
+          minHeight:
+            "calc(var(--presentation-bullet-row, 2.875rem) * " +
+            String(lockedRows) +
+            " + var(--presentation-bullet-gap, 0.875rem) * " +
+            String(Math.max(0, lockedRows - 1)) +
+            ")",
+        } as const)
+      : undefined;
+  const promptListStyle =
+    regionMinStyle || fontSizeRem != null
+      ? {
+          ...regionMinStyle,
+          ...(fontSizeRem != null
+            ? { fontSize: `${fontSizeRem}rem` }
+            : {}),
+        }
+      : undefined;
+
+  return (
+    <ul
+      role="list"
+      style={promptListStyle}
+      className={[
+        "slide-viewport-prompt-list text-slide-bullet w-full list-none text-left font-medium leading-snug text-launch-secondary/95 [contain:layout]",
+        PRESENTATION_RAIL_MAX_CLASS,
+        "mx-auto min-h-0 pl-1 sm:pl-1.5",
+        "space-y-3 sm:space-y-3.5",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      {prompts.map((line, i) => {
+        const revealed = i < revealLimit;
+        return (
+          <li
+            key={`p-${i}-${line}`}
+            className={[
+              "flex items-start gap-4 sm:gap-[1.125rem]",
+              revealed ? "" : "pointer-events-none opacity-0",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+            aria-hidden={!revealed}
+          >
+            <span
+              className="mt-[0.42em] flex h-[1.15em] w-[1.15em] shrink-0 items-center justify-center rounded-full border border-launch-gold/55 bg-launch-gold/15 text-[0.65em] font-bold text-launch-gold"
+              aria-hidden
+            >
+              {i + 1}
+            </span>
+            <span className="min-w-0 flex-1 text-left">
+              {renderSlideRichText(line, phrases, `pr-${i}-`)}
+            </span>
+          </li>
+        );
+      })}
+      {Array.from({ length: padCount }, (_, i) => (
+        <li
+          key={`_plock-${i}`}
+          aria-hidden
+          className="flex items-start gap-4 select-none sm:gap-[1.125rem]"
+        >
+          <span
+            className="mt-[0.42em] h-[1.15em] w-[1.15em] shrink-0 rounded-full border border-launch-gold/20 opacity-0"
             aria-hidden
           />
           <span className="min-h-[1.48em] min-w-0 flex-1 text-left opacity-0">

@@ -103,6 +103,49 @@
    Keep standard + interactive (discussion / pair / reflection) visually aligned.
    -------------------------------------------------------------------------- */
 
+/**
+ * Decorative depth inside the presentation stage only — faint grid + contour-like curves.
+ * Radial mask keeps the pattern weakest behind centered copy (edges read slightly stronger).
+ */
+.present-share-boost .presentation-stage-depth {
+  background:
+    radial-gradient(ellipse 110% 60% at 100% 8%, rgba(131, 176, 218, 0.14) 0%, transparent 52%),
+    radial-gradient(ellipse 95% 55% at 0% 92%, rgba(175, 201, 217, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse 55% 40% at 88% 78%, rgba(131, 176, 218, 0.07) 0%, transparent 48%),
+    radial-gradient(ellipse 50% 42% at 12% 18%, rgba(175, 201, 217, 0.06) 0%, transparent 45%),
+    repeating-linear-gradient(
+      118deg,
+      transparent 0,
+      transparent 47px,
+      rgba(131, 176, 218, 0.04) 47px,
+      rgba(131, 176, 218, 0.04) 48px
+    ),
+    repeating-linear-gradient(
+      -12deg,
+      transparent 0,
+      transparent 56px,
+      rgba(175, 201, 217, 0.032) 56px,
+      rgba(175, 201, 217, 0.032) 57px
+    );
+  opacity: 0.55;
+  mask-image: radial-gradient(
+    ellipse 58% 60% at 50% 44%,
+    transparent 0%,
+    transparent 32%,
+    rgba(0, 0, 0, 0.45) 68%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 58% 60% at 50% 44%,
+    transparent 0%,
+    transparent 32%,
+    rgba(0, 0, 0, 0.45) 68%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  mask-mode: alpha;
+  -webkit-mask-mode: alpha;
+}
+
 .present-share-boost h2.text-slide-title {
   font-size: clamp(2.35rem, 5.5vw + 0.75rem, 4.35rem);
   line-height: 1.06;

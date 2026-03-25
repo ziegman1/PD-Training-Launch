@@ -3,12 +3,18 @@
 import { useState } from "react";
 import type { AudienceLaunchSlide } from "@/types/launch";
 import type { SlideMomentType } from "@/lib/slideContent";
-import { getSlideInteraction } from "@/lib/slideContent";
+import {
+  getSlideInteraction,
+  getSlidePromptLines,
+  promptsFullyRevealed,
+} from "@/lib/slideContent";
 import { EmphasisText } from "@/components/launch/slide/EmphasisText";
-import { highlightKeyPhrases } from "@/components/launch/slide/highlightKeyPhrases";
+import { renderSlideRichText } from "@/components/launch/slide/highlightKeyPhrases";
 import { fieldClassName } from "@/components/launch/participant/fieldStyles";
+import { participantSlideKey } from "@/lib/participantSlideKey";
 import {
   PresentationBulletList,
+  PresentationPromptList,
   PresentationSlideColumn,
   PRESENTATION_INTERACTIVE_AFTER_STACK_MB,
   PRESENTATION_INTERACTIVE_RAIL_WRAPPER_CLASS,
@@ -21,22 +27,48 @@ import {
 } from "@/components/launch/slide/presentationSlideLayout";
 
 const MAX_BULLETS = 5;
+const MAX_PROMPTS = 8;
 
 function MomentFrame({
   slide,
   label,
   labelClass = "text-launch-steel/95",
   viewportLocked,
+  continuationBulletSlotCount,
+  continuationPromptSlotCount,
+  presentationScrollable = false,
   children,
 }: {
   slide: AudienceLaunchSlide;
   label: string;
   labelClass?: string;
   viewportLocked: boolean;
+  continuationBulletSlotCount?: number;
+  continuationPromptSlotCount?: number;
+  presentationScrollable?: boolean;
   children: React.ReactNode;
 }) {
   const phrases = slide.keyPhrases;
   const bullets = slide.bullets.slice(0, MAX_BULLETS);
+  const promptLines = getSlidePromptLines(slide).slice(0, MAX_PROMPTS);
+  const hasBulletList = bullets.length > 0;
+  const hasPromptList = promptLines.length > 0;
+  const promptsDone = promptsFullyRevealed(slide);
+  const revealLimit =
+    typeof slide.bulletRevealVisibleCount === "number"
+      ? Math.min(
+          bullets.length,
+          Math.max(0, Math.floor(slide.bulletRevealVisibleCount)),
+        )
+      : bullets.length;
+
+  const revealPromptLimit =
+    typeof slide.promptRevealVisibleCount === "number"
+      ? Math.min(
+          promptLines.length,
+          Math.max(0, Math.floor(slide.promptRevealVisibleCount)),
+        )
+      : promptLines.length;
 
   const bulletsAfterEmphasis = slide.emphasis;
   const bulletsMargin = bulletsAfterEmphasis
@@ -47,13 +79,16 @@ function MomentFrame({
 
   if (viewportLocked) {
     const hasEmphasis = Boolean(slide.emphasis?.trim());
-    const hasBullets = bullets.length > 0;
-    const hasBelowTitle = hasEmphasis || hasBullets || Boolean(children);
-    const hasBelowEmphasis = hasBullets || Boolean(children);
+    const hasBelowTitle =
+      hasEmphasis || hasBulletList || hasPromptList || Boolean(children);
+    const hasBelowEmphasis =
+      hasBulletList || hasPromptList || Boolean(children);
 
     return (
       <div
-        className="moment-frame flex min-h-0 w-full max-w-full flex-1 flex-col items-center overflow-hidden"
+        className={`moment-frame flex min-h-0 w-full max-w-full flex-1 flex-col items-center justify-start ${
+          presentationScrollable ? "overflow-visible" : "overflow-hidden"
+        }`}
       >
         <PresentationSlideColumn>
           {slide.section && (
@@ -75,7 +110,7 @@ function MomentFrame({
           </p>
 
           <h2 className={presentationTitleClass(hasBelowTitle)}>
-            {highlightKeyPhrases(slide.title, phrases)}
+            {renderSlideRichText(slide.title, phrases, "t-")}
           </h2>
 
           {slide.emphasis && (
@@ -84,7 +119,7 @@ function MomentFrame({
                 spacious={false}
                 className="moment-slide-emphasis !my-0 max-w-[40ch] text-balance !text-center sm:max-w-[44ch]"
               >
-                {highlightKeyPhrases(slide.emphasis, phrases)}
+                {renderSlideRichText(slide.emphasis, phrases, "e-")}
               </EmphasisText>
             </div>
           )}
@@ -92,20 +127,64 @@ function MomentFrame({
           <div
             className={`${PRESENTATION_TEAMS_LOWER_SAFE_CLASS} flex min-h-0 w-full flex-1 flex-col`}
           >
-            {hasBullets && (
+            {hasBulletList && (
               <PresentationBulletList
                 bullets={bullets}
                 phrases={phrases}
-                className="min-h-0 shrink-0"
+                lockedVisualRowTarget={
+                  continuationBulletSlotCount != null &&
+                  continuationBulletSlotCount > 0
+                    ? continuationBulletSlotCount
+                    : undefined
+                }
+                visibleBulletCount={
+                  slide.bulletRevealVisibleCount ?? bullets.length
+                }
+                className={[
+                  "min-h-0 shrink-0",
+                  hasPromptList ? PRESENTATION_INTERACTIVE_AFTER_STACK_MB : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+              />
+            )}
+
+            {hasPromptList && (
+              <PresentationPromptList
+                prompts={promptLines}
+                phrases={phrases}
+                lockedVisualRowTarget={
+                  continuationPromptSlotCount != null &&
+                  continuationPromptSlotCount > 0
+                    ? continuationPromptSlotCount
+                    : undefined
+                }
+                visiblePromptCount={
+                  slide.promptRevealVisibleCount ?? promptLines.length
+                }
+                className={[
+                  "min-h-0 shrink-0",
+                  PRESENTATION_INTERACTIVE_AFTER_STACK_MB,
+                ].join(" ")}
               />
             )}
 
             <div
               className={`moment-children-slot ${PRESENTATION_INTERACTIVE_SLOT_CLASS}${
-                hasBullets ? ` ${PRESENTATION_INTERACTIVE_AFTER_STACK_MB}` : ""
+                hasBulletList || hasPromptList
+                  ? ` ${PRESENTATION_INTERACTIVE_AFTER_STACK_MB}`
+                  : ""
               }`}
             >
-              <div className={PRESENTATION_INTERACTIVE_RAIL_WRAPPER_CLASS}>
+              <div
+                className={[
+                  PRESENTATION_INTERACTIVE_RAIL_WRAPPER_CLASS,
+                  !promptsDone ? "pointer-events-none opacity-0 [contain:layout]" : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                aria-hidden={!promptsDone}
+              >
                 {children}
               </div>
             </div>
@@ -134,7 +213,7 @@ function MomentFrame({
       </p>
 
       <h2 className="mt-6 max-w-[22ch] text-balance text-slide-title font-bold leading-[1.06] tracking-[-0.03em] text-launch-primary md:mt-8 md:max-w-[28ch]">
-        {highlightKeyPhrases(slide.title, phrases)}
+        {renderSlideRichText(slide.title, phrases, "t-")}
       </h2>
 
       {slide.emphasis && (
@@ -143,28 +222,77 @@ function MomentFrame({
             spacious={false}
             className="moment-slide-emphasis !my-0 !text-center"
           >
-            {highlightKeyPhrases(slide.emphasis, phrases)}
+            {renderSlideRichText(slide.emphasis, phrases, "e-")}
           </EmphasisText>
         </div>
       )}
 
-      {bullets.length > 0 && (
+      {hasBulletList && (
         <ul
           className={`moment-bullet-list mx-auto w-full max-w-2xl space-y-8 text-left text-slide-bullet font-medium leading-[1.55] md:space-y-10 ${bulletsMargin} text-launch-secondary/95`}
         >
-          {bullets.map((b) => (
-            <li key={b} className="flex gap-5 md:gap-6">
-              <span
-                className="mt-2.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-launch-gold"
-                aria-hidden
-              />
-              <span>{highlightKeyPhrases(b, phrases)}</span>
-            </li>
-          ))}
+          {bullets.map((b, i) => {
+            const revealed = i < revealLimit;
+            return (
+              <li
+                key={b}
+                className={[
+                  "flex gap-5 md:gap-6",
+                  revealed ? "" : "pointer-events-none opacity-0",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                aria-hidden={!revealed}
+              >
+                <span
+                  className="mt-2.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-launch-gold"
+                  aria-hidden
+                />
+                <span>{renderSlideRichText(b, phrases, `bl-${i}-`)}</span>
+              </li>
+            );
+          })}
         </ul>
       )}
 
-      <div className="moment-children-slot mt-14 w-full max-w-2xl md:mt-20">
+      {hasPromptList && (
+        <ul
+          className={`mx-auto w-full max-w-2xl space-y-6 text-left text-slide-bullet font-medium leading-[1.55] md:space-y-8 ${
+            hasBulletList ? "mt-10 md:mt-12" : bulletsMargin
+          } text-launch-secondary/95`}
+        >
+          {promptLines.map((line, i) => {
+            const revealed = i < revealPromptLimit;
+            return (
+              <li
+                key={`${i}-${line}`}
+                className={[
+                  "flex gap-4 md:gap-5",
+                  revealed ? "" : "pointer-events-none opacity-0",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                aria-hidden={!revealed}
+              >
+                <span
+                  className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-launch-gold/50 text-xs font-bold text-launch-gold"
+                  aria-hidden
+                >
+                  {i + 1}
+                </span>
+                <span>{renderSlideRichText(line, phrases, `pl-${i}-`)}</span>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+
+      <div
+        className={`moment-children-slot mt-14 w-full max-w-2xl md:mt-20 ${
+          !promptsDone ? "pointer-events-none opacity-0" : ""
+        }`.trim()}
+        aria-hidden={!promptsDone}
+      >
         {children}
       </div>
     </div>
@@ -288,7 +416,7 @@ function ReflectionBody({
             value={value}
             onChange={(e) => setValue(e.target.value)}
             rows={4}
-            name={`reflection-${slide.id}`}
+            name={`reflection-${participantSlideKey(slide)}`}
           />
         </label>
       </div>
@@ -309,7 +437,7 @@ function ReflectionBody({
           value={value}
           onChange={(e) => setValue(e.target.value)}
           rows={6}
-          name={`reflection-${slide.id}`}
+          name={`reflection-${participantSlideKey(slide)}`}
         />
       </label>
     </div>
@@ -320,12 +448,18 @@ type InteractiveMomentProps = {
   moment: Exclude<SlideMomentType, "standard">;
   slide: AudienceLaunchSlide;
   viewportLocked?: boolean;
+  continuationBulletSlotCount?: number;
+  continuationPromptSlotCount?: number;
+  presentationScrollable?: boolean;
 };
 
 export function InteractiveMoment({
   moment,
   slide,
   viewportLocked = false,
+  continuationBulletSlotCount,
+  continuationPromptSlotCount,
+  presentationScrollable = false,
 }: InteractiveMomentProps) {
   const prompt = getSlideInteraction(slide);
   if (!prompt) {
@@ -339,6 +473,9 @@ export function InteractiveMoment({
         slide={slide}
         label={isPrayer ? "Prayer" : "Discussion"}
         viewportLocked={viewportLocked}
+        continuationBulletSlotCount={continuationBulletSlotCount}
+        continuationPromptSlotCount={continuationPromptSlotCount}
+        presentationScrollable={presentationScrollable}
       >
         <DiscussionBody
           prompt={prompt}
@@ -351,14 +488,28 @@ export function InteractiveMoment({
 
   if (moment === "pairShare") {
     return (
-      <MomentFrame slide={slide} label="Pair share" viewportLocked={viewportLocked}>
+      <MomentFrame
+        slide={slide}
+        label="Pair share"
+        viewportLocked={viewportLocked}
+        continuationBulletSlotCount={continuationBulletSlotCount}
+        continuationPromptSlotCount={continuationPromptSlotCount}
+        presentationScrollable={presentationScrollable}
+      >
         <PairShareBody prompt={prompt} viewportLocked={viewportLocked} />
       </MomentFrame>
     );
   }
 
   return (
-    <MomentFrame slide={slide} label="Reflection" viewportLocked={viewportLocked}>
+    <MomentFrame
+      slide={slide}
+      label="Reflection"
+      viewportLocked={viewportLocked}
+      continuationBulletSlotCount={continuationBulletSlotCount}
+      continuationPromptSlotCount={continuationPromptSlotCount}
+      presentationScrollable={presentationScrollable}
+    >
       <ReflectionBody
         slide={slide}
         prompt={prompt}

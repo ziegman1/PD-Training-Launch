@@ -8,14 +8,16 @@
   "objective": "Help participants see Partnership Development through God's eyes by grounding it in Scripture, reframing its philosophy, surfacing limiting beliefs, and introducing the FREEDOM pathway.",
   "slides": [
     {
-      "id": "s1-001",
+      "id": "s1-001__rg0",
       "title": "Session 1",
       "bullets": [
-        "Why Partnership Development matters",
-        "Biblical foundation",
-        "Philosophy and attitude"
+        "Why partnership development matters",
+        "The biblical foundation underneath it",
+        "The philosophy that will shape how you show up"
       ],
-      "trainerNotes": "Welcome everyone. Frame this session as the foundation for everything else in Launch. Make it clear that before we talk strategy, we must settle theology, mindset, and identity. Land the first three themes, then advance for the remaining session landmarks.",
+      "trainerCadence": "Welcome—I'm really glad you're here. Today is the foundation for everything else we'll do in Launch, so I want to start by naming three landmarks we're going to walk through together: why partnership development matters, the biblical foundation underneath it, and the philosophy and attitude that will shape how you show up.\n\nBefore we ever talk tactics or strategy, we need to settle something deeper—our theology, our mindset, and our identity. Let these three themes on the slide be our roadmap for the next few minutes.",
+      "trainerTransition": "When you're ready, let's go to the next slide and round out the roadmap for this session.",
+      "trainerScriptNotes": "- Warm, settled open; let the room arrive before you teach.\n- Land all three roadmap bullets before advancing—don't skip ahead to technique.\n- Watch for tension when you say \"support\"; note who looks relieved vs guarded.",
       "emphasis": "Partnership Development is not about raising money—it's about raising partners in the mission of God.",
       "continuationGroup": "s1-001",
       "timing": "2 min",
@@ -23,16 +25,64 @@
         "What emotions come up when you hear support raising?",
         "What do you hope changes for you through Launch?"
       ],
-      "transitionCue": "Advance to complete the session roadmap on the next slide."
+      "transitionCue": "Advance to complete the session roadmap on the next slide.",
+      "bulletRevealVisibleCount": 3,
+      "promptRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-001__rg1",
+      "title": "Session 1",
+      "bullets": [
+        "Why partnership development matters",
+        "The biblical foundation underneath it",
+        "The philosophy that will shape how you show up"
+      ],
+      "trainerCadence": "Welcome—I'm really glad you're here. Today is the foundation for everything else we'll do in Launch, so I want to start by naming three landmarks we're going to walk through together: why partnership development matters, the biblical foundation underneath it, and the philosophy and attitude that will shape how you show up.\n\nBefore we ever talk tactics or strategy, we need to settle something deeper—our theology, our mindset, and our identity. Let these three themes on the slide be our roadmap for the next few minutes.",
+      "trainerTransition": "When you're ready, let's go to the next slide and round out the roadmap for this session.",
+      "trainerScriptNotes": "- Warm, settled open; let the room arrive before you teach.\n- Land all three roadmap bullets before advancing—don't skip ahead to technique.\n- Watch for tension when you say \"support\"; note who looks relieved vs guarded.",
+      "emphasis": "Partnership Development is not about raising money—it's about raising partners in the mission of God.",
+      "continuationGroup": "s1-001",
+      "timing": "2 min",
+      "prompts": [
+        "What emotions come up when you hear support raising?",
+        "What do you hope changes for you through Launch?"
+      ],
+      "transitionCue": "Advance to complete the session roadmap on the next slide.",
+      "bulletRevealVisibleCount": 3,
+      "promptRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-001__rg2",
+      "title": "Session 1",
+      "bullets": [
+        "Why partnership development matters",
+        "The biblical foundation underneath it",
+        "The philosophy that will shape how you show up"
+      ],
+      "trainerCadence": "Welcome—I'm really glad you're here. Today is the foundation for everything else we'll do in Launch, so I want to start by naming three landmarks we're going to walk through together: why partnership development matters, the biblical foundation underneath it, and the philosophy and attitude that will shape how you show up.\n\nBefore we ever talk tactics or strategy, we need to settle something deeper—our theology, our mindset, and our identity. Let these three themes on the slide be our roadmap for the next few minutes.",
+      "trainerTransition": "When you're ready, let's go to the next slide and round out the roadmap for this session.",
+      "trainerScriptNotes": "- Warm, settled open; let the room arrive before you teach.\n- Land all three roadmap bullets before advancing—don't skip ahead to technique.\n- Watch for tension when you say \"support\"; note who looks relieved vs guarded.",
+      "emphasis": "Partnership Development is not about raising money—it's about raising partners in the mission of God.",
+      "continuationGroup": "s1-001",
+      "timing": "2 min",
+      "prompts": [
+        "What emotions come up when you hear support raising?",
+        "What do you hope changes for you through Launch?"
+      ],
+      "transitionCue": "Advance to complete the session roadmap on the next slide.",
+      "bulletRevealVisibleCount": 3,
+      "promptRevealVisibleCount": 2
     },
     {
       "id": "s1-001b",
       "title": "Session 1",
       "bullets": [
-        "Limiting beliefs",
-        "Intro to FREEDOM"
+        "Limiting beliefs—coming later today",
+        "The FREEDOM pathway ahead"
       ],
-      "trainerNotes": "Briefly preview what comes later—limiting beliefs and the FREEDOM pathway—without teaching them yet.",
+      "trainerCadence": "Later on we're going to spend real time with limiting beliefs and with the FREEDOM pathway you see listed here. I'm not going to unpack those deeply in this moment—I just want you to see them coming so nothing feels like it dropped out of nowhere.",
+      "trainerTransition": "Let's step into the reframe that's going to anchor our whole conversation.",
+      "trainerScriptNotes": "- Tease only; resist teaching FREEDOM or beliefs frameworks here.\n- Tone: orienting, not dumping content.\n- Keep this beat short—energy should move toward the big reframe.",
       "emphasis": "Partnership Development is not about raising money—it's about raising partners in the mission of God.",
       "continuationGroup": "s1-001",
       "timing": "1 min",
@@ -44,53 +94,131 @@
       "bullets": [
         "Not fundraising",
         "Not begging",
-        "Not selling yourself"
+        "Not selling"
       ],
-      "trainerNotes": "Slow down here. This is the emotional and theological reset for the whole session. Name what partnership development is not before you turn to the positive frame.",
+      "trainerCadence": "I want to slow us down here, because this slide is a reset for how we think and feel about partnership development. Before we say what it is, let's name honestly what it is not—it's not fundraising in the usual sense, it's not begging, and it's not selling yourself.\n\nLet those land. We're clearing the ground so the positive definition can actually be heard.",
+      "trainerTransition": "When that feels grounded, let's go on and name what this is in a positive, mission-shaped way.",
+      "trainerScriptNotes": "- This is an emotional and theological hinge—unhurried pace.\n- Name the \"nots\" clearly without shaming anyone's past experience.\n- Let the slide breathe; don't rush to fix discomfort.",
       "emphasis": "You are not asking people to fund you. You are inviting them into what God is doing.",
       "continuationGroup": "s1-002",
       "timing": "2 min",
       "transitionCue": "Advance to land the invitation and mission frame."
     },
     {
-      "id": "s1-002b",
+      "id": "s1-002b__rg0",
       "title": "The Big Reframe",
       "bullets": [
         "Inviting partnership",
-        "In God's mission"
+        "Gods mission"
       ],
-      "trainerNotes": "Repeat the anchor statement twice if needed. Let the positive definition land after the negations.",
+      "trainerCadence": "Here's the other side of that reframe: you're not asking people to fund you in some abstract sense—you're inviting them into what God is already doing. Partnership development, at its best, sounds like invitation, not invoice.\n\nIf it helps, I might say that line twice—sometimes we have to hear the good news more than once to believe it.",
+      "trainerTransition": "From here, we're going to ask the question almost everyone carries underneath the surface: is this way of living even biblical?",
+      "trainerScriptNotes": "- Let the positive frame land after the negations—sequence matters.\n- Optional: repeat the anchor emphasis line for retention.\n- Invite a genuine question after, not a forced \"amen.\"",
       "emphasis": "You are not asking people to fund you. You are inviting them into what God is doing.",
-      "continuationGroup": "s1-002",
+      "continuationGroup": "s1-002b",
       "timing": "2 min",
       "prompts": [
         "How is partnership development different from ordinary fundraising?"
       ],
-      "transitionCue": "Now address the question underneath most fears: is this actually biblical?"
+      "transitionCue": "Now address the question underneath most fears: is this actually biblical?",
+      "bulletRevealVisibleCount": 2,
+      "promptRevealVisibleCount": 0
     },
     {
-      "id": "s1-003",
+      "id": "s1-002b__rg1",
+      "title": "The Big Reframe",
+      "bullets": [
+        "Inviting partnership",
+        "Gods mission"
+      ],
+      "trainerCadence": "Here's the other side of that reframe: you're not asking people to fund you in some abstract sense—you're inviting them into what God is already doing. Partnership development, at its best, sounds like invitation, not invoice.\n\nIf it helps, I might say that line twice—sometimes we have to hear the good news more than once to believe it.",
+      "trainerTransition": "From here, we're going to ask the question almost everyone carries underneath the surface: is this way of living even biblical?",
+      "trainerScriptNotes": "- Let the positive frame land after the negations—sequence matters.\n- Optional: repeat the anchor emphasis line for retention.\n- Invite a genuine question after, not a forced \"amen.\"",
+      "emphasis": "You are not asking people to fund you. You are inviting them into what God is doing.",
+      "continuationGroup": "s1-002b",
+      "timing": "2 min",
+      "prompts": [
+        "How is partnership development different from ordinary fundraising?"
+      ],
+      "transitionCue": "Now address the question underneath most fears: is this actually biblical?",
+      "bulletRevealVisibleCount": 2,
+      "promptRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-003__rg0",
       "title": "Is Support Raising Biblical?",
       "bullets": [
-        "We start with Scripture — not opinion or pragmatics",
-        "Then we examine our resistance in light of truth"
+        "We start with Scripture—not opinion",
+        "Then we examine our resistance in the light of truth"
       ],
-      "trainerNotes": "Introduce this section as a Scripture-first conversation, not a pragmatic one.",
-      "emphasis": "If the practice is biblical, then our resistance must be examined in light of truth.",
+      "trainerCadence": "As we turn this corner, I want us to be clear about our starting point. We're not beginning with opinions or pragmatics—we're beginning with Scripture. We'll let the text speak first.\n\nThen—and only then—we'll bring our resistance into the light and examine it next to what God has actually said.",
+      "trainerTransition": "Next we're going to give you time in small groups with assigned passages—so go ahead and open your rooms when you're ready.",
+      "trainerScriptNotes": "- Frame this as humility before the text, not winning an argument.\n- Signal safety for honest questions later.\n- Clear handoff to breakout logistics on the next slide.",
+      "continuationGroup": "s1-003",
       "timing": "1 min",
-      "transitionCue": "Move into the small-group Biblical Foundations study in breakout rooms."
+      "transitionCue": "Move into the small-group Biblical Foundations study in breakout rooms.",
+      "bulletRevealVisibleCount": 0
     },
     {
-      "id": "s1-003a",
+      "id": "s1-003__rg1",
+      "title": "Is Support Raising Biblical?",
+      "bullets": [
+        "We start with Scripture—not opinion",
+        "Then we examine our resistance in the light of truth"
+      ],
+      "trainerCadence": "As we turn this corner, I want us to be clear about our starting point. We're not beginning with opinions or pragmatics—we're beginning with Scripture. We'll let the text speak first.\n\nThen—and only then—we'll bring our resistance into the light and examine it next to what God has actually said.",
+      "trainerTransition": "Next we're going to give you time in small groups with assigned passages—so go ahead and open your rooms when you're ready.",
+      "trainerScriptNotes": "- Frame this as humility before the text, not winning an argument.\n- Signal safety for honest questions later.\n- Clear handoff to breakout logistics on the next slide.",
+      "emphasis": "If the practice is biblical, then our resistance must be examined in light of truth.",
+      "continuationGroup": "s1-003",
+      "timing": "1 min",
+      "transitionCue": "Move into the small-group Biblical Foundations study in breakout rooms.",
+      "bulletRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-003__rg2",
+      "title": "Is Support Raising Biblical?",
+      "bullets": [
+        "We start with Scripture—not opinion",
+        "Then we examine our resistance in the light of truth"
+      ],
+      "trainerCadence": "As we turn this corner, I want us to be clear about our starting point. We're not beginning with opinions or pragmatics—we're beginning with Scripture. We'll let the text speak first.\n\nThen—and only then—we'll bring our resistance into the light and examine it next to what God has actually said.",
+      "trainerTransition": "Next we're going to give you time in small groups with assigned passages—so go ahead and open your rooms when you're ready.",
+      "trainerScriptNotes": "- Frame this as humility before the text, not winning an argument.\n- Signal safety for honest questions later.\n- Clear handoff to breakout logistics on the next slide.",
+      "emphasis": "If the practice is biblical, then our resistance must be examined in light of truth.",
+      "continuationGroup": "s1-003",
+      "timing": "1 min",
+      "transitionCue": "Move into the small-group Biblical Foundations study in breakout rooms.",
+      "bulletRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-003__rg3",
+      "title": "Is Support Raising Biblical?",
+      "bullets": [
+        "We start with Scripture—not opinion",
+        "Then we examine our resistance in the light of truth"
+      ],
+      "trainerCadence": "As we turn this corner, I want us to be clear about our starting point. We're not beginning with opinions or pragmatics—we're beginning with Scripture. We'll let the text speak first.\n\nThen—and only then—we'll bring our resistance into the light and examine it next to what God has actually said.",
+      "trainerTransition": "Next we're going to give you time in small groups with assigned passages—so go ahead and open your rooms when you're ready.",
+      "trainerScriptNotes": "- Frame this as humility before the text, not winning an argument.\n- Signal safety for honest questions later.\n- Clear handoff to breakout logistics on the next slide.",
+      "emphasis": "If the practice is biblical, then our resistance must be examined in light of truth.",
+      "continuationGroup": "s1-003",
+      "timing": "1 min",
+      "transitionCue": "Move into the small-group Biblical Foundations study in breakout rooms.",
+      "bulletRevealVisibleCount": 2
+    },
+    {
+      "id": "s1-003a__rg0",
       "title": "Biblical Foundations Study",
       "bullets": [
-        "Read your assigned passages",
-        "Identify 3–5 key principles",
-        "What does this reveal about God?",
-        "What assumptions are challenged?",
-        "Prepare to share one takeaway"
+        "Read and discuss the passages you are assigned",
+        "Name principles and what they show about God's design",
+        "Leave with one honest takeaway"
       ],
-      "trainerNotes": "Open Teams breakout rooms (triads). Assign each room one passage theme from the facilitator panel—or combine themes if you have fewer rooms. Keep the main slide visible for the five on-screen steps; depth lives in the workbook and your notes. After 10–12 minutes, close rooms, advance to the main-room debrief slide, then continue into the biblical pattern overview.",
+      "trainerCadence": "You're going into breakout rooms—typically triads. Each room gets a passage theme; use the facilitator panel to assign themes, and if you have fewer rooms than themes, you can combine thoughtfully. Keep the main slide visible so everyone can see the five steps we're asking them to follow.\n\nThe deeper study lives in the workbook, but the rhythm is on the screen. You'll want about ten to twelve minutes, then we'll close rooms and debrief together before we teach the biblical pattern overview.",
+      "trainerTransition": "When time's up, bring everyone back—then we'll debrief with \"What Did You See?\" before we move on.",
+      "trainerScriptNotes": "- Assign themes clearly; confusion here wastes breakout time.\n- Keep slide up; watch for groups staring at the wrong screen.\n- 30-second warning before closing rooms (see pause cue).\n- After debrief slide, plan to teach The Biblical Pattern.",
+      "continuationGroup": "s1-003a",
       "section": "Is Support Raising Biblical?",
       "timing": "12 min",
       "pauseCue": "Give a 30-second warning before closing breakout rooms.",
@@ -168,19 +296,487 @@
           ],
           "facilitatorNote": "Poor vs. wealthy: surface God's regard for sacrificial faithfulness, not amount alone."
         }
-      ]
+      ],
+      "bulletRevealVisibleCount": 0,
+      "promptRevealVisibleCount": 0
     },
     {
-      "id": "s1-003d",
+      "id": "s1-003a__rg1",
+      "title": "Biblical Foundations Study",
+      "bullets": [
+        "Read and discuss the passages you are assigned",
+        "Name principles and what they show about God's design",
+        "Leave with one honest takeaway"
+      ],
+      "trainerCadence": "You're going into breakout rooms—typically triads. Each room gets a passage theme; use the facilitator panel to assign themes, and if you have fewer rooms than themes, you can combine thoughtfully. Keep the main slide visible so everyone can see the five steps we're asking them to follow.\n\nThe deeper study lives in the workbook, but the rhythm is on the screen. You'll want about ten to twelve minutes, then we'll close rooms and debrief together before we teach the biblical pattern overview.",
+      "trainerTransition": "When time's up, bring everyone back—then we'll debrief with \"What Did You See?\" before we move on.",
+      "trainerScriptNotes": "- Assign themes clearly; confusion here wastes breakout time.\n- Keep slide up; watch for groups staring at the wrong screen.\n- 30-second warning before closing rooms (see pause cue).\n- After debrief slide, plan to teach The Biblical Pattern.",
+      "continuationGroup": "s1-003a",
+      "section": "Is Support Raising Biblical?",
+      "timing": "12 min",
+      "pauseCue": "Give a 30-second warning before closing breakout rooms.",
+      "prompts": [
+        "Which theme produced the strongest 'aha' in the room?",
+        "What biblical tension did groups name honestly?"
+      ],
+      "discussionHandoff": "After breakouts close, use the next slide for a whole-group debrief before you teach The Biblical Pattern.",
+      "transitionCue": "Close breakouts—advance to the main-room debrief slide (What Did You See?).",
+      "interactionType": "bibleStudy",
+      "breakout": {
+        "enabled": true,
+        "groupSize": 3,
+        "duration": "10–12 min",
+        "instructions": [
+          "Read the assigned passages together",
+          "Identify 3–5 key biblical principles",
+          "Discuss what this reveals about God’s design",
+          "Identify assumptions this corrects",
+          "Choose one takeaway to share"
+        ],
+        "debrief": [
+          "What stood out?",
+          "What challenged your assumptions?",
+          "What became clearer?"
+        ]
+      },
+      "bibleStudyGroups": [
+        {
+          "id": "bs-g1",
+          "topic": "Biblical precedent for support",
+          "passages": [
+            "Luke 8:1–3 — women and others supporting Jesus' ministry",
+            "3 John 5–8 — supporting traveling workers for the truth",
+            "Philippians 4:14–18 — partnership in gospel advance"
+          ],
+          "facilitatorNote": "Focus on how ministry support appears as a normal pattern—not an exception."
+        },
+        {
+          "id": "bs-g2",
+          "topic": "Tentmaking vs. support",
+          "passages": [
+            "Acts 18:1–5 — Paul works, then is fully devoted to word",
+            "1 Corinthians 9:1–18 — right of support and voluntary restraint",
+            "2 Corinthians 11:7–9 — receiving support so churches were not burdened"
+          ],
+          "facilitatorNote": "Hold both patterns without pitting them against each other; mission context matters."
+        },
+        {
+          "id": "bs-g3",
+          "topic": "Financial appeals in Scripture",
+          "passages": [
+            "2 Corinthians 8:1–15 — grace-giving and equality",
+            "2 Corinthians 9:6–12 — cheerful generosity and God's supply",
+            "1 Corinthians 16:1–4 — collection for the saints"
+          ],
+          "facilitatorNote": "Notice appeal to grace, generosity, and shared mission—not guilt or manipulation."
+        },
+        {
+          "id": "bs-g4",
+          "topic": "Sources of support",
+          "passages": [
+            "Philippians 4:15–19 — churches sharing in Paul's trouble",
+            "Romans 15:22–24 — plans to visit supported by partnership"
+          ],
+          "facilitatorNote": "Who sends, who receives, and what partnership language appears?"
+        },
+        {
+          "id": "bs-g5",
+          "topic": "Giving dynamics",
+          "passages": [
+            "Mark 12:41–44 — the widow's offering",
+            "2 Corinthians 8:1–5 — churches in poverty overflowing in generosity",
+            "Luke 21:1–4 — Jesus notices sacrificial giving"
+          ],
+          "facilitatorNote": "Poor vs. wealthy: surface God's regard for sacrificial faithfulness, not amount alone."
+        }
+      ],
+      "bulletRevealVisibleCount": 1,
+      "promptRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-003a__rg2",
+      "title": "Biblical Foundations Study",
+      "bullets": [
+        "Read and discuss the passages you are assigned",
+        "Name principles and what they show about God's design",
+        "Leave with one honest takeaway"
+      ],
+      "trainerCadence": "You're going into breakout rooms—typically triads. Each room gets a passage theme; use the facilitator panel to assign themes, and if you have fewer rooms than themes, you can combine thoughtfully. Keep the main slide visible so everyone can see the five steps we're asking them to follow.\n\nThe deeper study lives in the workbook, but the rhythm is on the screen. You'll want about ten to twelve minutes, then we'll close rooms and debrief together before we teach the biblical pattern overview.",
+      "trainerTransition": "When time's up, bring everyone back—then we'll debrief with \"What Did You See?\" before we move on.",
+      "trainerScriptNotes": "- Assign themes clearly; confusion here wastes breakout time.\n- Keep slide up; watch for groups staring at the wrong screen.\n- 30-second warning before closing rooms (see pause cue).\n- After debrief slide, plan to teach The Biblical Pattern.",
+      "continuationGroup": "s1-003a",
+      "section": "Is Support Raising Biblical?",
+      "timing": "12 min",
+      "pauseCue": "Give a 30-second warning before closing breakout rooms.",
+      "prompts": [
+        "Which theme produced the strongest 'aha' in the room?",
+        "What biblical tension did groups name honestly?"
+      ],
+      "discussionHandoff": "After breakouts close, use the next slide for a whole-group debrief before you teach The Biblical Pattern.",
+      "transitionCue": "Close breakouts—advance to the main-room debrief slide (What Did You See?).",
+      "interactionType": "bibleStudy",
+      "breakout": {
+        "enabled": true,
+        "groupSize": 3,
+        "duration": "10–12 min",
+        "instructions": [
+          "Read the assigned passages together",
+          "Identify 3–5 key biblical principles",
+          "Discuss what this reveals about God’s design",
+          "Identify assumptions this corrects",
+          "Choose one takeaway to share"
+        ],
+        "debrief": [
+          "What stood out?",
+          "What challenged your assumptions?",
+          "What became clearer?"
+        ]
+      },
+      "bibleStudyGroups": [
+        {
+          "id": "bs-g1",
+          "topic": "Biblical precedent for support",
+          "passages": [
+            "Luke 8:1–3 — women and others supporting Jesus' ministry",
+            "3 John 5–8 — supporting traveling workers for the truth",
+            "Philippians 4:14–18 — partnership in gospel advance"
+          ],
+          "facilitatorNote": "Focus on how ministry support appears as a normal pattern—not an exception."
+        },
+        {
+          "id": "bs-g2",
+          "topic": "Tentmaking vs. support",
+          "passages": [
+            "Acts 18:1–5 — Paul works, then is fully devoted to word",
+            "1 Corinthians 9:1–18 — right of support and voluntary restraint",
+            "2 Corinthians 11:7–9 — receiving support so churches were not burdened"
+          ],
+          "facilitatorNote": "Hold both patterns without pitting them against each other; mission context matters."
+        },
+        {
+          "id": "bs-g3",
+          "topic": "Financial appeals in Scripture",
+          "passages": [
+            "2 Corinthians 8:1–15 — grace-giving and equality",
+            "2 Corinthians 9:6–12 — cheerful generosity and God's supply",
+            "1 Corinthians 16:1–4 — collection for the saints"
+          ],
+          "facilitatorNote": "Notice appeal to grace, generosity, and shared mission—not guilt or manipulation."
+        },
+        {
+          "id": "bs-g4",
+          "topic": "Sources of support",
+          "passages": [
+            "Philippians 4:15–19 — churches sharing in Paul's trouble",
+            "Romans 15:22–24 — plans to visit supported by partnership"
+          ],
+          "facilitatorNote": "Who sends, who receives, and what partnership language appears?"
+        },
+        {
+          "id": "bs-g5",
+          "topic": "Giving dynamics",
+          "passages": [
+            "Mark 12:41–44 — the widow's offering",
+            "2 Corinthians 8:1–5 — churches in poverty overflowing in generosity",
+            "Luke 21:1–4 — Jesus notices sacrificial giving"
+          ],
+          "facilitatorNote": "Poor vs. wealthy: surface God's regard for sacrificial faithfulness, not amount alone."
+        }
+      ],
+      "bulletRevealVisibleCount": 2,
+      "promptRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-003a__rg3",
+      "title": "Biblical Foundations Study",
+      "bullets": [
+        "Read and discuss the passages you are assigned",
+        "Name principles and what they show about God's design",
+        "Leave with one honest takeaway"
+      ],
+      "trainerCadence": "You're going into breakout rooms—typically triads. Each room gets a passage theme; use the facilitator panel to assign themes, and if you have fewer rooms than themes, you can combine thoughtfully. Keep the main slide visible so everyone can see the five steps we're asking them to follow.\n\nThe deeper study lives in the workbook, but the rhythm is on the screen. You'll want about ten to twelve minutes, then we'll close rooms and debrief together before we teach the biblical pattern overview.",
+      "trainerTransition": "When time's up, bring everyone back—then we'll debrief with \"What Did You See?\" before we move on.",
+      "trainerScriptNotes": "- Assign themes clearly; confusion here wastes breakout time.\n- Keep slide up; watch for groups staring at the wrong screen.\n- 30-second warning before closing rooms (see pause cue).\n- After debrief slide, plan to teach The Biblical Pattern.",
+      "continuationGroup": "s1-003a",
+      "section": "Is Support Raising Biblical?",
+      "timing": "12 min",
+      "pauseCue": "Give a 30-second warning before closing breakout rooms.",
+      "prompts": [
+        "Which theme produced the strongest 'aha' in the room?",
+        "What biblical tension did groups name honestly?"
+      ],
+      "discussionHandoff": "After breakouts close, use the next slide for a whole-group debrief before you teach The Biblical Pattern.",
+      "transitionCue": "Close breakouts—advance to the main-room debrief slide (What Did You See?).",
+      "interactionType": "bibleStudy",
+      "breakout": {
+        "enabled": true,
+        "groupSize": 3,
+        "duration": "10–12 min",
+        "instructions": [
+          "Read the assigned passages together",
+          "Identify 3–5 key biblical principles",
+          "Discuss what this reveals about God’s design",
+          "Identify assumptions this corrects",
+          "Choose one takeaway to share"
+        ],
+        "debrief": [
+          "What stood out?",
+          "What challenged your assumptions?",
+          "What became clearer?"
+        ]
+      },
+      "bibleStudyGroups": [
+        {
+          "id": "bs-g1",
+          "topic": "Biblical precedent for support",
+          "passages": [
+            "Luke 8:1–3 — women and others supporting Jesus' ministry",
+            "3 John 5–8 — supporting traveling workers for the truth",
+            "Philippians 4:14–18 — partnership in gospel advance"
+          ],
+          "facilitatorNote": "Focus on how ministry support appears as a normal pattern—not an exception."
+        },
+        {
+          "id": "bs-g2",
+          "topic": "Tentmaking vs. support",
+          "passages": [
+            "Acts 18:1–5 — Paul works, then is fully devoted to word",
+            "1 Corinthians 9:1–18 — right of support and voluntary restraint",
+            "2 Corinthians 11:7–9 — receiving support so churches were not burdened"
+          ],
+          "facilitatorNote": "Hold both patterns without pitting them against each other; mission context matters."
+        },
+        {
+          "id": "bs-g3",
+          "topic": "Financial appeals in Scripture",
+          "passages": [
+            "2 Corinthians 8:1–15 — grace-giving and equality",
+            "2 Corinthians 9:6–12 — cheerful generosity and God's supply",
+            "1 Corinthians 16:1–4 — collection for the saints"
+          ],
+          "facilitatorNote": "Notice appeal to grace, generosity, and shared mission—not guilt or manipulation."
+        },
+        {
+          "id": "bs-g4",
+          "topic": "Sources of support",
+          "passages": [
+            "Philippians 4:15–19 — churches sharing in Paul's trouble",
+            "Romans 15:22–24 — plans to visit supported by partnership"
+          ],
+          "facilitatorNote": "Who sends, who receives, and what partnership language appears?"
+        },
+        {
+          "id": "bs-g5",
+          "topic": "Giving dynamics",
+          "passages": [
+            "Mark 12:41–44 — the widow's offering",
+            "2 Corinthians 8:1–5 — churches in poverty overflowing in generosity",
+            "Luke 21:1–4 — Jesus notices sacrificial giving"
+          ],
+          "facilitatorNote": "Poor vs. wealthy: surface God's regard for sacrificial faithfulness, not amount alone."
+        }
+      ],
+      "bulletRevealVisibleCount": 3,
+      "promptRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-003a__rg4",
+      "title": "Biblical Foundations Study",
+      "bullets": [
+        "Read and discuss the passages you are assigned",
+        "Name principles and what they show about God's design",
+        "Leave with one honest takeaway"
+      ],
+      "trainerCadence": "You're going into breakout rooms—typically triads. Each room gets a passage theme; use the facilitator panel to assign themes, and if you have fewer rooms than themes, you can combine thoughtfully. Keep the main slide visible so everyone can see the five steps we're asking them to follow.\n\nThe deeper study lives in the workbook, but the rhythm is on the screen. You'll want about ten to twelve minutes, then we'll close rooms and debrief together before we teach the biblical pattern overview.",
+      "trainerTransition": "When time's up, bring everyone back—then we'll debrief with \"What Did You See?\" before we move on.",
+      "trainerScriptNotes": "- Assign themes clearly; confusion here wastes breakout time.\n- Keep slide up; watch for groups staring at the wrong screen.\n- 30-second warning before closing rooms (see pause cue).\n- After debrief slide, plan to teach The Biblical Pattern.",
+      "continuationGroup": "s1-003a",
+      "section": "Is Support Raising Biblical?",
+      "timing": "12 min",
+      "pauseCue": "Give a 30-second warning before closing breakout rooms.",
+      "prompts": [
+        "Which theme produced the strongest 'aha' in the room?",
+        "What biblical tension did groups name honestly?"
+      ],
+      "discussionHandoff": "After breakouts close, use the next slide for a whole-group debrief before you teach The Biblical Pattern.",
+      "transitionCue": "Close breakouts—advance to the main-room debrief slide (What Did You See?).",
+      "interactionType": "bibleStudy",
+      "breakout": {
+        "enabled": true,
+        "groupSize": 3,
+        "duration": "10–12 min",
+        "instructions": [
+          "Read the assigned passages together",
+          "Identify 3–5 key biblical principles",
+          "Discuss what this reveals about God’s design",
+          "Identify assumptions this corrects",
+          "Choose one takeaway to share"
+        ],
+        "debrief": [
+          "What stood out?",
+          "What challenged your assumptions?",
+          "What became clearer?"
+        ]
+      },
+      "bibleStudyGroups": [
+        {
+          "id": "bs-g1",
+          "topic": "Biblical precedent for support",
+          "passages": [
+            "Luke 8:1–3 — women and others supporting Jesus' ministry",
+            "3 John 5–8 — supporting traveling workers for the truth",
+            "Philippians 4:14–18 — partnership in gospel advance"
+          ],
+          "facilitatorNote": "Focus on how ministry support appears as a normal pattern—not an exception."
+        },
+        {
+          "id": "bs-g2",
+          "topic": "Tentmaking vs. support",
+          "passages": [
+            "Acts 18:1–5 — Paul works, then is fully devoted to word",
+            "1 Corinthians 9:1–18 — right of support and voluntary restraint",
+            "2 Corinthians 11:7–9 — receiving support so churches were not burdened"
+          ],
+          "facilitatorNote": "Hold both patterns without pitting them against each other; mission context matters."
+        },
+        {
+          "id": "bs-g3",
+          "topic": "Financial appeals in Scripture",
+          "passages": [
+            "2 Corinthians 8:1–15 — grace-giving and equality",
+            "2 Corinthians 9:6–12 — cheerful generosity and God's supply",
+            "1 Corinthians 16:1–4 — collection for the saints"
+          ],
+          "facilitatorNote": "Notice appeal to grace, generosity, and shared mission—not guilt or manipulation."
+        },
+        {
+          "id": "bs-g4",
+          "topic": "Sources of support",
+          "passages": [
+            "Philippians 4:15–19 — churches sharing in Paul's trouble",
+            "Romans 15:22–24 — plans to visit supported by partnership"
+          ],
+          "facilitatorNote": "Who sends, who receives, and what partnership language appears?"
+        },
+        {
+          "id": "bs-g5",
+          "topic": "Giving dynamics",
+          "passages": [
+            "Mark 12:41–44 — the widow's offering",
+            "2 Corinthians 8:1–5 — churches in poverty overflowing in generosity",
+            "Luke 21:1–4 — Jesus notices sacrificial giving"
+          ],
+          "facilitatorNote": "Poor vs. wealthy: surface God's regard for sacrificial faithfulness, not amount alone."
+        }
+      ],
+      "bulletRevealVisibleCount": 3,
+      "promptRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-003a__rg5",
+      "title": "Biblical Foundations Study",
+      "bullets": [
+        "Read and discuss the passages you are assigned",
+        "Name principles and what they show about God's design",
+        "Leave with one honest takeaway"
+      ],
+      "trainerCadence": "You're going into breakout rooms—typically triads. Each room gets a passage theme; use the facilitator panel to assign themes, and if you have fewer rooms than themes, you can combine thoughtfully. Keep the main slide visible so everyone can see the five steps we're asking them to follow.\n\nThe deeper study lives in the workbook, but the rhythm is on the screen. You'll want about ten to twelve minutes, then we'll close rooms and debrief together before we teach the biblical pattern overview.",
+      "trainerTransition": "When time's up, bring everyone back—then we'll debrief with \"What Did You See?\" before we move on.",
+      "trainerScriptNotes": "- Assign themes clearly; confusion here wastes breakout time.\n- Keep slide up; watch for groups staring at the wrong screen.\n- 30-second warning before closing rooms (see pause cue).\n- After debrief slide, plan to teach The Biblical Pattern.",
+      "continuationGroup": "s1-003a",
+      "section": "Is Support Raising Biblical?",
+      "timing": "12 min",
+      "pauseCue": "Give a 30-second warning before closing breakout rooms.",
+      "prompts": [
+        "Which theme produced the strongest 'aha' in the room?",
+        "What biblical tension did groups name honestly?"
+      ],
+      "discussionHandoff": "After breakouts close, use the next slide for a whole-group debrief before you teach The Biblical Pattern.",
+      "transitionCue": "Close breakouts—advance to the main-room debrief slide (What Did You See?).",
+      "interactionType": "bibleStudy",
+      "breakout": {
+        "enabled": true,
+        "groupSize": 3,
+        "duration": "10–12 min",
+        "instructions": [
+          "Read the assigned passages together",
+          "Identify 3–5 key biblical principles",
+          "Discuss what this reveals about God’s design",
+          "Identify assumptions this corrects",
+          "Choose one takeaway to share"
+        ],
+        "debrief": [
+          "What stood out?",
+          "What challenged your assumptions?",
+          "What became clearer?"
+        ]
+      },
+      "bibleStudyGroups": [
+        {
+          "id": "bs-g1",
+          "topic": "Biblical precedent for support",
+          "passages": [
+            "Luke 8:1–3 — women and others supporting Jesus' ministry",
+            "3 John 5–8 — supporting traveling workers for the truth",
+            "Philippians 4:14–18 — partnership in gospel advance"
+          ],
+          "facilitatorNote": "Focus on how ministry support appears as a normal pattern—not an exception."
+        },
+        {
+          "id": "bs-g2",
+          "topic": "Tentmaking vs. support",
+          "passages": [
+            "Acts 18:1–5 — Paul works, then is fully devoted to word",
+            "1 Corinthians 9:1–18 — right of support and voluntary restraint",
+            "2 Corinthians 11:7–9 — receiving support so churches were not burdened"
+          ],
+          "facilitatorNote": "Hold both patterns without pitting them against each other; mission context matters."
+        },
+        {
+          "id": "bs-g3",
+          "topic": "Financial appeals in Scripture",
+          "passages": [
+            "2 Corinthians 8:1–15 — grace-giving and equality",
+            "2 Corinthians 9:6–12 — cheerful generosity and God's supply",
+            "1 Corinthians 16:1–4 — collection for the saints"
+          ],
+          "facilitatorNote": "Notice appeal to grace, generosity, and shared mission—not guilt or manipulation."
+        },
+        {
+          "id": "bs-g4",
+          "topic": "Sources of support",
+          "passages": [
+            "Philippians 4:15–19 — churches sharing in Paul's trouble",
+            "Romans 15:22–24 — plans to visit supported by partnership"
+          ],
+          "facilitatorNote": "Who sends, who receives, and what partnership language appears?"
+        },
+        {
+          "id": "bs-g5",
+          "topic": "Giving dynamics",
+          "passages": [
+            "Mark 12:41–44 — the widow's offering",
+            "2 Corinthians 8:1–5 — churches in poverty overflowing in generosity",
+            "Luke 21:1–4 — Jesus notices sacrificial giving"
+          ],
+          "facilitatorNote": "Poor vs. wealthy: surface God's regard for sacrificial faithfulness, not amount alone."
+        }
+      ],
+      "bulletRevealVisibleCount": 3,
+      "promptRevealVisibleCount": 2
+    },
+    {
+      "id": "s1-003d__rg0",
       "title": "What Did You See?",
       "bullets": [
-        "What stood out?",
-        "What challenged you?",
-        "What became clearer?",
-        "What surprised you?"
+        "What stood out or challenged you",
+        "What became clearer",
+        "What surprised you"
       ],
-      "trainerNotes": "Main-room debrief after breakouts (about 5–7 minutes). Invite brief responses; listen for recurring themes and tensions before you reinforce with The Biblical Pattern.",
-      "emphasis": "Processing together after Scripture is part of the journey—not optional.",
+      "trainerCadence": "Welcome back. Before we rush forward, I want us to process together in the main room—briefly, honestly, and without performance. Walk through what's on the slide: what stood out, what challenged you, what became clearer, what surprised you.\n\nKeep shares concise—we're listening for themes and tensions, not long teaching moments from each person.",
+      "trainerTransition": "When you've honored the room's voice, let's step into the overview slide on the broad biblical pattern.",
+      "trainerScriptNotes": "- Main-room debrief ~5–7 min; protect time for pattern teaching.\n- Listen for recurring words—mirror them back.\n- Honor both conviction and honest uncertainty.",
+      "continuationGroup": "s1-003d",
       "section": "Is Support Raising Biblical?",
       "timing": "6 min",
       "prompts": [
@@ -199,109 +795,597 @@
           "What became clearer?",
           "What surprised you?"
         ]
-      }
+      },
+      "bulletRevealVisibleCount": 0,
+      "promptRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-003d__rg1",
+      "title": "What Did You See?",
+      "bullets": [
+        "What stood out or challenged you",
+        "What became clearer",
+        "What surprised you"
+      ],
+      "trainerCadence": "Welcome back. Before we rush forward, I want us to process together in the main room—briefly, honestly, and without performance. Walk through what's on the slide: what stood out, what challenged you, what became clearer, what surprised you.\n\nKeep shares concise—we're listening for themes and tensions, not long teaching moments from each person.",
+      "trainerTransition": "When you've honored the room's voice, let's step into the overview slide on the broad biblical pattern.",
+      "trainerScriptNotes": "- Main-room debrief ~5–7 min; protect time for pattern teaching.\n- Listen for recurring words—mirror them back.\n- Honor both conviction and honest uncertainty.",
+      "emphasis": "Processing together after Scripture is part of the journey—not optional.",
+      "continuationGroup": "s1-003d",
+      "section": "Is Support Raising Biblical?",
+      "timing": "6 min",
+      "prompts": [
+        "What themes showed up across multiple groups?",
+        "Where did Scripture clearly reset an assumption?"
+      ],
+      "transitionCue": "Move into the overview slide on the broad biblical pattern.",
+      "interaction": "In the main room, walk through the four prompts on the slide. Keep shares concise—honor both conviction and honest questions.",
+      "interactionType": "discussion",
+      "breakout": {
+        "enabled": false,
+        "duration": "6 min",
+        "instructions": [
+          "What stood out from your study or conversation?",
+          "What challenged you or your assumptions?",
+          "What became clearer?",
+          "What surprised you?"
+        ]
+      },
+      "bulletRevealVisibleCount": 0,
+      "promptRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-003d__rg2",
+      "title": "What Did You See?",
+      "bullets": [
+        "What stood out or challenged you",
+        "What became clearer",
+        "What surprised you"
+      ],
+      "trainerCadence": "Welcome back. Before we rush forward, I want us to process together in the main room—briefly, honestly, and without performance. Walk through what's on the slide: what stood out, what challenged you, what became clearer, what surprised you.\n\nKeep shares concise—we're listening for themes and tensions, not long teaching moments from each person.",
+      "trainerTransition": "When you've honored the room's voice, let's step into the overview slide on the broad biblical pattern.",
+      "trainerScriptNotes": "- Main-room debrief ~5–7 min; protect time for pattern teaching.\n- Listen for recurring words—mirror them back.\n- Honor both conviction and honest uncertainty.",
+      "emphasis": "Processing together after Scripture is part of the journey—not optional.",
+      "continuationGroup": "s1-003d",
+      "section": "Is Support Raising Biblical?",
+      "timing": "6 min",
+      "prompts": [
+        "What themes showed up across multiple groups?",
+        "Where did Scripture clearly reset an assumption?"
+      ],
+      "transitionCue": "Move into the overview slide on the broad biblical pattern.",
+      "interaction": "In the main room, walk through the four prompts on the slide. Keep shares concise—honor both conviction and honest questions.",
+      "interactionType": "discussion",
+      "breakout": {
+        "enabled": false,
+        "duration": "6 min",
+        "instructions": [
+          "What stood out from your study or conversation?",
+          "What challenged you or your assumptions?",
+          "What became clearer?",
+          "What surprised you?"
+        ]
+      },
+      "bulletRevealVisibleCount": 1,
+      "promptRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-003d__rg3",
+      "title": "What Did You See?",
+      "bullets": [
+        "What stood out or challenged you",
+        "What became clearer",
+        "What surprised you"
+      ],
+      "trainerCadence": "Welcome back. Before we rush forward, I want us to process together in the main room—briefly, honestly, and without performance. Walk through what's on the slide: what stood out, what challenged you, what became clearer, what surprised you.\n\nKeep shares concise—we're listening for themes and tensions, not long teaching moments from each person.",
+      "trainerTransition": "When you've honored the room's voice, let's step into the overview slide on the broad biblical pattern.",
+      "trainerScriptNotes": "- Main-room debrief ~5–7 min; protect time for pattern teaching.\n- Listen for recurring words—mirror them back.\n- Honor both conviction and honest uncertainty.",
+      "emphasis": "Processing together after Scripture is part of the journey—not optional.",
+      "continuationGroup": "s1-003d",
+      "section": "Is Support Raising Biblical?",
+      "timing": "6 min",
+      "prompts": [
+        "What themes showed up across multiple groups?",
+        "Where did Scripture clearly reset an assumption?"
+      ],
+      "transitionCue": "Move into the overview slide on the broad biblical pattern.",
+      "interaction": "In the main room, walk through the four prompts on the slide. Keep shares concise—honor both conviction and honest questions.",
+      "interactionType": "discussion",
+      "breakout": {
+        "enabled": false,
+        "duration": "6 min",
+        "instructions": [
+          "What stood out from your study or conversation?",
+          "What challenged you or your assumptions?",
+          "What became clearer?",
+          "What surprised you?"
+        ]
+      },
+      "bulletRevealVisibleCount": 2,
+      "promptRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-003d__rg4",
+      "title": "What Did You See?",
+      "bullets": [
+        "What stood out or challenged you",
+        "What became clearer",
+        "What surprised you"
+      ],
+      "trainerCadence": "Welcome back. Before we rush forward, I want us to process together in the main room—briefly, honestly, and without performance. Walk through what's on the slide: what stood out, what challenged you, what became clearer, what surprised you.\n\nKeep shares concise—we're listening for themes and tensions, not long teaching moments from each person.",
+      "trainerTransition": "When you've honored the room's voice, let's step into the overview slide on the broad biblical pattern.",
+      "trainerScriptNotes": "- Main-room debrief ~5–7 min; protect time for pattern teaching.\n- Listen for recurring words—mirror them back.\n- Honor both conviction and honest uncertainty.",
+      "emphasis": "Processing together after Scripture is part of the journey—not optional.",
+      "continuationGroup": "s1-003d",
+      "section": "Is Support Raising Biblical?",
+      "timing": "6 min",
+      "prompts": [
+        "What themes showed up across multiple groups?",
+        "Where did Scripture clearly reset an assumption?"
+      ],
+      "transitionCue": "Move into the overview slide on the broad biblical pattern.",
+      "interaction": "In the main room, walk through the four prompts on the slide. Keep shares concise—honor both conviction and honest questions.",
+      "interactionType": "discussion",
+      "breakout": {
+        "enabled": false,
+        "duration": "6 min",
+        "instructions": [
+          "What stood out from your study or conversation?",
+          "What challenged you or your assumptions?",
+          "What became clearer?",
+          "What surprised you?"
+        ]
+      },
+      "bulletRevealVisibleCount": 3,
+      "promptRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-003d__rg5",
+      "title": "What Did You See?",
+      "bullets": [
+        "What stood out or challenged you",
+        "What became clearer",
+        "What surprised you"
+      ],
+      "trainerCadence": "Welcome back. Before we rush forward, I want us to process together in the main room—briefly, honestly, and without performance. Walk through what's on the slide: what stood out, what challenged you, what became clearer, what surprised you.\n\nKeep shares concise—we're listening for themes and tensions, not long teaching moments from each person.",
+      "trainerTransition": "When you've honored the room's voice, let's step into the overview slide on the broad biblical pattern.",
+      "trainerScriptNotes": "- Main-room debrief ~5–7 min; protect time for pattern teaching.\n- Listen for recurring words—mirror them back.\n- Honor both conviction and honest uncertainty.",
+      "emphasis": "Processing together after Scripture is part of the journey—not optional.",
+      "continuationGroup": "s1-003d",
+      "section": "Is Support Raising Biblical?",
+      "timing": "6 min",
+      "prompts": [
+        "What themes showed up across multiple groups?",
+        "Where did Scripture clearly reset an assumption?"
+      ],
+      "transitionCue": "Move into the overview slide on the broad biblical pattern.",
+      "interaction": "In the main room, walk through the four prompts on the slide. Keep shares concise—honor both conviction and honest questions.",
+      "interactionType": "discussion",
+      "breakout": {
+        "enabled": false,
+        "duration": "6 min",
+        "instructions": [
+          "What stood out from your study or conversation?",
+          "What challenged you or your assumptions?",
+          "What became clearer?",
+          "What surprised you?"
+        ]
+      },
+      "bulletRevealVisibleCount": 3,
+      "promptRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-003d__rg6",
+      "title": "What Did You See?",
+      "bullets": [
+        "What stood out or challenged you",
+        "What became clearer",
+        "What surprised you"
+      ],
+      "trainerCadence": "Welcome back. Before we rush forward, I want us to process together in the main room—briefly, honestly, and without performance. Walk through what's on the slide: what stood out, what challenged you, what became clearer, what surprised you.\n\nKeep shares concise—we're listening for themes and tensions, not long teaching moments from each person.",
+      "trainerTransition": "When you've honored the room's voice, let's step into the overview slide on the broad biblical pattern.",
+      "trainerScriptNotes": "- Main-room debrief ~5–7 min; protect time for pattern teaching.\n- Listen for recurring words—mirror them back.\n- Honor both conviction and honest uncertainty.",
+      "emphasis": "Processing together after Scripture is part of the journey—not optional.",
+      "continuationGroup": "s1-003d",
+      "section": "Is Support Raising Biblical?",
+      "timing": "6 min",
+      "prompts": [
+        "What themes showed up across multiple groups?",
+        "Where did Scripture clearly reset an assumption?"
+      ],
+      "transitionCue": "Move into the overview slide on the broad biblical pattern.",
+      "interaction": "In the main room, walk through the four prompts on the slide. Keep shares concise—honor both conviction and honest questions.",
+      "interactionType": "discussion",
+      "breakout": {
+        "enabled": false,
+        "duration": "6 min",
+        "instructions": [
+          "What stood out from your study or conversation?",
+          "What challenged you or your assumptions?",
+          "What became clearer?",
+          "What surprised you?"
+        ]
+      },
+      "bulletRevealVisibleCount": 3,
+      "promptRevealVisibleCount": 2
     },
     {
       "id": "s1-004",
       "title": "The Biblical Pattern",
       "bullets": [
         "God uses people",
-        "To provide for ministry",
-        "Workers receive support"
+        "Provide ministry",
+        "Workers supported"
       ],
-      "trainerNotes": "This is the overview slide before specific passages. Establish the first half of the pattern: God uses people, ministry is provided for, workers receive support.",
+      "trainerCadence": "Let's zoom out for a moment and name a pattern you see across Scripture—not an exception, but a recurring shape. God uses people. Ministry gets provided for. Workers receive support.\n\nI'm not asking you to memorize a system yet—I'm asking you to feel the weight of how ordinary this pattern actually is in God's story.",
+      "trainerTransition": "On the next slide we'll complete the pattern—how partnership and mission fit into the same picture.",
+      "trainerScriptNotes": "- Overview before proof texts—don't over-nuance yet.\n- Use inclusive language; avoid sounding defensive.\n- Let the three bullets feel like one movement.",
       "continuationGroup": "s1-004",
       "timing": "2 min",
       "transitionCue": "Advance to complete the pattern—partnership in fruit and mission."
     },
     {
-      "id": "s1-004b",
+      "id": "s1-004b__rg0",
       "title": "The Biblical Pattern",
       "bullets": [
-        "Partners share in fruit",
-        "Provision serves mission"
+        "Partners share fruit",
+        "Provision mission"
       ],
-      "trainerNotes": "Close the overview: shared fruit and mission-shaped provision—not an exception in Scripture.",
-      "continuationGroup": "s1-004",
+      "trainerCadence": "Here's the rest of that same pattern: partners share in fruit, and provision serves mission—not private comfort, but missional purpose.\n\nWhat I want you to feel is that this isn't a weird side lane in the Bible. It's woven into how God advances his work through his people.",
+      "trainerTransition": "Now let's get concrete with some New Testament texts where you can see this up close.",
+      "trainerScriptNotes": "- Close the overview with confidence, not apology.\n- Optional prompt: \"What stands out about God's usual pattern of provision?\"\n- Bridge explicitly to specific passages next.",
+      "continuationGroup": "s1-004b",
       "timing": "1 min",
       "prompts": [
         "What stands out about God's usual pattern of provision?"
       ],
-      "transitionCue": "Move into specific New Testament support texts."
+      "transitionCue": "Move into specific New Testament support texts.",
+      "bulletRevealVisibleCount": 2,
+      "promptRevealVisibleCount": 0
     },
     {
-      "id": "s1-005",
+      "id": "s1-004b__rg1",
+      "title": "The Biblical Pattern",
+      "bullets": [
+        "Partners share fruit",
+        "Provision mission"
+      ],
+      "trainerCadence": "Here's the rest of that same pattern: partners share in fruit, and provision serves mission—not private comfort, but missional purpose.\n\nWhat I want you to feel is that this isn't a weird side lane in the Bible. It's woven into how God advances his work through his people.",
+      "trainerTransition": "Now let's get concrete with some New Testament texts where you can see this up close.",
+      "trainerScriptNotes": "- Close the overview with confidence, not apology.\n- Optional prompt: \"What stands out about God's usual pattern of provision?\"\n- Bridge explicitly to specific passages next.",
+      "continuationGroup": "s1-004b",
+      "timing": "1 min",
+      "prompts": [
+        "What stands out about God's usual pattern of provision?"
+      ],
+      "transitionCue": "Move into specific New Testament support texts.",
+      "bulletRevealVisibleCount": 2,
+      "promptRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-005__rg0",
       "title": "Jesus Received Support",
       "bullets": [
-        "Luke 8:1–3",
-        "Women helped support Jesus",
-        "Resources fueled ministry",
-        "Partnership advanced mission"
+        "Luke 8:1–3—partners joined his mission",
+        "Resources fueled the work",
+        "Partnership advanced what God was doing"
       ],
-      "trainerNotes": "Do not overcomplicate this. Let the force of the passage speak. Jesus allowed others to participate materially in ministry.",
-      "emphasis": "Even Jesus' ministry was supported by others.",
+      "trainerCadence": "Look at Luke with me—Jesus' ministry wasn't disconnected from the generosity of people who partnered in what he was doing. Women and others helped support his ministry; resources actually fueled mission; partnership advanced the work.\n\nI don't want to overcomplicate the text. Let it say what it says, plainly: even Jesus' ministry involved supported partnership.",
+      "trainerTransition": "Next we'll see Paul teaching this pattern with even more explicit language.",
+      "trainerScriptNotes": "- Let the passage's simplicity land; resist cleverness.\n- If you use scripture on-slide, let eyes find it before you talk over it.\n- Watch for surprise—many assume Jesus' ministry was purely \"self-contained.\"",
+      "continuationGroup": "s1-005",
       "timing": "4 min",
       "transitionCue": "Next show that Paul taught this explicitly.",
-      "scripture": "Luke 8:1–3"
+      "bulletRevealVisibleCount": 0
     },
     {
-      "id": "s1-006",
+      "id": "s1-005__rg1",
+      "title": "Jesus Received Support",
+      "bullets": [
+        "Luke 8:1–3—partners joined his mission",
+        "Resources fueled the work",
+        "Partnership advanced what God was doing"
+      ],
+      "trainerCadence": "Look at Luke with me—Jesus' ministry wasn't disconnected from the generosity of people who partnered in what he was doing. Women and others helped support his ministry; resources actually fueled mission; partnership advanced the work.\n\nI don't want to overcomplicate the text. Let it say what it says, plainly: even Jesus' ministry involved supported partnership.",
+      "trainerTransition": "Next we'll see Paul teaching this pattern with even more explicit language.",
+      "trainerScriptNotes": "- Let the passage's simplicity land; resist cleverness.\n- If you use scripture on-slide, let eyes find it before you talk over it.\n- Watch for surprise—many assume Jesus' ministry was purely \"self-contained.\"",
+      "emphasis": "Even Jesus' ministry was supported by others.",
+      "continuationGroup": "s1-005",
+      "timing": "4 min",
+      "transitionCue": "Next show that Paul taught this explicitly.",
+      "bulletRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-005__rg2",
+      "title": "Jesus Received Support",
+      "bullets": [
+        "Luke 8:1–3—partners joined his mission",
+        "Resources fueled the work",
+        "Partnership advanced what God was doing"
+      ],
+      "trainerCadence": "Look at Luke with me—Jesus' ministry wasn't disconnected from the generosity of people who partnered in what he was doing. Women and others helped support his ministry; resources actually fueled mission; partnership advanced the work.\n\nI don't want to overcomplicate the text. Let it say what it says, plainly: even Jesus' ministry involved supported partnership.",
+      "trainerTransition": "Next we'll see Paul teaching this pattern with even more explicit language.",
+      "trainerScriptNotes": "- Let the passage's simplicity land; resist cleverness.\n- If you use scripture on-slide, let eyes find it before you talk over it.\n- Watch for surprise—many assume Jesus' ministry was purely \"self-contained.\"",
+      "emphasis": "Even Jesus' ministry was supported by others.",
+      "continuationGroup": "s1-005",
+      "timing": "4 min",
+      "transitionCue": "Next show that Paul taught this explicitly.",
+      "scripture": "[object Object]",
+      "bulletRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-005__rg3",
+      "title": "Jesus Received Support",
+      "bullets": [
+        "Luke 8:1–3—partners joined his mission",
+        "Resources fueled the work",
+        "Partnership advanced what God was doing"
+      ],
+      "trainerCadence": "Look at Luke with me—Jesus' ministry wasn't disconnected from the generosity of people who partnered in what he was doing. Women and others helped support his ministry; resources actually fueled mission; partnership advanced the work.\n\nI don't want to overcomplicate the text. Let it say what it says, plainly: even Jesus' ministry involved supported partnership.",
+      "trainerTransition": "Next we'll see Paul teaching this pattern with even more explicit language.",
+      "trainerScriptNotes": "- Let the passage's simplicity land; resist cleverness.\n- If you use scripture on-slide, let eyes find it before you talk over it.\n- Watch for surprise—many assume Jesus' ministry was purely \"self-contained.\"",
+      "emphasis": "Even Jesus' ministry was supported by others.",
+      "continuationGroup": "s1-005",
+      "timing": "4 min",
+      "transitionCue": "Next show that Paul taught this explicitly.",
+      "scripture": "[object Object]",
+      "bulletRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-005__rg4",
+      "title": "Jesus Received Support",
+      "bullets": [
+        "Luke 8:1–3—partners joined his mission",
+        "Resources fueled the work",
+        "Partnership advanced what God was doing"
+      ],
+      "trainerCadence": "Look at Luke with me—Jesus' ministry wasn't disconnected from the generosity of people who partnered in what he was doing. Women and others helped support his ministry; resources actually fueled mission; partnership advanced the work.\n\nI don't want to overcomplicate the text. Let it say what it says, plainly: even Jesus' ministry involved supported partnership.",
+      "trainerTransition": "Next we'll see Paul teaching this pattern with even more explicit language.",
+      "trainerScriptNotes": "- Let the passage's simplicity land; resist cleverness.\n- If you use scripture on-slide, let eyes find it before you talk over it.\n- Watch for surprise—many assume Jesus' ministry was purely \"self-contained.\"",
+      "emphasis": "Even Jesus' ministry was supported by others.",
+      "continuationGroup": "s1-005",
+      "timing": "4 min",
+      "transitionCue": "Next show that Paul taught this explicitly.",
+      "scripture": "[object Object]",
+      "bulletRevealVisibleCount": 2
+    },
+    {
+      "id": "s1-005__rg5",
+      "title": "Jesus Received Support",
+      "bullets": [
+        "Luke 8:1–3—partners joined his mission",
+        "Resources fueled the work",
+        "Partnership advanced what God was doing"
+      ],
+      "trainerCadence": "Look at Luke with me—Jesus' ministry wasn't disconnected from the generosity of people who partnered in what he was doing. Women and others helped support his ministry; resources actually fueled mission; partnership advanced the work.\n\nI don't want to overcomplicate the text. Let it say what it says, plainly: even Jesus' ministry involved supported partnership.",
+      "trainerTransition": "Next we'll see Paul teaching this pattern with even more explicit language.",
+      "trainerScriptNotes": "- Let the passage's simplicity land; resist cleverness.\n- If you use scripture on-slide, let eyes find it before you talk over it.\n- Watch for surprise—many assume Jesus' ministry was purely \"self-contained.\"",
+      "emphasis": "Even Jesus' ministry was supported by others.",
+      "continuationGroup": "s1-005",
+      "timing": "4 min",
+      "transitionCue": "Next show that Paul taught this explicitly.",
+      "scripture": "[object Object]",
+      "bulletRevealVisibleCount": 3
+    },
+    {
+      "id": "s1-006__rg0",
       "title": "The Worker Deserves Support",
       "bullets": [
-        "1 Corinthians 9 & Philippians 4 — one consistent pattern",
-        "Those who sow spiritual things may share in material partnership",
-        "Shared fruit: workers and givers together in the gospel",
-        "Receiving support for ministry is appropriate — not shameful"
+        "Paul names one consistent pattern across letters",
+        "Spiritual sowing and material partnership belong together",
+        "Gospel partnership—not shameful charity"
       ],
-      "trainerNotes": "Draw out Paul's logic: sowing spiritual things and receiving material support is not shameful. It is appropriate. Also connect Philippians 4 to shared fruit and partnership language.",
-      "emphasis": "Biblical support is not charity. It is rightful partnership in gospel labor.",
+      "trainerCadence": "Paul isn't shy about this. In Corinthians and Philippians you see one consistent pattern: those who sow spiritual things may share in material partnership—and that partnership has the flavor of shared fruit, not shameful charity.\n\nReceiving support for ministry, in Paul's logic, can be appropriate. It's rooted in gospel partnership, not in personal worthiness games.",
+      "trainerTransition": "Now someone always asks about tentmaking—so let's name that honestly, in proportion to Scripture.",
+      "trainerScriptNotes": "- Draw out partnership language vs donation language.\n- Connect Philippians 4 to shared fruit without sidetracking.\n- Optional prompt about Paul's vocabulary.\n- Acknowledge tentmaking is coming so the room feels heard.",
+      "continuationGroup": "s1-006",
       "timing": "6 min",
       "prompts": [
         "What words does Paul use that sound more like partnership than donation?"
       ],
       "transitionCue": "Acknowledge tentmaking, but keep it in biblical proportion.",
-      "scripture": "1 Corinthians 9:1–18; Philippians 4:10–20"
+      "bulletRevealVisibleCount": 0,
+      "promptRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-006__rg1",
+      "title": "The Worker Deserves Support",
+      "bullets": [
+        "Paul names one consistent pattern across letters",
+        "Spiritual sowing and material partnership belong together",
+        "Gospel partnership—not shameful charity"
+      ],
+      "trainerCadence": "Paul isn't shy about this. In Corinthians and Philippians you see one consistent pattern: those who sow spiritual things may share in material partnership—and that partnership has the flavor of shared fruit, not shameful charity.\n\nReceiving support for ministry, in Paul's logic, can be appropriate. It's rooted in gospel partnership, not in personal worthiness games.",
+      "trainerTransition": "Now someone always asks about tentmaking—so let's name that honestly, in proportion to Scripture.",
+      "trainerScriptNotes": "- Draw out partnership language vs donation language.\n- Connect Philippians 4 to shared fruit without sidetracking.\n- Optional prompt about Paul's vocabulary.\n- Acknowledge tentmaking is coming so the room feels heard.",
+      "emphasis": "Biblical support is not charity. It is rightful partnership in gospel labor.",
+      "continuationGroup": "s1-006",
+      "timing": "6 min",
+      "prompts": [
+        "What words does Paul use that sound more like partnership than donation?"
+      ],
+      "transitionCue": "Acknowledge tentmaking, but keep it in biblical proportion.",
+      "bulletRevealVisibleCount": 0,
+      "promptRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-006__rg2",
+      "title": "The Worker Deserves Support",
+      "bullets": [
+        "Paul names one consistent pattern across letters",
+        "Spiritual sowing and material partnership belong together",
+        "Gospel partnership—not shameful charity"
+      ],
+      "trainerCadence": "Paul isn't shy about this. In Corinthians and Philippians you see one consistent pattern: those who sow spiritual things may share in material partnership—and that partnership has the flavor of shared fruit, not shameful charity.\n\nReceiving support for ministry, in Paul's logic, can be appropriate. It's rooted in gospel partnership, not in personal worthiness games.",
+      "trainerTransition": "Now someone always asks about tentmaking—so let's name that honestly, in proportion to Scripture.",
+      "trainerScriptNotes": "- Draw out partnership language vs donation language.\n- Connect Philippians 4 to shared fruit without sidetracking.\n- Optional prompt about Paul's vocabulary.\n- Acknowledge tentmaking is coming so the room feels heard.",
+      "emphasis": "Biblical support is not charity. It is rightful partnership in gospel labor.",
+      "continuationGroup": "s1-006",
+      "timing": "6 min",
+      "prompts": [
+        "What words does Paul use that sound more like partnership than donation?"
+      ],
+      "transitionCue": "Acknowledge tentmaking, but keep it in biblical proportion.",
+      "scripture": "[object Object]",
+      "bulletRevealVisibleCount": 0,
+      "promptRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-006__rg3",
+      "title": "The Worker Deserves Support",
+      "bullets": [
+        "Paul names one consistent pattern across letters",
+        "Spiritual sowing and material partnership belong together",
+        "Gospel partnership—not shameful charity"
+      ],
+      "trainerCadence": "Paul isn't shy about this. In Corinthians and Philippians you see one consistent pattern: those who sow spiritual things may share in material partnership—and that partnership has the flavor of shared fruit, not shameful charity.\n\nReceiving support for ministry, in Paul's logic, can be appropriate. It's rooted in gospel partnership, not in personal worthiness games.",
+      "trainerTransition": "Now someone always asks about tentmaking—so let's name that honestly, in proportion to Scripture.",
+      "trainerScriptNotes": "- Draw out partnership language vs donation language.\n- Connect Philippians 4 to shared fruit without sidetracking.\n- Optional prompt about Paul's vocabulary.\n- Acknowledge tentmaking is coming so the room feels heard.",
+      "emphasis": "Biblical support is not charity. It is rightful partnership in gospel labor.",
+      "continuationGroup": "s1-006",
+      "timing": "6 min",
+      "prompts": [
+        "What words does Paul use that sound more like partnership than donation?"
+      ],
+      "transitionCue": "Acknowledge tentmaking, but keep it in biblical proportion.",
+      "scripture": "[object Object]",
+      "bulletRevealVisibleCount": 1,
+      "promptRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-006__rg4",
+      "title": "The Worker Deserves Support",
+      "bullets": [
+        "Paul names one consistent pattern across letters",
+        "Spiritual sowing and material partnership belong together",
+        "Gospel partnership—not shameful charity"
+      ],
+      "trainerCadence": "Paul isn't shy about this. In Corinthians and Philippians you see one consistent pattern: those who sow spiritual things may share in material partnership—and that partnership has the flavor of shared fruit, not shameful charity.\n\nReceiving support for ministry, in Paul's logic, can be appropriate. It's rooted in gospel partnership, not in personal worthiness games.",
+      "trainerTransition": "Now someone always asks about tentmaking—so let's name that honestly, in proportion to Scripture.",
+      "trainerScriptNotes": "- Draw out partnership language vs donation language.\n- Connect Philippians 4 to shared fruit without sidetracking.\n- Optional prompt about Paul's vocabulary.\n- Acknowledge tentmaking is coming so the room feels heard.",
+      "emphasis": "Biblical support is not charity. It is rightful partnership in gospel labor.",
+      "continuationGroup": "s1-006",
+      "timing": "6 min",
+      "prompts": [
+        "What words does Paul use that sound more like partnership than donation?"
+      ],
+      "transitionCue": "Acknowledge tentmaking, but keep it in biblical proportion.",
+      "scripture": "[object Object]",
+      "bulletRevealVisibleCount": 2,
+      "promptRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-006__rg5",
+      "title": "The Worker Deserves Support",
+      "bullets": [
+        "Paul names one consistent pattern across letters",
+        "Spiritual sowing and material partnership belong together",
+        "Gospel partnership—not shameful charity"
+      ],
+      "trainerCadence": "Paul isn't shy about this. In Corinthians and Philippians you see one consistent pattern: those who sow spiritual things may share in material partnership—and that partnership has the flavor of shared fruit, not shameful charity.\n\nReceiving support for ministry, in Paul's logic, can be appropriate. It's rooted in gospel partnership, not in personal worthiness games.",
+      "trainerTransition": "Now someone always asks about tentmaking—so let's name that honestly, in proportion to Scripture.",
+      "trainerScriptNotes": "- Draw out partnership language vs donation language.\n- Connect Philippians 4 to shared fruit without sidetracking.\n- Optional prompt about Paul's vocabulary.\n- Acknowledge tentmaking is coming so the room feels heard.",
+      "emphasis": "Biblical support is not charity. It is rightful partnership in gospel labor.",
+      "continuationGroup": "s1-006",
+      "timing": "6 min",
+      "prompts": [
+        "What words does Paul use that sound more like partnership than donation?"
+      ],
+      "transitionCue": "Acknowledge tentmaking, but keep it in biblical proportion.",
+      "scripture": "[object Object]",
+      "bulletRevealVisibleCount": 3,
+      "promptRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-006__rg6",
+      "title": "The Worker Deserves Support",
+      "bullets": [
+        "Paul names one consistent pattern across letters",
+        "Spiritual sowing and material partnership belong together",
+        "Gospel partnership—not shameful charity"
+      ],
+      "trainerCadence": "Paul isn't shy about this. In Corinthians and Philippians you see one consistent pattern: those who sow spiritual things may share in material partnership—and that partnership has the flavor of shared fruit, not shameful charity.\n\nReceiving support for ministry, in Paul's logic, can be appropriate. It's rooted in gospel partnership, not in personal worthiness games.",
+      "trainerTransition": "Now someone always asks about tentmaking—so let's name that honestly, in proportion to Scripture.",
+      "trainerScriptNotes": "- Draw out partnership language vs donation language.\n- Connect Philippians 4 to shared fruit without sidetracking.\n- Optional prompt about Paul's vocabulary.\n- Acknowledge tentmaking is coming so the room feels heard.",
+      "emphasis": "Biblical support is not charity. It is rightful partnership in gospel labor.",
+      "continuationGroup": "s1-006",
+      "timing": "6 min",
+      "prompts": [
+        "What words does Paul use that sound more like partnership than donation?"
+      ],
+      "transitionCue": "Acknowledge tentmaking, but keep it in biblical proportion.",
+      "scripture": "[object Object]",
+      "bulletRevealVisibleCount": 3,
+      "promptRevealVisibleCount": 1
     },
     {
       "id": "s1-007",
       "title": "What About Tentmaking?",
       "bullets": [
         "Sometimes appropriate",
-        "Not always required",
-        "Paul sometimes worked"
+        "Not required",
+        "Paul worked"
       ],
-      "trainerNotes": "Reduce false guilt here. Many people assume self-support is more noble. Start with when tentmaking fits and that it is not always required.",
+      "trainerCadence": "Let's talk about tentmaking without making it a weapon. Sometimes it's appropriate; it's not always required; Paul sometimes worked with his hands—and none of that erases the legitimacy of supported ministry.\n\nA lot of us were taught, implicitly, that self-support is more noble. I want to gently challenge that assumption before we clean it up on the next beat.",
+      "trainerTransition": "Let's go one slide further and name how Paul also received support—and how mission sets the method.",
+      "trainerScriptNotes": "- Reduce false guilt; many carry shame here.\n- Validate tentmaking without elevating it as the only holy path.\n- Watch heads nodding—some need permission; others need correction of caricature.",
       "emphasis": "Tentmaking can be a tool, but it is not the universal biblical standard.",
       "continuationGroup": "s1-007",
       "timing": "3 min",
       "transitionCue": "Advance to Paul’s support and how mission sets the method."
     },
     {
-      "id": "s1-007b",
+      "id": "s1-007b__rg0",
       "title": "What About Tentmaking?",
       "bullets": [
-        "Paul also received support",
-        "Mission determines method"
+        "Paul supported",
+        "Mission decides"
       ],
-      "trainerNotes": "Clarify that Scripture presents multiple patterns, but never shames supported ministry. Land mission as the deciding factor.",
+      "trainerCadence": "Scripture gives us more than one pattern, but it does not shame faithful, supported ministry. At the end of the day, mission helps determine method—context matters, conscience matters, and God's leading matters.\n\nWhat I want you to carry is proportion: tentmaking can be a tool, but it's not the universal biblical standard for every worker in every season.",
+      "trainerTransition": "From here we're going to shift from biblical basis to what's happening inside us when we resist these truths.",
+      "trainerScriptNotes": "- Land \"mission determines method\" as a memorable line.\n- Optional prompt: why supported ministry can feel \"less noble.\"\n- Emotional temperature may rise—keep tone pastoral.",
       "emphasis": "Tentmaking can be a tool, but it is not the universal biblical standard.",
-      "continuationGroup": "s1-007",
+      "continuationGroup": "s1-007b",
       "timing": "2 min",
       "prompts": [
         "Why do you think supported ministry can feel less noble to some people?"
       ],
-      "transitionCue": "Move from biblical basis into internal resistance."
+      "transitionCue": "Move from biblical basis into internal resistance.",
+      "bulletRevealVisibleCount": 2,
+      "promptRevealVisibleCount": 0
     },
     {
-      "id": "s1-008",
+      "id": "s1-007b__rg1",
+      "title": "What About Tentmaking?",
+      "bullets": [
+        "Paul supported",
+        "Mission decides"
+      ],
+      "trainerCadence": "Scripture gives us more than one pattern, but it does not shame faithful, supported ministry. At the end of the day, mission helps determine method—context matters, conscience matters, and God's leading matters.\n\nWhat I want you to carry is proportion: tentmaking can be a tool, but it's not the universal biblical standard for every worker in every season.",
+      "trainerTransition": "From here we're going to shift from biblical basis to what's happening inside us when we resist these truths.",
+      "trainerScriptNotes": "- Land \"mission determines method\" as a memorable line.\n- Optional prompt: why supported ministry can feel \"less noble.\"\n- Emotional temperature may rise—keep tone pastoral.",
+      "emphasis": "Tentmaking can be a tool, but it is not the universal biblical standard.",
+      "continuationGroup": "s1-007b",
+      "timing": "2 min",
+      "prompts": [
+        "Why do you think supported ministry can feel less noble to some people?"
+      ],
+      "transitionCue": "Move from biblical basis into internal resistance.",
+      "bulletRevealVisibleCount": 2,
+      "promptRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-008__rg0",
       "title": "Process What You Heard",
       "bullets": [
-        "What still feels unbiblical or uncomfortable?",
-        "What challenged your thinking?",
-        "What question do you still have?"
+        "Still uncomfortable",
+        "What challenged",
+        "Still questioning"
       ],
-      "trainerNotes": "About 5 minutes in breakouts, then reconvene for debrief within the 8-minute block. Capture recurring tensions verbally or on a whiteboard if desired.",
-      "emphasis": "Honest questions after Scripture are healthy — not a failure of faith.",
+      "trainerCadence": "You've heard a lot of Scripture in a short window—so I want to give you space to process honestly. In your pairs, work through what's on the slide: what still feels uncomfortable or \"unbiblical\" to you, what challenged your thinking, and what question you're still carrying.\n\nYou're not being graded on having it all resolved. Honest questions after Scripture are healthy—not a failure of faith.",
+      "trainerTransition": "When you reconvene, we're going to pivot into philosophy and attitude—how you see God, people, and yourself.",
+      "trainerScriptNotes": "- ~5 minutes in pairs, then debrief within the 8-minute block.\n- Capture recurring tensions verbally or on whiteboard if helpful.\n- Watch for shame language—normalize questions.\n- Clear time boundary so you can land the pivot.",
+      "continuationGroup": "s1-008",
       "timing": "8 min",
       "transitionCue": "Now shift into philosophy and attitude.",
       "interaction": "In pairs, process what you heard today — work through the three prompts above.",
@@ -320,59 +1404,275 @@
           "What tension still remains?",
           "What truth stood out?"
         ]
-      }
+      },
+      "bulletRevealVisibleCount": 0
     },
     {
-      "id": "s1-009",
+      "id": "s1-008__rg1",
+      "title": "Process What You Heard",
+      "bullets": [
+        "Still uncomfortable",
+        "What challenged",
+        "Still questioning"
+      ],
+      "trainerCadence": "You've heard a lot of Scripture in a short window—so I want to give you space to process honestly. In your pairs, work through what's on the slide: what still feels uncomfortable or \"unbiblical\" to you, what challenged your thinking, and what question you're still carrying.\n\nYou're not being graded on having it all resolved. Honest questions after Scripture are healthy—not a failure of faith.",
+      "trainerTransition": "When you reconvene, we're going to pivot into philosophy and attitude—how you see God, people, and yourself.",
+      "trainerScriptNotes": "- ~5 minutes in pairs, then debrief within the 8-minute block.\n- Capture recurring tensions verbally or on whiteboard if helpful.\n- Watch for shame language—normalize questions.\n- Clear time boundary so you can land the pivot.",
+      "emphasis": "Honest questions after Scripture are healthy — not a failure of faith.",
+      "continuationGroup": "s1-008",
+      "timing": "8 min",
+      "transitionCue": "Now shift into philosophy and attitude.",
+      "interaction": "In pairs, process what you heard today — work through the three prompts above.",
+      "interactionType": "discussion",
+      "breakout": {
+        "enabled": true,
+        "groupSize": 2,
+        "duration": "5 min",
+        "instructions": [
+          "Share what still feels unbiblical or uncomfortable",
+          "Discuss what challenged your thinking",
+          "Identify one question you still have"
+        ],
+        "debrief": [
+          "What did you notice in your conversation?",
+          "What tension still remains?",
+          "What truth stood out?"
+        ]
+      },
+      "bulletRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-008__rg2",
+      "title": "Process What You Heard",
+      "bullets": [
+        "Still uncomfortable",
+        "What challenged",
+        "Still questioning"
+      ],
+      "trainerCadence": "You've heard a lot of Scripture in a short window—so I want to give you space to process honestly. In your pairs, work through what's on the slide: what still feels uncomfortable or \"unbiblical\" to you, what challenged your thinking, and what question you're still carrying.\n\nYou're not being graded on having it all resolved. Honest questions after Scripture are healthy—not a failure of faith.",
+      "trainerTransition": "When you reconvene, we're going to pivot into philosophy and attitude—how you see God, people, and yourself.",
+      "trainerScriptNotes": "- ~5 minutes in pairs, then debrief within the 8-minute block.\n- Capture recurring tensions verbally or on whiteboard if helpful.\n- Watch for shame language—normalize questions.\n- Clear time boundary so you can land the pivot.",
+      "emphasis": "Honest questions after Scripture are healthy — not a failure of faith.",
+      "continuationGroup": "s1-008",
+      "timing": "8 min",
+      "transitionCue": "Now shift into philosophy and attitude.",
+      "interaction": "In pairs, process what you heard today — work through the three prompts above.",
+      "interactionType": "discussion",
+      "breakout": {
+        "enabled": true,
+        "groupSize": 2,
+        "duration": "5 min",
+        "instructions": [
+          "Share what still feels unbiblical or uncomfortable",
+          "Discuss what challenged your thinking",
+          "Identify one question you still have"
+        ],
+        "debrief": [
+          "What did you notice in your conversation?",
+          "What tension still remains?",
+          "What truth stood out?"
+        ]
+      },
+      "bulletRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-008__rg3",
+      "title": "Process What You Heard",
+      "bullets": [
+        "Still uncomfortable",
+        "What challenged",
+        "Still questioning"
+      ],
+      "trainerCadence": "You've heard a lot of Scripture in a short window—so I want to give you space to process honestly. In your pairs, work through what's on the slide: what still feels uncomfortable or \"unbiblical\" to you, what challenged your thinking, and what question you're still carrying.\n\nYou're not being graded on having it all resolved. Honest questions after Scripture are healthy—not a failure of faith.",
+      "trainerTransition": "When you reconvene, we're going to pivot into philosophy and attitude—how you see God, people, and yourself.",
+      "trainerScriptNotes": "- ~5 minutes in pairs, then debrief within the 8-minute block.\n- Capture recurring tensions verbally or on whiteboard if helpful.\n- Watch for shame language—normalize questions.\n- Clear time boundary so you can land the pivot.",
+      "emphasis": "Honest questions after Scripture are healthy — not a failure of faith.",
+      "continuationGroup": "s1-008",
+      "timing": "8 min",
+      "transitionCue": "Now shift into philosophy and attitude.",
+      "interaction": "In pairs, process what you heard today — work through the three prompts above.",
+      "interactionType": "discussion",
+      "breakout": {
+        "enabled": true,
+        "groupSize": 2,
+        "duration": "5 min",
+        "instructions": [
+          "Share what still feels unbiblical or uncomfortable",
+          "Discuss what challenged your thinking",
+          "Identify one question you still have"
+        ],
+        "debrief": [
+          "What did you notice in your conversation?",
+          "What tension still remains?",
+          "What truth stood out?"
+        ]
+      },
+      "bulletRevealVisibleCount": 2
+    },
+    {
+      "id": "s1-008__rg4",
+      "title": "Process What You Heard",
+      "bullets": [
+        "Still uncomfortable",
+        "What challenged",
+        "Still questioning"
+      ],
+      "trainerCadence": "You've heard a lot of Scripture in a short window—so I want to give you space to process honestly. In your pairs, work through what's on the slide: what still feels uncomfortable or \"unbiblical\" to you, what challenged your thinking, and what question you're still carrying.\n\nYou're not being graded on having it all resolved. Honest questions after Scripture are healthy—not a failure of faith.",
+      "trainerTransition": "When you reconvene, we're going to pivot into philosophy and attitude—how you see God, people, and yourself.",
+      "trainerScriptNotes": "- ~5 minutes in pairs, then debrief within the 8-minute block.\n- Capture recurring tensions verbally or on whiteboard if helpful.\n- Watch for shame language—normalize questions.\n- Clear time boundary so you can land the pivot.",
+      "emphasis": "Honest questions after Scripture are healthy — not a failure of faith.",
+      "continuationGroup": "s1-008",
+      "timing": "8 min",
+      "transitionCue": "Now shift into philosophy and attitude.",
+      "interaction": "In pairs, process what you heard today — work through the three prompts above.",
+      "interactionType": "discussion",
+      "breakout": {
+        "enabled": true,
+        "groupSize": 2,
+        "duration": "5 min",
+        "instructions": [
+          "Share what still feels unbiblical or uncomfortable",
+          "Discuss what challenged your thinking",
+          "Identify one question you still have"
+        ],
+        "debrief": [
+          "What did you notice in your conversation?",
+          "What tension still remains?",
+          "What truth stood out?"
+        ]
+      },
+      "bulletRevealVisibleCount": 3
+    },
+    {
+      "id": "s1-009__rg0",
       "title": "Philosophy and Attitude",
       "bullets": [
-        "How you see God, people, and yourself shapes every conversation",
-        "Mindset and posture before methods and tactics"
+        "God people self",
+        "Mindset first"
       ],
-      "trainerNotes": "This section should feel pastoral, not merely instructional.",
-      "emphasis": "How you view God, people, and yourself will shape how you approach partnership development.",
+      "trainerCadence": "We're entering a section that should feel pastoral, not merely instructional—because how you see God, people, and yourself will shape every conversation you have about partnership.\n\nMindset and posture come before methods and tactics. If we skip this, people will paste new techniques onto old fear—and it won't hold.",
+      "trainerTransition": "Let's start with God—specifically God as provider.",
+      "trainerScriptNotes": "- Shift energy: slower, warmer, more relational.\n- Avoid sounding like you're switching to \"soft skills\"—this is spiritual formation.\n- Watch for cynicism; name it kindly if it shows up.",
+      "continuationGroup": "s1-009",
       "timing": "1 min",
-      "transitionCue": "Start with God as provider."
+      "transitionCue": "Start with God as provider.",
+      "bulletRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-009__rg1",
+      "title": "Philosophy and Attitude",
+      "bullets": [
+        "God people self",
+        "Mindset first"
+      ],
+      "trainerCadence": "We're entering a section that should feel pastoral, not merely instructional—because how you see God, people, and yourself will shape every conversation you have about partnership.\n\nMindset and posture come before methods and tactics. If we skip this, people will paste new techniques onto old fear—and it won't hold.",
+      "trainerTransition": "Let's start with God—specifically God as provider.",
+      "trainerScriptNotes": "- Shift energy: slower, warmer, more relational.\n- Avoid sounding like you're switching to \"soft skills\"—this is spiritual formation.\n- Watch for cynicism; name it kindly if it shows up.",
+      "emphasis": "How you view God, people, and yourself will shape how you approach partnership development.",
+      "continuationGroup": "s1-009",
+      "timing": "1 min",
+      "transitionCue": "Start with God as provider.",
+      "bulletRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-009__rg2",
+      "title": "Philosophy and Attitude",
+      "bullets": [
+        "God people self",
+        "Mindset first"
+      ],
+      "trainerCadence": "We're entering a section that should feel pastoral, not merely instructional—because how you see God, people, and yourself will shape every conversation you have about partnership.\n\nMindset and posture come before methods and tactics. If we skip this, people will paste new techniques onto old fear—and it won't hold.",
+      "trainerTransition": "Let's start with God—specifically God as provider.",
+      "trainerScriptNotes": "- Shift energy: slower, warmer, more relational.\n- Avoid sounding like you're switching to \"soft skills\"—this is spiritual formation.\n- Watch for cynicism; name it kindly if it shows up.",
+      "emphasis": "How you view God, people, and yourself will shape how you approach partnership development.",
+      "continuationGroup": "s1-009",
+      "timing": "1 min",
+      "transitionCue": "Start with God as provider.",
+      "bulletRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-009__rg3",
+      "title": "Philosophy and Attitude",
+      "bullets": [
+        "God people self",
+        "Mindset first"
+      ],
+      "trainerCadence": "We're entering a section that should feel pastoral, not merely instructional—because how you see God, people, and yourself will shape every conversation you have about partnership.\n\nMindset and posture come before methods and tactics. If we skip this, people will paste new techniques onto old fear—and it won't hold.",
+      "trainerTransition": "Let's start with God—specifically God as provider.",
+      "trainerScriptNotes": "- Shift energy: slower, warmer, more relational.\n- Avoid sounding like you're switching to \"soft skills\"—this is spiritual formation.\n- Watch for cynicism; name it kindly if it shows up.",
+      "emphasis": "How you view God, people, and yourself will shape how you approach partnership development.",
+      "continuationGroup": "s1-009",
+      "timing": "1 min",
+      "transitionCue": "Start with God as provider.",
+      "bulletRevealVisibleCount": 2
     },
     {
       "id": "s1-010",
       "title": "God Is the Provider",
       "bullets": [
-        "God owns everything",
+        "God owns all",
         "God moves hearts",
         "God supplies needs"
       ],
-      "trainerNotes": "This is one of the most important slides in the session. People must leave knowing they are not the source. Establish who God is as owner, mover, and supplier.",
+      "trainerCadence": "This is one of the most important slides in the whole session, so I want you to hear it clearly: God owns everything. God moves hearts. God supplies needs.\n\nWhich means you are not the source—and that's not an insult to your diligence. It's an invitation to faithfulness without carrying a weight only God can carry.",
+      "trainerTransition": "Next we'll talk about what prayer and dependence look like when God is actually the provider—not in theory, but in practice.",
+      "trainerScriptNotes": "- People must leave knowing they are not the source.\n- Repeat key phrases if needed; let the truth land.\n- Watch for relief vs resistance—both are data.",
       "emphasis": "Your job is faithful invitation. God's job is provision.",
       "continuationGroup": "s1-010",
       "timing": "3 min",
       "transitionCue": "Advance to prayer, dependence, and trust—not striving."
     },
     {
-      "id": "s1-010b",
+      "id": "s1-010b__rg0",
       "title": "God Is the Provider",
       "bullets": [
-        "Prayer expresses dependence",
-        "We trust, not strive"
+        "Prayer dependence",
+        "Trust not strive"
       ],
-      "trainerNotes": "Land dependence and trust as the response to God’s provision.",
+      "trainerCadence": "Prayer is how we express dependence, and trust is how we live it out in the room and in the conversation. We're not striving our way into partnership—we're inviting and trusting.\n\nYour job is faithful invitation. God's job is provision. That division of labor is meant to free you, not frustrate you.",
+      "trainerTransition": "Now that we've named God as provider, we're going to get very honest about what partnership development is not.",
+      "trainerScriptNotes": "- Land dependence without sounding passive or careless.\n- Optional prompt: what changes when God is truly seen as provider?\n- Bridge clearly to the \"is not\" slide—anticipate fear of manipulation.",
       "emphasis": "Your job is faithful invitation. God's job is provision.",
-      "continuationGroup": "s1-010",
+      "continuationGroup": "s1-010b",
       "timing": "2 min",
       "prompts": [
         "What changes when God is truly seen as the provider?"
       ],
-      "transitionCue": "Now define what partnership development is not."
+      "transitionCue": "Now define what partnership development is not.",
+      "bulletRevealVisibleCount": 2,
+      "promptRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-010b__rg1",
+      "title": "God Is the Provider",
+      "bullets": [
+        "Prayer dependence",
+        "Trust not strive"
+      ],
+      "trainerCadence": "Prayer is how we express dependence, and trust is how we live it out in the room and in the conversation. We're not striving our way into partnership—we're inviting and trusting.\n\nYour job is faithful invitation. God's job is provision. That division of labor is meant to free you, not frustrate you.",
+      "trainerTransition": "Now that we've named God as provider, we're going to get very honest about what partnership development is not.",
+      "trainerScriptNotes": "- Land dependence without sounding passive or careless.\n- Optional prompt: what changes when God is truly seen as provider?\n- Bridge clearly to the \"is not\" slide—anticipate fear of manipulation.",
+      "emphasis": "Your job is faithful invitation. God's job is provision.",
+      "continuationGroup": "s1-010b",
+      "timing": "2 min",
+      "prompts": [
+        "What changes when God is truly seen as the provider?"
+      ],
+      "transitionCue": "Now define what partnership development is not.",
+      "bulletRevealVisibleCount": 2,
+      "promptRevealVisibleCount": 1
     },
     {
       "id": "s1-011",
       "title": "What This Is Not",
       "bullets": [
         "Not manipulation",
-        "Not pressure tactics",
-        "Not guilt-based appeals"
+        "Not pressure",
+        "Not guilt appeals"
       ],
-      "trainerNotes": "People often reject a caricature of support raising. Name the relational and emotional distortions first.",
+      "trainerCadence": "A lot of people reject a caricature of support raising long before they reject a biblical view. So let's name what this is not: not manipulation, not pressure tactics, not guilt-based appeals.\n\nWe're clearing away relational distortions so we can rebuild something clean and Christlike.",
+      "trainerTransition": "On the next slide we'll name two more \"is nots\" that show up in ministry posture and self-promotion.",
+      "trainerScriptNotes": "- Validate why people feel allergic—often they've seen bad examples.\n- Don't mock fundraisers; distinguish holy partnership from coercion.\n- Keep tone firm and kind.",
       "continuationGroup": "s1-011",
       "timing": "2 min",
       "transitionCue": "Advance to name what this is not in ministry posture and self."
@@ -381,10 +1681,12 @@
       "id": "s1-011b",
       "title": "What This Is Not",
       "bullets": [
-        "Not money-centered ministry",
-        "Not self-promotion"
+        "Not money centered",
+        "Not self promotion"
       ],
-      "trainerNotes": "Reject money-centered ministry and self-promotion as clearly as the earlier distortions.",
+      "trainerCadence": "We're also saying no to money-centered ministry and no to self-promotion dressed up as spirituality. Those aren't just tactical mistakes—they distort the gospel's posture.\n\nI want the room to feel the clarity: we're not trading one idol for another.",
+      "trainerTransition": "Okay—now that we've cleared the junk, let's name what this actually is.",
+      "trainerScriptNotes": "- Pair with previous slide as one moral argument in two beats.\n- Be as clear here as you were on manipulation—symmetry helps memory.",
       "continuationGroup": "s1-011",
       "timing": "2 min",
       "transitionCue": "Then define what it is."
@@ -397,7 +1699,9 @@
         "Invitation",
         "Stewardship"
       ],
-      "trainerNotes": "This is the constructive replacement for the previous slide. Start with ministry, invitation, and stewardship.",
+      "trainerCadence": "Here's the constructive replacement: partnership development is ministry before it's method. It's invitation. It's stewardship.\n\nThose aren't buzzwords— they're guardrails that keep money in its proper place: serving mission, not becoming mission.",
+      "trainerTransition": "Let's finish this positive frame with shared obedience and shared fruit.",
+      "trainerScriptNotes": "- Start with ministry, invitation, stewardship—in that energy order.\n- Connect to slide emphasis; let it feel like a turnaround moment.\n- Watch for people leaning in—this is often when fear drops a notch.",
       "emphasis": "Partnership Development is ministry before it is method.",
       "continuationGroup": "s1-012",
       "timing": "2 min",
@@ -410,7 +1714,9 @@
         "Shared obedience",
         "Shared fruit"
       ],
-      "trainerNotes": "Close the positive frame with shared obedience and shared fruit.",
+      "trainerCadence": "And it isn't just individual heroics—it's shared obedience and shared fruit. Partnership development, done well, creates a community rhythm: we obey together, we celebrate together, we carry the mission together.\n\nThat's the kind of culture we want people to taste, even in how we train today.",
+      "trainerTransition": "Now I want to show you why attitude matters just as much as definitions.",
+      "trainerScriptNotes": "- Close the positive frame with momentum—don't trail off.\n- Emphasize community, not lone-ranger fundraising.\n- Bridge explicitly to attitude chain on next slides.",
       "emphasis": "Partnership Development is ministry before it is method.",
       "continuationGroup": "s1-012",
       "timing": "2 min",
@@ -421,50 +1727,128 @@
       "title": "Healthy Attitude Matters",
       "bullets": [
         "Perspective shapes posture",
-        "Posture shapes conversations",
-        "Conversations shape outcomes"
+        "Posture shapes every conversation",
+        "Conversations shape outcomes before people hear your words"
       ],
-      "trainerNotes": "Connect internal posture to external effectiveness. Trace the chain from perspective to outcomes.",
+      "trainerCadence": "Your perspective shapes your posture. Your posture shapes your conversations. And your conversations shape outcomes—often before you realize it.\n\nSo when we talk about attitude, we're not talking about positivity platitudes. We're talking about the internal chain that leaks into every invitation you make.",
+      "trainerTransition": "Next we'll name how fear and faith show up in clarity and invitation.",
+      "trainerScriptNotes": "- Trace the chain slowly—let people feel each link.\n- Use examples only if tight on time; the slide is enough if paced well.",
       "continuationGroup": "s1-013",
       "timing": "2 min",
       "transitionCue": "Advance to fear and faith as they affect clarity and invitation."
     },
     {
-      "id": "s1-013b",
+      "id": "s1-013b__rg0",
       "title": "Healthy Attitude Matters",
       "bullets": [
-        "Fear weakens clarity",
-        "Faith strengthens invitation"
+        "Fear weakens",
+        "Faith strengthens"
       ],
-      "trainerNotes": "Emphasize that people often feel your attitude before they evaluate your words.",
-      "continuationGroup": "s1-013",
+      "trainerCadence": "Fear weakens clarity. Faith strengthens invitation—and people often sense your posture before they evaluate your words.\n\nSo we're not polishing a script while hiding anxiety. We're doing heart work that makes the script sound like a human being who actually believes God.",
+      "trainerTransition": "That leads us straight into the internal barriers—limiting beliefs.",
+      "trainerScriptNotes": "- Optional prompt: how fear shows up in the way people ask.\n- Keep compassionate; many have trauma around money conversations.\n- Bridge to limiting beliefs without shaming.",
+      "continuationGroup": "s1-013b",
       "timing": "2 min",
       "prompts": [
         "How does fear show up in the way people ask?"
       ],
-      "transitionCue": "Now surface the internal barriers."
+      "transitionCue": "Now surface the internal barriers.",
+      "bulletRevealVisibleCount": 2,
+      "promptRevealVisibleCount": 0
     },
     {
-      "id": "s1-014",
+      "id": "s1-013b__rg1",
+      "title": "Healthy Attitude Matters",
+      "bullets": [
+        "Fear weakens",
+        "Faith strengthens"
+      ],
+      "trainerCadence": "Fear weakens clarity. Faith strengthens invitation—and people often sense your posture before they evaluate your words.\n\nSo we're not polishing a script while hiding anxiety. We're doing heart work that makes the script sound like a human being who actually believes God.",
+      "trainerTransition": "That leads us straight into the internal barriers—limiting beliefs.",
+      "trainerScriptNotes": "- Optional prompt: how fear shows up in the way people ask.\n- Keep compassionate; many have trauma around money conversations.\n- Bridge to limiting beliefs without shaming.",
+      "continuationGroup": "s1-013b",
+      "timing": "2 min",
+      "prompts": [
+        "How does fear show up in the way people ask?"
+      ],
+      "transitionCue": "Now surface the internal barriers.",
+      "bulletRevealVisibleCount": 2,
+      "promptRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-014__rg0",
       "title": "Limiting Beliefs",
       "bullets": [
-        "The real barrier is often belief — not technique",
-        "We name lies so truth has room to land"
+        "The barrier is often belief—not technique",
+        "Name the lie so truth has room"
       ],
-      "trainerNotes": "Transition from theology into heart-level resistance.",
-      "emphasis": "Often the real barrier is not technique. It is belief.",
+      "trainerCadence": "Here's the pivot: often the real barrier isn't technique—it's belief. So we're going to name lies so truth has room to land.\n\nWe're not hunting for villains; we're hunting for clarity, because clarity is kind.",
+      "trainerTransition": "Let's start naming some of the most common limiting beliefs we hear.",
+      "trainerScriptNotes": "- Transition from theology to heart-level resistance—slow the pace.\n- Normalize: \"naming\" is not the same as \"fixing instantly.\"\n- Watch for shame spikes—keep language invitational.",
+      "continuationGroup": "s1-014",
       "timing": "1 min",
-      "transitionCue": "Start by naming common lies."
+      "transitionCue": "Start by naming common lies.",
+      "bulletRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-014__rg1",
+      "title": "Limiting Beliefs",
+      "bullets": [
+        "The barrier is often belief—not technique",
+        "Name the lie so truth has room"
+      ],
+      "trainerCadence": "Here's the pivot: often the real barrier isn't technique—it's belief. So we're going to name lies so truth has room to land.\n\nWe're not hunting for villains; we're hunting for clarity, because clarity is kind.",
+      "trainerTransition": "Let's start naming some of the most common limiting beliefs we hear.",
+      "trainerScriptNotes": "- Transition from theology to heart-level resistance—slow the pace.\n- Normalize: \"naming\" is not the same as \"fixing instantly.\"\n- Watch for shame spikes—keep language invitational.",
+      "emphasis": "Often the real barrier is not technique. It is belief.",
+      "continuationGroup": "s1-014",
+      "timing": "1 min",
+      "transitionCue": "Start by naming common lies.",
+      "bulletRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-014__rg2",
+      "title": "Limiting Beliefs",
+      "bullets": [
+        "The barrier is often belief—not technique",
+        "Name the lie so truth has room"
+      ],
+      "trainerCadence": "Here's the pivot: often the real barrier isn't technique—it's belief. So we're going to name lies so truth has room to land.\n\nWe're not hunting for villains; we're hunting for clarity, because clarity is kind.",
+      "trainerTransition": "Let's start naming some of the most common limiting beliefs we hear.",
+      "trainerScriptNotes": "- Transition from theology to heart-level resistance—slow the pace.\n- Normalize: \"naming\" is not the same as \"fixing instantly.\"\n- Watch for shame spikes—keep language invitational.",
+      "emphasis": "Often the real barrier is not technique. It is belief.",
+      "continuationGroup": "s1-014",
+      "timing": "1 min",
+      "transitionCue": "Start by naming common lies.",
+      "bulletRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-014__rg3",
+      "title": "Limiting Beliefs",
+      "bullets": [
+        "The barrier is often belief—not technique",
+        "Name the lie so truth has room"
+      ],
+      "trainerCadence": "Here's the pivot: often the real barrier isn't technique—it's belief. So we're going to name lies so truth has room to land.\n\nWe're not hunting for villains; we're hunting for clarity, because clarity is kind.",
+      "trainerTransition": "Let's start naming some of the most common limiting beliefs we hear.",
+      "trainerScriptNotes": "- Transition from theology to heart-level resistance—slow the pace.\n- Normalize: \"naming\" is not the same as \"fixing instantly.\"\n- Watch for shame spikes—keep language invitational.",
+      "emphasis": "Often the real barrier is not technique. It is belief.",
+      "continuationGroup": "s1-014",
+      "timing": "1 min",
+      "transitionCue": "Start by naming common lies.",
+      "bulletRevealVisibleCount": 2
     },
     {
       "id": "s1-015",
       "title": "Common Limiting Beliefs",
       "bullets": [
-        "I'm bothering people",
-        "People don't want to give",
-        "I'm not good at this"
+        "I am bothering people",
+        "People will not want to give",
+        "I am not good at this"
       ],
-      "trainerNotes": "Read these slowly. Let people recognize themselves without shame. Pause after the first three.",
+      "trainerCadence": "I'm going to read these slowly, because some of you will hear your own thoughts echoed out loud—and I want you to feel recognized, not exposed.\n\n\"I'm bothering people.\" \"People don't want to give.\" \"I'm not good at this.\" Pause there if you need to—let the room feel it.",
+      "trainerTransition": "When you're ready, advance—there are two more common beliefs on the next slide.",
+      "trainerScriptNotes": "- Read slowly; pause after the first three bullets.\n- Pastoral pace beats clever commentary here.\n- Watch eyes—recognition is the win in this moment.",
       "continuationGroup": "s1-015",
       "timing": "3 min",
       "transitionCue": "Advance for two more common lies."
@@ -473,10 +1857,12 @@
       "id": "s1-015b",
       "title": "Common Limiting Beliefs",
       "bullets": [
-        "I don't know enough people",
-        "Talking about money is unspiritual"
+        "I do not know enough people",
+        "Talking about money feels unspiritual"
       ],
-      "trainerNotes": "Let these land with the same pastoral pace—no rush.",
+      "trainerCadence": "Two more that show up everywhere: \"I don't know enough people,\" and \"Talking about money is unspiritual.\" Those beliefs sound spiritual sometimes—but they often function as fear with a Bible verse taped on top.\n\nSame pastoral pace as before—no rush, no punchlines.",
+      "trainerTransition": "Once those are in the open, we're going to ask what's underneath the fear.",
+      "trainerScriptNotes": "- Let these land without rushing to solve.\n- Avoid shaming introverts or global workers with small networks.\n- Bridge to diagnostic \"underneath\" slide.",
       "continuationGroup": "s1-015",
       "timing": "2 min",
       "transitionCue": "Then diagnose what is underneath them."
@@ -485,11 +1871,13 @@
       "id": "s1-016",
       "title": "What's Underneath the Fear?",
       "bullets": [
-        "Wrong view of God",
-        "Wrong view of self",
-        "Wrong view of people"
+        "Distorted view of God",
+        "Distorted view of self",
+        "Distorted view of people"
       ],
-      "trainerNotes": "Show that technique alone cannot solve a theological or identity problem. Start with distorted views of God, self, and people.",
+      "trainerCadence": "Technique alone can't fix a theological or identity problem—so let's name what's underneath: distorted views of God, distorted views of self, distorted views of people.\n\nWhen those three are off, every conversation about partnership feels threatening.",
+      "trainerTransition": "Next we'll name two more layers that often sit underneath: fear of rejection and confused ministry identity.",
+      "trainerScriptNotes": "- Teach diagnostic, not diagnostic-as-weapon.\n- Invite self-reflection without forced public confession.\n- Keep triad: God, self, people—memorable scaffold.",
       "continuationGroup": "s1-016",
       "timing": "2 min",
       "transitionCue": "Advance to fear of rejection and ministry identity."
@@ -498,24 +1886,28 @@
       "id": "s1-016b",
       "title": "What's Underneath the Fear?",
       "bullets": [
-        "Fear of rejection",
-        "Confused ministry identity"
+        "Fear rejection",
+        "Identity confused"
       ],
-      "trainerNotes": "Name fear and confused identity as layers beneath wrong views.",
+      "trainerCadence": "Underneath wrong views, we often find fear of rejection—and a confused sense of ministry identity. Am I a beggar? A salesperson? A burden? Those questions aren't petty; they shape what you sound like when you open your mouth.\n\nNaming them is the first step toward freedom.",
+      "trainerTransition": "From here we're going to move into a personal reflection—quiet first, then pairs.",
+      "trainerScriptNotes": "- Pair with prior slide as one movement.\n- Sensitive territory—keep voice steady and kind.\n- Preview reflection logistics briefly so people feel safe.",
       "continuationGroup": "s1-016",
       "timing": "2 min",
       "transitionCue": "Move into personal reflection."
     },
     {
-      "id": "s1-017",
+      "id": "s1-017__rg0",
       "title": "Name the Fear, Name the Truth",
       "bullets": [
-        "Name your fear",
-        "Name the belief underneath",
-        "Name one truth from today that confronts it"
+        "Name fear",
+        "Name belief",
+        "Name truth"
       ],
-      "trainerNotes": "Allow quiet writing first, then open pairs (~7 min in rooms) so honesty lands before conversation.",
-      "emphasis": "Silence is part of the work — let God surface what's under the fear.",
+      "trainerCadence": "I want to give you a few minutes of quiet first—let God surface what's under the fear before you talk. You'll name your fear, name the belief underneath, and name one truth from today that confronts it.\n\nAfter that, you'll meet in pairs to share what you wrote—honesty before polish.",
+      "trainerTransition": "When you come back together, we're going to reframe identity in a more explicit way.",
+      "trainerScriptNotes": "- Quiet writing first protects honesty.\n- Pairs ~7 min—protect debrief time.\n- Emphasize slide emphasis: silence is part of the work.\n- Watch for overwhelm—normalize small steps.",
+      "continuationGroup": "s1-017",
       "timing": "8 min",
       "transitionCue": "Now reframe identity.",
       "interaction": "Write down your biggest fear about partnership development. Then identify the belief beneath it. What truth from today confronts that belief? Afterward, meet in pairs to share what you wrote.",
@@ -534,17 +1926,156 @@
           "What truths directly challenge those beliefs?",
           "What felt most freeing?"
         ]
-      }
+      },
+      "bulletRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-017__rg1",
+      "title": "Name the Fear, Name the Truth",
+      "bullets": [
+        "Name fear",
+        "Name belief",
+        "Name truth"
+      ],
+      "trainerCadence": "I want to give you a few minutes of quiet first—let God surface what's under the fear before you talk. You'll name your fear, name the belief underneath, and name one truth from today that confronts it.\n\nAfter that, you'll meet in pairs to share what you wrote—honesty before polish.",
+      "trainerTransition": "When you come back together, we're going to reframe identity in a more explicit way.",
+      "trainerScriptNotes": "- Quiet writing first protects honesty.\n- Pairs ~7 min—protect debrief time.\n- Emphasize slide emphasis: silence is part of the work.\n- Watch for overwhelm—normalize small steps.",
+      "emphasis": "Silence is part of the work — let God surface what's under the fear.",
+      "continuationGroup": "s1-017",
+      "timing": "8 min",
+      "transitionCue": "Now reframe identity.",
+      "interaction": "Write down your biggest fear about partnership development. Then identify the belief beneath it. What truth from today confronts that belief? Afterward, meet in pairs to share what you wrote.",
+      "interactionType": "reflection",
+      "breakout": {
+        "enabled": true,
+        "groupSize": 2,
+        "duration": "7 min",
+        "instructions": [
+          "Share your biggest fear about partnership development",
+          "Identify the belief underneath that fear",
+          "Speak one truth that confronts that belief"
+        ],
+        "debrief": [
+          "What belief patterns were common?",
+          "What truths directly challenge those beliefs?",
+          "What felt most freeing?"
+        ]
+      },
+      "bulletRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-017__rg2",
+      "title": "Name the Fear, Name the Truth",
+      "bullets": [
+        "Name fear",
+        "Name belief",
+        "Name truth"
+      ],
+      "trainerCadence": "I want to give you a few minutes of quiet first—let God surface what's under the fear before you talk. You'll name your fear, name the belief underneath, and name one truth from today that confronts it.\n\nAfter that, you'll meet in pairs to share what you wrote—honesty before polish.",
+      "trainerTransition": "When you come back together, we're going to reframe identity in a more explicit way.",
+      "trainerScriptNotes": "- Quiet writing first protects honesty.\n- Pairs ~7 min—protect debrief time.\n- Emphasize slide emphasis: silence is part of the work.\n- Watch for overwhelm—normalize small steps.",
+      "emphasis": "Silence is part of the work — let God surface what's under the fear.",
+      "continuationGroup": "s1-017",
+      "timing": "8 min",
+      "transitionCue": "Now reframe identity.",
+      "interaction": "Write down your biggest fear about partnership development. Then identify the belief beneath it. What truth from today confronts that belief? Afterward, meet in pairs to share what you wrote.",
+      "interactionType": "reflection",
+      "breakout": {
+        "enabled": true,
+        "groupSize": 2,
+        "duration": "7 min",
+        "instructions": [
+          "Share your biggest fear about partnership development",
+          "Identify the belief underneath that fear",
+          "Speak one truth that confronts that belief"
+        ],
+        "debrief": [
+          "What belief patterns were common?",
+          "What truths directly challenge those beliefs?",
+          "What felt most freeing?"
+        ]
+      },
+      "bulletRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-017__rg3",
+      "title": "Name the Fear, Name the Truth",
+      "bullets": [
+        "Name fear",
+        "Name belief",
+        "Name truth"
+      ],
+      "trainerCadence": "I want to give you a few minutes of quiet first—let God surface what's under the fear before you talk. You'll name your fear, name the belief underneath, and name one truth from today that confronts it.\n\nAfter that, you'll meet in pairs to share what you wrote—honesty before polish.",
+      "trainerTransition": "When you come back together, we're going to reframe identity in a more explicit way.",
+      "trainerScriptNotes": "- Quiet writing first protects honesty.\n- Pairs ~7 min—protect debrief time.\n- Emphasize slide emphasis: silence is part of the work.\n- Watch for overwhelm—normalize small steps.",
+      "emphasis": "Silence is part of the work — let God surface what's under the fear.",
+      "continuationGroup": "s1-017",
+      "timing": "8 min",
+      "transitionCue": "Now reframe identity.",
+      "interaction": "Write down your biggest fear about partnership development. Then identify the belief beneath it. What truth from today confronts that belief? Afterward, meet in pairs to share what you wrote.",
+      "interactionType": "reflection",
+      "breakout": {
+        "enabled": true,
+        "groupSize": 2,
+        "duration": "7 min",
+        "instructions": [
+          "Share your biggest fear about partnership development",
+          "Identify the belief underneath that fear",
+          "Speak one truth that confronts that belief"
+        ],
+        "debrief": [
+          "What belief patterns were common?",
+          "What truths directly challenge those beliefs?",
+          "What felt most freeing?"
+        ]
+      },
+      "bulletRevealVisibleCount": 2
+    },
+    {
+      "id": "s1-017__rg4",
+      "title": "Name the Fear, Name the Truth",
+      "bullets": [
+        "Name fear",
+        "Name belief",
+        "Name truth"
+      ],
+      "trainerCadence": "I want to give you a few minutes of quiet first—let God surface what's under the fear before you talk. You'll name your fear, name the belief underneath, and name one truth from today that confronts it.\n\nAfter that, you'll meet in pairs to share what you wrote—honesty before polish.",
+      "trainerTransition": "When you come back together, we're going to reframe identity in a more explicit way.",
+      "trainerScriptNotes": "- Quiet writing first protects honesty.\n- Pairs ~7 min—protect debrief time.\n- Emphasize slide emphasis: silence is part of the work.\n- Watch for overwhelm—normalize small steps.",
+      "emphasis": "Silence is part of the work — let God surface what's under the fear.",
+      "continuationGroup": "s1-017",
+      "timing": "8 min",
+      "transitionCue": "Now reframe identity.",
+      "interaction": "Write down your biggest fear about partnership development. Then identify the belief beneath it. What truth from today confronts that belief? Afterward, meet in pairs to share what you wrote.",
+      "interactionType": "reflection",
+      "breakout": {
+        "enabled": true,
+        "groupSize": 2,
+        "duration": "7 min",
+        "instructions": [
+          "Share your biggest fear about partnership development",
+          "Identify the belief underneath that fear",
+          "Speak one truth that confronts that belief"
+        ],
+        "debrief": [
+          "What belief patterns were common?",
+          "What truths directly challenge those beliefs?",
+          "What felt most freeing?"
+        ]
+      },
+      "bulletRevealVisibleCount": 3
     },
     {
       "id": "s1-018",
       "title": "Old Identity vs New Identity",
       "bullets": [
-        "Fundraiser vs missionary",
-        "Pressure vs purpose",
-        "Begging vs inviting"
+        "Fundraiser or missionary—only one fits",
+        "Pressure or purpose—different fuel",
+        "Begging or inviting—different posture"
       ],
-      "trainerNotes": "This is another key emotional turning point. Read the first three contrasts slowly.",
+      "trainerCadence": "Let's name an identity shift out loud—because language forms us. You're not a fundraiser trying to survive; you're a servant of God inviting others into mission.\n\nPressure versus purpose, begging versus inviting—those aren't synonyms. They're different postures with different fruit.",
+      "trainerTransition": "Advance when you're ready—we'll add two more contrasts that sharpen the shift.",
+      "trainerScriptNotes": "- Read first three contrasts slowly—this is emotional work.\n- Let people sit in contrast without rushing to comfort.\n- Watch for tears; honor without spotlighting.",
       "emphasis": "You are not a fundraiser trying to survive. You are a servant of God inviting others into mission.",
       "continuationGroup": "s1-018",
       "timing": "3 min",
@@ -554,49 +2085,196 @@
       "id": "s1-018b",
       "title": "Old Identity vs New Identity",
       "bullets": [
-        "Scarcity vs trust",
-        "Transactions vs partnership"
+        "Scarcity trust",
+        "Transaction partnership"
       ],
-      "trainerNotes": "Land the final contrasts, then give space for the anchor line in emphasis.",
+      "trainerCadence": "Scarcity versus trust. Transactions versus partnership. Those contrasts sting because we've all lived in scarcity thinking—even in ministry.\n\nThen leave space for the anchor line in the emphasis—it's the sentence you want ringing in their ears when they walk out.",
+      "trainerTransition": "Let's drive that identity shift home on the next slide.",
+      "trainerScriptNotes": "- Land final contrasts, then pause for emphasis line.\n- Don't talk over the emphasis—let eyes read.\n- Energy: hopeful, not hype.",
       "emphasis": "You are not a fundraiser trying to survive. You are a servant of God inviting others into mission.",
       "continuationGroup": "s1-018",
       "timing": "2 min",
       "transitionCue": "Drive home the identity shift."
     },
     {
-      "id": "s1-019",
+      "id": "s1-019__rg0",
       "title": "The Identity Shift",
       "bullets": [
-        "From fear → To faith",
-        "From pressure → To invitation",
-        "From money → To mission"
+        "Fear to faith",
+        "Pressure invitation",
+        "Money mission"
       ],
-      "trainerNotes": "This is the line to emphasize visually and verbally. Pause after reading it.",
-      "emphasis": "Partnership Development is not about raising money—it's about raising partners in the mission of God.",
+      "trainerCadence": "From fear toward faith. From pressure toward invitation. From money toward mission.\n\nThis is the identity shift we're after—not perfection, but direction. And the line on the slide is the banner: partnership development isn't about raising money; it's about raising partners in God's mission.",
+      "trainerTransition": "From identity we move to pathway—let me introduce FREEDOM at a high level.",
+      "trainerScriptNotes": "- Emphasize visually and verbally; pause after reading.\n- This is a summit moment—don't dilute with extra content.\n- Watch for audible exhale—often means relief.",
+      "continuationGroup": "s1-019",
       "timing": "4 min",
-      "transitionCue": "Now introduce the roadmap for the rest of Launch."
+      "transitionCue": "Now introduce the roadmap for the rest of Launch.",
+      "bulletRevealVisibleCount": 0
     },
     {
-      "id": "s1-020",
+      "id": "s1-019__rg1",
+      "title": "The Identity Shift",
+      "bullets": [
+        "Fear to faith",
+        "Pressure invitation",
+        "Money mission"
+      ],
+      "trainerCadence": "From fear toward faith. From pressure toward invitation. From money toward mission.\n\nThis is the identity shift we're after—not perfection, but direction. And the line on the slide is the banner: partnership development isn't about raising money; it's about raising partners in God's mission.",
+      "trainerTransition": "From identity we move to pathway—let me introduce FREEDOM at a high level.",
+      "trainerScriptNotes": "- Emphasize visually and verbally; pause after reading.\n- This is a summit moment—don't dilute with extra content.\n- Watch for audible exhale—often means relief.",
+      "emphasis": "Partnership Development is not about raising money—it's about raising partners in the mission of God.",
+      "continuationGroup": "s1-019",
+      "timing": "4 min",
+      "transitionCue": "Now introduce the roadmap for the rest of Launch.",
+      "bulletRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-019__rg2",
+      "title": "The Identity Shift",
+      "bullets": [
+        "Fear to faith",
+        "Pressure invitation",
+        "Money mission"
+      ],
+      "trainerCadence": "From fear toward faith. From pressure toward invitation. From money toward mission.\n\nThis is the identity shift we're after—not perfection, but direction. And the line on the slide is the banner: partnership development isn't about raising money; it's about raising partners in God's mission.",
+      "trainerTransition": "From identity we move to pathway—let me introduce FREEDOM at a high level.",
+      "trainerScriptNotes": "- Emphasize visually and verbally; pause after reading.\n- This is a summit moment—don't dilute with extra content.\n- Watch for audible exhale—often means relief.",
+      "emphasis": "Partnership Development is not about raising money—it's about raising partners in the mission of God.",
+      "continuationGroup": "s1-019",
+      "timing": "4 min",
+      "transitionCue": "Now introduce the roadmap for the rest of Launch.",
+      "bulletRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-019__rg3",
+      "title": "The Identity Shift",
+      "bullets": [
+        "Fear to faith",
+        "Pressure invitation",
+        "Money mission"
+      ],
+      "trainerCadence": "From fear toward faith. From pressure toward invitation. From money toward mission.\n\nThis is the identity shift we're after—not perfection, but direction. And the line on the slide is the banner: partnership development isn't about raising money; it's about raising partners in God's mission.",
+      "trainerTransition": "From identity we move to pathway—let me introduce FREEDOM at a high level.",
+      "trainerScriptNotes": "- Emphasize visually and verbally; pause after reading.\n- This is a summit moment—don't dilute with extra content.\n- Watch for audible exhale—often means relief.",
+      "emphasis": "Partnership Development is not about raising money—it's about raising partners in the mission of God.",
+      "continuationGroup": "s1-019",
+      "timing": "4 min",
+      "transitionCue": "Now introduce the roadmap for the rest of Launch.",
+      "bulletRevealVisibleCount": 2
+    },
+    {
+      "id": "s1-019__rg4",
+      "title": "The Identity Shift",
+      "bullets": [
+        "Fear to faith",
+        "Pressure invitation",
+        "Money mission"
+      ],
+      "trainerCadence": "From fear toward faith. From pressure toward invitation. From money toward mission.\n\nThis is the identity shift we're after—not perfection, but direction. And the line on the slide is the banner: partnership development isn't about raising money; it's about raising partners in God's mission.",
+      "trainerTransition": "From identity we move to pathway—let me introduce FREEDOM at a high level.",
+      "trainerScriptNotes": "- Emphasize visually and verbally; pause after reading.\n- This is a summit moment—don't dilute with extra content.\n- Watch for audible exhale—often means relief.",
+      "emphasis": "Partnership Development is not about raising money—it's about raising partners in the mission of God.",
+      "continuationGroup": "s1-019",
+      "timing": "4 min",
+      "transitionCue": "Now introduce the roadmap for the rest of Launch.",
+      "bulletRevealVisibleCount": 3
+    },
+    {
+      "id": "s1-020__rg0",
       "title": "Intro to FREEDOM",
       "bullets": [
-        "Seven practical moves — from vision to lasting impact",
-        "Sessions 2–4 open the pathway; today is orientation only"
+        "Seven moves",
+        "Sessions ahead",
+        "Orientation only"
       ],
-      "trainerNotes": "Keep this high level. Do not fully teach the framework yet.",
-      "emphasis": "We now move from foundation to pathway.",
+      "trainerCadence": "FREEDOM is seven practical moves—from vision toward lasting impact. Sessions two through four will open the pathway; today is orientation, not mastery.\n\nI want you to feel the handoff: we've built foundation; now we're showing you the map—but we're not hiking the whole trail tonight.",
+      "trainerTransition": "Let me show you the overview on the next slide.",
+      "trainerScriptNotes": "- High level only—resist teaching the framework deeply.\n- Name sessions 2–4 explicitly so future weeks feel inevitable.\n- Watch for anxiety—\"seven moves\" can sound heavy; reassure with orientation language.",
+      "continuationGroup": "s1-020",
       "timing": "1 min",
-      "transitionCue": "Show the overview."
+      "transitionCue": "Show the overview.",
+      "bulletRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-020__rg1",
+      "title": "Intro to FREEDOM",
+      "bullets": [
+        "Seven moves",
+        "Sessions ahead",
+        "Orientation only"
+      ],
+      "trainerCadence": "FREEDOM is seven practical moves—from vision toward lasting impact. Sessions two through four will open the pathway; today is orientation, not mastery.\n\nI want you to feel the handoff: we've built foundation; now we're showing you the map—but we're not hiking the whole trail tonight.",
+      "trainerTransition": "Let me show you the overview on the next slide.",
+      "trainerScriptNotes": "- High level only—resist teaching the framework deeply.\n- Name sessions 2–4 explicitly so future weeks feel inevitable.\n- Watch for anxiety—\"seven moves\" can sound heavy; reassure with orientation language.",
+      "emphasis": "We now move from foundation to pathway.",
+      "continuationGroup": "s1-020",
+      "timing": "1 min",
+      "transitionCue": "Show the overview.",
+      "bulletRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-020__rg2",
+      "title": "Intro to FREEDOM",
+      "bullets": [
+        "Seven moves",
+        "Sessions ahead",
+        "Orientation only"
+      ],
+      "trainerCadence": "FREEDOM is seven practical moves—from vision toward lasting impact. Sessions two through four will open the pathway; today is orientation, not mastery.\n\nI want you to feel the handoff: we've built foundation; now we're showing you the map—but we're not hiking the whole trail tonight.",
+      "trainerTransition": "Let me show you the overview on the next slide.",
+      "trainerScriptNotes": "- High level only—resist teaching the framework deeply.\n- Name sessions 2–4 explicitly so future weeks feel inevitable.\n- Watch for anxiety—\"seven moves\" can sound heavy; reassure with orientation language.",
+      "emphasis": "We now move from foundation to pathway.",
+      "continuationGroup": "s1-020",
+      "timing": "1 min",
+      "transitionCue": "Show the overview.",
+      "bulletRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-020__rg3",
+      "title": "Intro to FREEDOM",
+      "bullets": [
+        "Seven moves",
+        "Sessions ahead",
+        "Orientation only"
+      ],
+      "trainerCadence": "FREEDOM is seven practical moves—from vision toward lasting impact. Sessions two through four will open the pathway; today is orientation, not mastery.\n\nI want you to feel the handoff: we've built foundation; now we're showing you the map—but we're not hiking the whole trail tonight.",
+      "trainerTransition": "Let me show you the overview on the next slide.",
+      "trainerScriptNotes": "- High level only—resist teaching the framework deeply.\n- Name sessions 2–4 explicitly so future weeks feel inevitable.\n- Watch for anxiety—\"seven moves\" can sound heavy; reassure with orientation language.",
+      "emphasis": "We now move from foundation to pathway.",
+      "continuationGroup": "s1-020",
+      "timing": "1 min",
+      "transitionCue": "Show the overview.",
+      "bulletRevealVisibleCount": 2
+    },
+    {
+      "id": "s1-020__rg4",
+      "title": "Intro to FREEDOM",
+      "bullets": [
+        "Seven moves",
+        "Sessions ahead",
+        "Orientation only"
+      ],
+      "trainerCadence": "FREEDOM is seven practical moves—from vision toward lasting impact. Sessions two through four will open the pathway; today is orientation, not mastery.\n\nI want you to feel the handoff: we've built foundation; now we're showing you the map—but we're not hiking the whole trail tonight.",
+      "trainerTransition": "Let me show you the overview on the next slide.",
+      "trainerScriptNotes": "- High level only—resist teaching the framework deeply.\n- Name sessions 2–4 explicitly so future weeks feel inevitable.\n- Watch for anxiety—\"seven moves\" can sound heavy; reassure with orientation language.",
+      "emphasis": "We now move from foundation to pathway.",
+      "continuationGroup": "s1-020",
+      "timing": "1 min",
+      "transitionCue": "Show the overview.",
+      "bulletRevealVisibleCount": 3
     },
     {
       "id": "s1-021",
       "title": "FREEDOM — The First Five Moves",
       "bullets": [
-        "Focus Your Vision",
-        "Run Your Research",
-        "Enlist Your Team"
+        "Focus vision",
+        "Run research",
+        "Enlist team"
       ],
-      "trainerNotes": "Introduce the first three moves clearly—you’ll complete the first five on the next slide.",
+      "trainerCadence": "Here are the first three named moves: Focus Your Vision, Run Your Research, and Enlist Your Team.\n\nI'm introducing them clearly now—we'll complete the first five moves on the next slide so you can see the whole front half of the pathway.",
+      "trainerTransition": "Advance when you're ready for moves four and five.",
+      "trainerScriptNotes": "- Clear enunciation; these names become vocabulary.\n- Don't define each move deeply—titles and momentum only.\n- Keep energy forward.",
       "continuationGroup": "s1-021",
       "timing": "2 min",
       "transitionCue": "Advance to moves four and five."
@@ -605,10 +2283,12 @@
       "id": "s1-021b",
       "title": "FREEDOM — The First Five Moves",
       "bullets": [
-        "Enhance Your Brand",
-        "Deploy Your Team"
+        "Enhance brand",
+        "Deploy team"
       ],
-      "trainerNotes": "Complete the first five moves before you introduce the final two on the following slide.",
+      "trainerCadence": "Two more in the first five: Enhance Your Brand, and Deploy Your Team.\n\nAgain, we're naming, not teaching—think of this as installing signposts you'll recognize in the next sessions.",
+      "trainerTransition": "Next we'll name the final two moves that finish the pathway.",
+      "trainerScriptNotes": "- Complete five before introducing final two—sequence matters.\n- Avoid apologizing for \"businessy\" words; normalize ministry-fit language.",
       "continuationGroup": "s1-021",
       "timing": "1 min",
       "transitionCue": "Complete the pathway."
@@ -617,40 +2297,68 @@
       "id": "s1-022",
       "title": "FREEDOM — Finish the Path",
       "bullets": [
-        "Organize Your Ask",
-        "Make Your Difference"
+        "Organize ask",
+        "Make difference"
       ],
-      "trainerNotes": "Name the final two named moves in the pathway.",
+      "trainerCadence": "The pathway finishes with Organize Your Ask and Make Your Difference.\n\nSeven moves total—and they hang together as a practical, reproducible rhythm, not random hacks.",
+      "trainerTransition": "One more slide to pull back and show how the pathway feels as a whole.",
+      "trainerScriptNotes": "- Short beat—avoid over-talking.\n- Reinforce reproducibility without sounding mechanical.",
       "continuationGroup": "s1-022",
       "timing": "1 min",
       "transitionCue": "Advance to how the pathway feels as a whole."
     },
     {
-      "id": "s1-022b",
+      "id": "s1-022b__rg0",
       "title": "FREEDOM — Finish the Path",
       "bullets": [
-        "A practical pathway",
-        "A reproducible process",
-        "A faith-filled framework"
+        "A practical pathway—not random hacks",
+        "A reproducible rhythm you can teach",
+        "A faith-filled framework for the next sessions"
       ],
-      "trainerNotes": "Connect this directly to the next three sessions. Make it clear they are not expected to master the framework today.",
-      "continuationGroup": "s1-022",
+      "trainerCadence": "What you're looking at is a practical pathway, a reproducible process, and a faith-filled framework. And it's connected directly to the next three sessions—you're not supposed to master this tonight.\n\nYou're supposed to leave oriented, encouraged, and curious about what's next.",
+      "trainerTransition": "Let's land this session with a focused reflection before we pray.",
+      "trainerScriptNotes": "- Optional prompt: which part of the pathway feels most eager to learn?\n- Reduce performance pressure explicitly.\n- Bridge to closing reflection and prayer.",
+      "continuationGroup": "s1-022b",
       "timing": "2 min",
       "prompts": [
         "Which part of the pathway do you feel most eager to learn?"
       ],
-      "transitionCue": "Move toward response and prayer."
+      "transitionCue": "Move toward response and prayer.",
+      "bulletRevealVisibleCount": 3,
+      "promptRevealVisibleCount": 0
     },
     {
-      "id": "s1-023",
+      "id": "s1-022b__rg1",
+      "title": "FREEDOM — Finish the Path",
+      "bullets": [
+        "A practical pathway—not random hacks",
+        "A reproducible rhythm you can teach",
+        "A faith-filled framework for the next sessions"
+      ],
+      "trainerCadence": "What you're looking at is a practical pathway, a reproducible process, and a faith-filled framework. And it's connected directly to the next three sessions—you're not supposed to master this tonight.\n\nYou're supposed to leave oriented, encouraged, and curious about what's next.",
+      "trainerTransition": "Let's land this session with a focused reflection before we pray.",
+      "trainerScriptNotes": "- Optional prompt: which part of the pathway feels most eager to learn?\n- Reduce performance pressure explicitly.\n- Bridge to closing reflection and prayer.",
+      "continuationGroup": "s1-022b",
+      "timing": "2 min",
+      "prompts": [
+        "Which part of the pathway do you feel most eager to learn?"
+      ],
+      "transitionCue": "Move toward response and prayer.",
+      "bulletRevealVisibleCount": 3,
+      "promptRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-023__rg0",
       "title": "Carry This Into Session 2",
       "bullets": [
-        "A belief to surrender",
-        "A truth to embrace",
-        "A step of faith to take"
+        "Surrender belief",
+        "Embrace truth",
+        "Faith step"
       ],
-      "trainerNotes": "This is the closing reflection. Invite honesty and specificity.",
-      "emphasis": "One honest shift in thinking is enough to leave with today.",
+      "trainerCadence": "Before we close, I want you to carry this into Session 2 with honesty: a belief to surrender, a truth to embrace, and a step of faith to take.\n\nOne honest shift in thinking is enough to leave with today—you don't need a ten-point transformation story by dinner.",
+      "trainerTransition": "When you're ready, we'll end in prayer—asking God for boldness, faith, and clarity.",
+      "trainerScriptNotes": "- Invite specificity in writing without forcing public disclosure.\n- Protect time—this is a landing, not a new lecture.\n- Watch for people still processing—validate silently.",
+      "continuationGroup": "s1-023",
       "timing": "5 min",
       "transitionCue": "End by praying for boldness, faith, and clarity.",
       "interaction": "What needs to change in your thinking after today? What truth do you need to carry into Session 2?",
@@ -663,20 +2371,133 @@
           "Write one truth you are choosing to believe",
           "Write one step of faith you will take"
         ]
-      }
+      },
+      "bulletRevealVisibleCount": 0
     },
     {
-      "id": "s1-024",
+      "id": "s1-023__rg1",
+      "title": "Carry This Into Session 2",
+      "bullets": [
+        "Surrender belief",
+        "Embrace truth",
+        "Faith step"
+      ],
+      "trainerCadence": "Before we close, I want you to carry this into Session 2 with honesty: a belief to surrender, a truth to embrace, and a step of faith to take.\n\nOne honest shift in thinking is enough to leave with today—you don't need a ten-point transformation story by dinner.",
+      "trainerTransition": "When you're ready, we'll end in prayer—asking God for boldness, faith, and clarity.",
+      "trainerScriptNotes": "- Invite specificity in writing without forcing public disclosure.\n- Protect time—this is a landing, not a new lecture.\n- Watch for people still processing—validate silently.",
+      "emphasis": "One honest shift in thinking is enough to leave with today.",
+      "continuationGroup": "s1-023",
+      "timing": "5 min",
+      "transitionCue": "End by praying for boldness, faith, and clarity.",
+      "interaction": "What needs to change in your thinking after today? What truth do you need to carry into Session 2?",
+      "interactionType": "reflection",
+      "breakout": {
+        "enabled": false,
+        "duration": "5 min",
+        "instructions": [
+          "Write down one belief that needs to change",
+          "Write one truth you are choosing to believe",
+          "Write one step of faith you will take"
+        ]
+      },
+      "bulletRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-023__rg2",
+      "title": "Carry This Into Session 2",
+      "bullets": [
+        "Surrender belief",
+        "Embrace truth",
+        "Faith step"
+      ],
+      "trainerCadence": "Before we close, I want you to carry this into Session 2 with honesty: a belief to surrender, a truth to embrace, and a step of faith to take.\n\nOne honest shift in thinking is enough to leave with today—you don't need a ten-point transformation story by dinner.",
+      "trainerTransition": "When you're ready, we'll end in prayer—asking God for boldness, faith, and clarity.",
+      "trainerScriptNotes": "- Invite specificity in writing without forcing public disclosure.\n- Protect time—this is a landing, not a new lecture.\n- Watch for people still processing—validate silently.",
+      "emphasis": "One honest shift in thinking is enough to leave with today.",
+      "continuationGroup": "s1-023",
+      "timing": "5 min",
+      "transitionCue": "End by praying for boldness, faith, and clarity.",
+      "interaction": "What needs to change in your thinking after today? What truth do you need to carry into Session 2?",
+      "interactionType": "reflection",
+      "breakout": {
+        "enabled": false,
+        "duration": "5 min",
+        "instructions": [
+          "Write down one belief that needs to change",
+          "Write one truth you are choosing to believe",
+          "Write one step of faith you will take"
+        ]
+      },
+      "bulletRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-023__rg3",
+      "title": "Carry This Into Session 2",
+      "bullets": [
+        "Surrender belief",
+        "Embrace truth",
+        "Faith step"
+      ],
+      "trainerCadence": "Before we close, I want you to carry this into Session 2 with honesty: a belief to surrender, a truth to embrace, and a step of faith to take.\n\nOne honest shift in thinking is enough to leave with today—you don't need a ten-point transformation story by dinner.",
+      "trainerTransition": "When you're ready, we'll end in prayer—asking God for boldness, faith, and clarity.",
+      "trainerScriptNotes": "- Invite specificity in writing without forcing public disclosure.\n- Protect time—this is a landing, not a new lecture.\n- Watch for people still processing—validate silently.",
+      "emphasis": "One honest shift in thinking is enough to leave with today.",
+      "continuationGroup": "s1-023",
+      "timing": "5 min",
+      "transitionCue": "End by praying for boldness, faith, and clarity.",
+      "interaction": "What needs to change in your thinking after today? What truth do you need to carry into Session 2?",
+      "interactionType": "reflection",
+      "breakout": {
+        "enabled": false,
+        "duration": "5 min",
+        "instructions": [
+          "Write down one belief that needs to change",
+          "Write one truth you are choosing to believe",
+          "Write one step of faith you will take"
+        ]
+      },
+      "bulletRevealVisibleCount": 2
+    },
+    {
+      "id": "s1-023__rg4",
+      "title": "Carry This Into Session 2",
+      "bullets": [
+        "Surrender belief",
+        "Embrace truth",
+        "Faith step"
+      ],
+      "trainerCadence": "Before we close, I want you to carry this into Session 2 with honesty: a belief to surrender, a truth to embrace, and a step of faith to take.\n\nOne honest shift in thinking is enough to leave with today—you don't need a ten-point transformation story by dinner.",
+      "trainerTransition": "When you're ready, we'll end in prayer—asking God for boldness, faith, and clarity.",
+      "trainerScriptNotes": "- Invite specificity in writing without forcing public disclosure.\n- Protect time—this is a landing, not a new lecture.\n- Watch for people still processing—validate silently.",
+      "emphasis": "One honest shift in thinking is enough to leave with today.",
+      "continuationGroup": "s1-023",
+      "timing": "5 min",
+      "transitionCue": "End by praying for boldness, faith, and clarity.",
+      "interaction": "What needs to change in your thinking after today? What truth do you need to carry into Session 2?",
+      "interactionType": "reflection",
+      "breakout": {
+        "enabled": false,
+        "duration": "5 min",
+        "instructions": [
+          "Write down one belief that needs to change",
+          "Write one truth you are choosing to believe",
+          "Write one step of faith you will take"
+        ]
+      },
+      "bulletRevealVisibleCount": 3
+    },
+    {
+      "id": "s1-024__rg0",
       "title": "Close in Prayer",
       "bullets": [
-        "Boldness",
-        "Faith",
-        "Freedom from fear",
-        "Clarity of calling",
-        "Trust in God's provision"
+        "Boldness and faith in the invitation",
+        "Freedom from fear around money",
+        "Trust that God is the provider"
       ],
-      "trainerNotes": "Close in prayer yourself or place them in pairs if appropriate for the setting.",
-      "emphasis": "Lord, align our hearts with Your mission and teach us to invite others into it with faith.",
+      "trainerCadence": "Let's close in prayer. However your setting works best, invite God to meet us in the places we feel fear, tighten up around money, or forget that he is the provider.\n\nPray for boldness, faith, freedom from fear, clarity of calling, and fresh trust in God's provision—short turns if you're in pairs; one voice if you're together.",
+      "trainerTransition": "Thank them sincerely for the focus they've brought—bless them as they go.",
+      "trainerScriptNotes": "- You lead prayer or pairs—match your context.\n- Keep prayers short if in pairs; give clear instructions.\n- Optional one-word share after—only if time and tone fit.\n- End warm, grateful, unhurried.",
+      "continuationGroup": "s1-024",
       "timing": "4 min",
       "interaction": "Pray in pairs or as a whole group for freedom from fear and fresh trust in God as provider.",
       "interactionType": "prayer",
@@ -692,7 +2513,304 @@
         "debrief": [
           "Optional: one word from anyone who wants to share before you close"
         ]
-      }
+      },
+      "bulletRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-024__rg1",
+      "title": "Close in Prayer",
+      "bullets": [
+        "Boldness and faith in the invitation",
+        "Freedom from fear around money",
+        "Trust that God is the provider"
+      ],
+      "trainerCadence": "Let's close in prayer. However your setting works best, invite God to meet us in the places we feel fear, tighten up around money, or forget that he is the provider.\n\nPray for boldness, faith, freedom from fear, clarity of calling, and fresh trust in God's provision—short turns if you're in pairs; one voice if you're together.",
+      "trainerTransition": "Thank them sincerely for the focus they've brought—bless them as they go.",
+      "trainerScriptNotes": "- You lead prayer or pairs—match your context.\n- Keep prayers short if in pairs; give clear instructions.\n- Optional one-word share after—only if time and tone fit.\n- End warm, grateful, unhurried.",
+      "emphasis": "Lord, align our hearts with Your mission and teach us to invite others into it with faith.",
+      "continuationGroup": "s1-024",
+      "timing": "4 min",
+      "interaction": "Pray in pairs or as a whole group for freedom from fear and fresh trust in God as provider.",
+      "interactionType": "prayer",
+      "breakout": {
+        "enabled": true,
+        "groupSize": 2,
+        "duration": "3 min",
+        "instructions": [
+          "Pray briefly together for boldness, faith, freedom from fear, and trust in God's provision",
+          "Take turns: one prays, then the other — keep each turn short",
+          "Or: remain in the main room and pray as one group (facilitator leads)"
+        ],
+        "debrief": [
+          "Optional: one word from anyone who wants to share before you close"
+        ]
+      },
+      "bulletRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-024__rg2",
+      "title": "Close in Prayer",
+      "bullets": [
+        "Boldness and faith in the invitation",
+        "Freedom from fear around money",
+        "Trust that God is the provider"
+      ],
+      "trainerCadence": "Let's close in prayer. However your setting works best, invite God to meet us in the places we feel fear, tighten up around money, or forget that he is the provider.\n\nPray for boldness, faith, freedom from fear, clarity of calling, and fresh trust in God's provision—short turns if you're in pairs; one voice if you're together.",
+      "trainerTransition": "Thank them sincerely for the focus they've brought—bless them as they go.",
+      "trainerScriptNotes": "- You lead prayer or pairs—match your context.\n- Keep prayers short if in pairs; give clear instructions.\n- Optional one-word share after—only if time and tone fit.\n- End warm, grateful, unhurried.",
+      "emphasis": "Lord, align our hearts with Your mission and teach us to invite others into it with faith.",
+      "continuationGroup": "s1-024",
+      "timing": "4 min",
+      "interaction": "Pray in pairs or as a whole group for freedom from fear and fresh trust in God as provider.",
+      "interactionType": "prayer",
+      "breakout": {
+        "enabled": true,
+        "groupSize": 2,
+        "duration": "3 min",
+        "instructions": [
+          "Pray briefly together for boldness, faith, freedom from fear, and trust in God's provision",
+          "Take turns: one prays, then the other — keep each turn short",
+          "Or: remain in the main room and pray as one group (facilitator leads)"
+        ],
+        "debrief": [
+          "Optional: one word from anyone who wants to share before you close"
+        ]
+      },
+      "bulletRevealVisibleCount": 1
+    },
+    {
+      "id": "s1-024__rg3",
+      "title": "Close in Prayer",
+      "bullets": [
+        "Boldness and faith in the invitation",
+        "Freedom from fear around money",
+        "Trust that God is the provider"
+      ],
+      "trainerCadence": "Let's close in prayer. However your setting works best, invite God to meet us in the places we feel fear, tighten up around money, or forget that he is the provider.\n\nPray for boldness, faith, freedom from fear, clarity of calling, and fresh trust in God's provision—short turns if you're in pairs; one voice if you're together.",
+      "trainerTransition": "Thank them sincerely for the focus they've brought—bless them as they go.",
+      "trainerScriptNotes": "- You lead prayer or pairs—match your context.\n- Keep prayers short if in pairs; give clear instructions.\n- Optional one-word share after—only if time and tone fit.\n- End warm, grateful, unhurried.",
+      "emphasis": "Lord, align our hearts with Your mission and teach us to invite others into it with faith.",
+      "continuationGroup": "s1-024",
+      "timing": "4 min",
+      "interaction": "Pray in pairs or as a whole group for freedom from fear and fresh trust in God as provider.",
+      "interactionType": "prayer",
+      "breakout": {
+        "enabled": true,
+        "groupSize": 2,
+        "duration": "3 min",
+        "instructions": [
+          "Pray briefly together for boldness, faith, freedom from fear, and trust in God's provision",
+          "Take turns: one prays, then the other — keep each turn short",
+          "Or: remain in the main room and pray as one group (facilitator leads)"
+        ],
+        "debrief": [
+          "Optional: one word from anyone who wants to share before you close"
+        ]
+      },
+      "bulletRevealVisibleCount": 2
+    },
+    {
+      "id": "s1-024__rg4",
+      "title": "Close in Prayer",
+      "bullets": [
+        "Boldness and faith in the invitation",
+        "Freedom from fear around money",
+        "Trust that God is the provider"
+      ],
+      "trainerCadence": "Let's close in prayer. However your setting works best, invite God to meet us in the places we feel fear, tighten up around money, or forget that he is the provider.\n\nPray for boldness, faith, freedom from fear, clarity of calling, and fresh trust in God's provision—short turns if you're in pairs; one voice if you're together.",
+      "trainerTransition": "Thank them sincerely for the focus they've brought—bless them as they go.",
+      "trainerScriptNotes": "- You lead prayer or pairs—match your context.\n- Keep prayers short if in pairs; give clear instructions.\n- Optional one-word share after—only if time and tone fit.\n- End warm, grateful, unhurried.",
+      "emphasis": "Lord, align our hearts with Your mission and teach us to invite others into it with faith.",
+      "continuationGroup": "s1-024",
+      "timing": "4 min",
+      "interaction": "Pray in pairs or as a whole group for freedom from fear and fresh trust in God as provider.",
+      "interactionType": "prayer",
+      "breakout": {
+        "enabled": true,
+        "groupSize": 2,
+        "duration": "3 min",
+        "instructions": [
+          "Pray briefly together for boldness, faith, freedom from fear, and trust in God's provision",
+          "Take turns: one prays, then the other — keep each turn short",
+          "Or: remain in the main room and pray as one group (facilitator leads)"
+        ],
+        "debrief": [
+          "Optional: one word from anyone who wants to share before you close"
+        ]
+      },
+      "bulletRevealVisibleCount": 3
     }
-  ]
+  ],
+  "workbook": {
+    "sections": [
+      {
+        "id": "wb-opening",
+        "kind": "reflection",
+        "title": "Opening Reflection",
+        "subtitle": "Name what you’re carrying into this conversation",
+        "sectionEyebrow": "Opening",
+        "intro": "Before we unpack Scripture and philosophy, pause and write with honesty. Your responses stay on this device—use them as raw material for God to work with today.",
+        "reflectionPrompts": [
+          {
+            "fieldId": "beliefs",
+            "label": "What do you currently believe about support raising or partnership development?",
+            "placeholder": "Be plain. Nobody is grading this.",
+            "rows": 5
+          },
+          {
+            "fieldId": "emotions",
+            "label": "What emotions surface when you imagine inviting others into partnership?",
+            "placeholder": "e.g. fear, hope, shame, excitement…",
+            "rows": 4
+          }
+        ]
+      },
+      {
+        "id": "wb-bible",
+        "kind": "bibleStudy",
+        "title": "Bible Study",
+        "subtitle": "Biblical Foundations in your breakout",
+        "sectionEyebrow": "Scripture",
+        "intro": "In your small group, read the passages your facilitator assigns. Then capture what you heard from God and one another—the fields below follow the same rhythm as your breakout instructions.",
+        "sourceSlideId": "s1-003a"
+      },
+      {
+        "id": "wb-belief-shift",
+        "kind": "reflection",
+        "title": "Belief Shift",
+        "subtitle": "Notice what moved—and what still feels hard",
+        "sectionEyebrow": "Integration",
+        "intro": "You’ve spent time in the Word and in teaching. Honesty here helps you leave with clarity instead of a vague “that was nice.”",
+        "reflectionPrompts": [
+          {
+            "fieldId": "what-changed",
+            "label": "What changed—or became clearer—for you today about Partnership Development?",
+            "placeholder": "Specific beats generic.",
+            "rows": 5
+          },
+          {
+            "fieldId": "resistance",
+            "label": "Where do you still feel resistance, fear, or tension?",
+            "placeholder": "Naming it helps God meet you there.",
+            "rows": 4
+          }
+        ]
+      },
+      {
+        "id": "wb-key-language",
+        "kind": "fillIn",
+        "title": "Key Language Anchors",
+        "subtitle": "Make the reframe your own",
+        "sectionEyebrow": "Language",
+        "intro": "Fill in with words that match today’s teaching. Rough drafts are fine—the goal is ownership, not perfection.",
+        "fillInItems": [
+          {
+            "prompt": "Support raising is not ________, it is ________.",
+            "answers": [
+              "fundraising",
+              "partnership"
+            ]
+          },
+          {
+            "prompt": "We are not asking people to ________, we are inviting them to ________.",
+            "answers": [
+              "give money",
+              "partner in mission"
+            ]
+          },
+          {
+            "prompt": "Partnership Development is about ________, not ________.",
+            "answers": [
+              "ministry",
+              "money"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "wb-commitment",
+        "kind": "reflection",
+        "title": "Personal Commitment",
+        "subtitle": "Carry something specific into your week",
+        "sectionEyebrow": "Next steps",
+        "intro": "End with a small, concrete move—not a vague resolution.",
+        "reflectionPrompts": [
+          {
+            "fieldId": "next-step",
+            "label": "One next step I will take in the next seven days",
+            "placeholder": "Make it observable.",
+            "rows": 4
+          },
+          {
+            "fieldId": "pray-for",
+            "label": "One person I will engage or pray for",
+            "placeholder": "Name or describe them briefly.",
+            "rows": 3
+          }
+        ]
+      },
+      {
+        "id": "wb-freedom-path",
+        "kind": "fillIn",
+        "title": "The FREEDOM Path",
+        "subtitle": "A simple path to fully funded ministry",
+        "attribution": "Adapted from the Fully Funded Academy framework",
+        "sectionEyebrow": "Looking ahead",
+        "intro": "You’ll unpack each step in Session 2. For now, lock in the six words so the path feels familiar when you come back.",
+        "fillInItems": [
+          {
+            "prompt": "Focus your ________.",
+            "answers": [
+              "vision"
+            ]
+          },
+          {
+            "prompt": "Run your ________.",
+            "answers": [
+              "research"
+            ]
+          },
+          {
+            "prompt": "Enlist your ________.",
+            "answers": [
+              "team"
+            ]
+          },
+          {
+            "prompt": "Enhance your ________.",
+            "answers": [
+              "brand"
+            ]
+          },
+          {
+            "prompt": "Organize your ________.",
+            "answers": [
+              "ask"
+            ]
+          },
+          {
+            "prompt": "Make your ________.",
+            "answers": [
+              "impact"
+            ]
+          }
+        ],
+        "reflectionPrompts": [
+          {
+            "fieldId": "freedom-clear",
+            "label": "Which part of this path feels most clear to you?",
+            "placeholder": "A word or a short phrase is enough.",
+            "rows": 3
+          },
+          {
+            "fieldId": "freedom-challenge",
+            "label": "Which part feels most challenging?",
+            "placeholder": "No need to fix it here—just notice.",
+            "rows": 3
+          }
+        ],
+        "fillInCompact": true
+      }
+    ]
+  }
 }

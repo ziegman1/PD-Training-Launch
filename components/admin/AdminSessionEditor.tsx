@@ -1,0 +1,1058 @@
+"use client";
+
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
+import Link from "next/link";
+import {
+  DndContext,
+  closestCenter,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  type DragEndEvent,
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  useSortable,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import type { EditableSessionId } from "@/lib/admin/sessionFiles";
+import {
+  adminAuthFetchHeaders,
+  getStoredAdminToken,
+} from "@/components/admin/adminTokenStorage";
+import { AdminSlidePreviewPanel } from "@/components/admin/AdminSlidePreviewPanel";
+import {
+  DEFAULT_DECK_PLACEMENT,
+  mergeDeckPlacement,
+} from "@/lib/deckPlacement";
+import type {
+  DeckPlacement,
+  LaunchSession,
+  PresentationFontSizes,
+} from "@/types/launch";
+import { mergePresentationFontSizes } from "@/lib/presentationFontSizes";
+import { PresentationFontSizeSelect } from "@/components/launch/slide/PresentationFontSizeSelect";
+import { deckStackForAuthoringSlide } from "@/lib/admin/deckStack";
+
+type AuthoringDoc = Record<string, unknown> & {
+  slides: Record<string, unknown>[];
+};
+
+export function AdminSessionEditor({
+  sessionId,
+}: {
+  sessionId: EditableSessionId;
+}) {
+  const [token, setToken] = useState("");
+  useEffect(() => setToken(getStoredAdminToken()), []);
+
+  const [doc, setDoc] = useState<AuthoringDoc | null>(null);
+  const [normalizedSession, setNormalizedSession] =
+    useState<LaunchSession | null>(null);
+  const [normalizedErr, setNormalizedErr] = useState<string | null>(null);
+  const [loadErr, setLoadErr] = useState<string | null>(null);
+  const [stackPreviewIx, setStackPreviewIx] = useState<number | null>(null);
+  const [saveMsg, setSaveMsg] = useState<string | null>(null);
+  const [saveErr, setSaveErr] = useState<string | null>(null);
+  const [tab, setTab] = useState<"meta" | "slides" | "workbook">("slides");
+  const [slideIx, setSlideIx] = useState(0);
+  const [workbookJson, setWorkbookJson] = useState("");
+  const [layoutEditMode, setLayoutEditMode] = useState(false);
+
+  /** Pointer only: KeyboardSensor used Space/Enter for drag and could fight form fields. */
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
+  );
+
+  const load = useCallback(
+    async (opts?: { preserveSlideId?: string }) => {
+      setLoadErr(null);
+      setNormalizedErr(null);
+      const [rAuth, rNorm] = await Promise.all([
+        fetch(`/api/admin/session/${sessionId}/authoring`, {
+          headers: adminAuthFetchHeaders(),
+        }),
+        fetch(`/api/admin/session/${sessionId}/normalized`, {
+          headers: adminAuthFetchHeaders(),
+        }),
+      ]);
+      if (!rAuth.ok) {
+        setLoadErr(await rAuth.text());
+        setDoc(null);
+        setNormalizedSession(null);
+        return;
+      }
+      const data = (await rAuth.json()) as AuthoringDoc;
+      setDoc(data);
+      setWorkbookJson(
+        data.workbook != null
+          ? `${JSON.stringify(data.workbook, null, 2)}\n`
+          : "",
+      );
+      const keepId = opts?.preserveSlideId?.trim();
+      if (keepId) {
+        const ix = data.slides.findIndex(
+          (s) => String((s as Record<string, unknown>).id) === keepId,
+        );
+        setSlideIx(ix >= 0 ? ix : 0);
+      } else {
+        setSlideIx(0);
+      }
+      setStackPreviewIx(null);
+
+      if (!rNorm.ok) {
+        const j = (await rNorm.json().catch(() => ({}))) as {
+          error?: string;
+        };
+        setNormalizedErr(j.error ?? (await rNorm.text()));
+        setNormalizedSession(null);
+      } else {
+        const norm = (await rNorm.json()) as LaunchSession;
+        setNormalizedSession(
+          norm && Array.isArray(norm.slides) ? norm : null,
+        );
+      }
+    },
+    [sessionId],
+  );
+
+  useEffect(() => {
+    void load();
+  }, [load]);
+
+  const updateSlideAt = (index: number, patch: Record<string, unknown>) => {
+    if (!doc) return;
+    const slides = [...doc.slides];
+    const cur = {
+      ...(slides[index] as Record<string, unknown>),
+      ...patch,
+    };
+    slides[index] = cur;
+    setDoc({ ...doc, slides });
+  };
+
+  const updateSlide = (patch: Record<string, unknown>) => {
+    updateSlideAt(slideIx, patch);
+  };
+
+  const slide = doc?.slides[slideIx] as Record<string, unknown> | undefined;
+
+  const authoringSlideId = slide ? String(slide.id ?? "") : "";
+
+  const deckStack = useMemo(
+    () =>
+      deckStackForAuthoringSlide(
+        normalizedSession?.slides ?? [],
+        authoringSlideId,
+      ),
+    [normalizedSession?.slides, authoringSlideId],
+  );
+
+  useEffect(() => {
+    setStackPreviewIx(null);
+  }, [slideIx, authoringSlideId]);
+
+  const slideIds = useMemo(
+    () =>
+      doc
+        ? doc.slides.map((s) => String((s as Record<string, unknown>).id))
+        : [],
+    [doc],
+  );
+
+  const bullets = useMemo(
+    () =>
+      slide && Array.isArray(slide.bullets)
+        ? slide.bullets.map((x) => String(x))
+        : [],
+    [slide],
+  );
+
+  const bulletSortIds = useMemo(
+    () => bullets.map((_, i) => `bu-${slideIx}-${i}`),
+    [bullets.length, slideIx],
+  );
+
+  const deckMerged = useMemo(() => {
+    if (!slide?.deckPlacement || typeof slide.deckPlacement !== "object") {
+      return mergeDeckPlacement(undefined);
+    }
+    return mergeDeckPlacement(slide.deckPlacement as DeckPlacement);
+  }, [slide]);
+
+  const slidePresentationFontSizes = useMemo(():
+    | PresentationFontSizes
+    | undefined => {
+    if (!slide) return undefined;
+    const raw = slide.presentationFontSizes;
+    if (raw == null || typeof raw !== "object") return undefined;
+    return raw as PresentationFontSizes;
+  }, [slide]);
+
+  const patchSlideFont = (
+    key: keyof PresentationFontSizes,
+    rem: number | undefined,
+  ) =>
+    updateSlide({
+      presentationFontSizes: mergePresentationFontSizes(
+        slidePresentationFontSizes,
+        key,
+        rem,
+      ),
+    });
+
+  const hasDeckPlacement = Boolean(
+    slide &&
+      slide.deckPlacement &&
+      typeof slide.deckPlacement === "object" &&
+      (Boolean(
+        (slide.deckPlacement as DeckPlacement).title ??
+          (slide.deckPlacement as DeckPlacement).emphasis ??
+          (slide.deckPlacement as DeckPlacement).bullets,
+      ) || Object.keys(slide.deckPlacement as object).length > 0),
+  );
+
+  const onAdminDragEnd = (event: DragEndEvent) => {
+    if (!doc) return;
+    const { active, over } = event;
+    if (!over || active.id === over.id) return;
+    const aid = String(active.id);
+    const oid = String(over.id);
+
+    if (slideIds.includes(aid) && slideIds.includes(oid)) {
+      const oldIndex = slideIds.indexOf(aid);
+      const newIndex = slideIds.indexOf(oid);
+      if (oldIndex < 0 || newIndex < 0) return;
+      const curId = String(
+        (doc.slides[slideIx] as Record<string, unknown>).id ?? "",
+      );
+      const nextSlides = arrayMove(doc.slides, oldIndex, newIndex);
+      setDoc({ ...doc, slides: nextSlides });
+      const nextIx = nextSlides.findIndex(
+        (s) => String((s as Record<string, unknown>).id) === curId,
+      );
+      setSlideIx(nextIx >= 0 ? nextIx : 0);
+      return;
+    }
+
+    if (bulletSortIds.includes(aid) && bulletSortIds.includes(oid)) {
+      const oldIndex = bulletSortIds.indexOf(aid);
+      const newIndex = bulletSortIds.indexOf(oid);
+      if (oldIndex < 0 || newIndex < 0) return;
+      updateSlide({ bullets: arrayMove(bullets, oldIndex, newIndex) });
+    }
+  };
+
+  const addSlide = () => {
+    if (!doc) return;
+    const id = `slide-${Date.now()}`;
+    const blank: Record<string, unknown> = {
+      id,
+      title: "New slide",
+      bullets: [],
+      trainerCadence: "",
+      trainerTransition: "",
+      trainerScriptNotes: "",
+    };
+    const slides = [...doc.slides, blank];
+    setDoc({ ...doc, slides });
+    setSlideIx(slides.length - 1);
+  };
+
+  const duplicateSlide = () => {
+    if (!doc || !slide) return;
+    const copy = JSON.parse(JSON.stringify(slide)) as Record<
+      string,
+      unknown
+    >;
+    copy.id = `${String(copy.id)}-copy-${Date.now()}`;
+    delete copy.bulletRevealVisibleCount;
+    delete copy.promptRevealVisibleCount;
+    delete copy.progressiveReveal;
+    delete copy.progressiveRevealLeadIn;
+    const slides = [
+      ...doc.slides.slice(0, slideIx + 1),
+      copy,
+      ...doc.slides.slice(slideIx + 1),
+    ];
+    setDoc({ ...doc, slides });
+    setSlideIx(slideIx + 1);
+  };
+
+  const deleteSlide = () => {
+    if (!doc || doc.slides.length < 2) {
+      window.alert("Keep at least one slide in the authoring file.");
+      return;
+    }
+    if (
+      !window.confirm(
+        `Delete slide "${String(slide?.id ?? "")}"? This cannot be undone until you re-save from git.`,
+      )
+    ) {
+      return;
+    }
+    const slides = doc.slides.filter((_, i) => i !== slideIx);
+    setDoc({ ...doc, slides });
+    setSlideIx(Math.min(slideIx, slides.length - 1));
+  };
+
+  const setDeckPlacementFull = (next: DeckPlacement) => {
+    updateSlide({
+      deckPlacement: {
+        title: next.title,
+        emphasis: next.emphasis,
+        bullets: next.bullets,
+      },
+    });
+  };
+
+  const save = async () => {
+    if (!doc) return;
+    const preserveSlideId = String(
+      (doc.slides[slideIx] as Record<string, unknown> | undefined)?.id ?? "",
+    );
+    setSaveMsg(null);
+    setSaveErr(null);
+    const merged: Record<string, unknown> = { ...doc };
+    if (workbookJson.trim()) {
+      try {
+        merged.workbook = JSON.parse(workbookJson) as unknown;
+      } catch {
+        setSaveErr("Workbook JSON is invalid.");
+        return;
+      }
+    } else {
+      delete merged.workbook;
+    }
+    const r = await fetch(`/api/admin/session/${sessionId}/authoring`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        ...adminAuthFetchHeaders(),
+      },
+      body: JSON.stringify(merged),
+    });
+    const j = (await r.json().catch(() => ({}))) as {
+      error?: string;
+      message?: string;
+    };
+    if (!r.ok) {
+      setSaveErr(j.error ?? (await r.text()));
+      return;
+    }
+    setSaveMsg(j.message ?? "Saved.");
+    await load({ preserveSlideId });
+  };
+
+  if (!token) {
+    return (
+      <p className="text-launch-muted">
+        Set your admin token on the{" "}
+        <Link href="/admin" className="text-launch-gold underline">
+          admin home
+        </Link>
+        .
+      </p>
+    );
+  }
+
+  if (loadErr) {
+    return (
+      <div className="space-y-4">
+        <p className="text-red-300">{loadErr}</p>
+        <button
+          type="button"
+          onClick={() => void load()}
+          className="rounded border border-launch-steel/40 px-3 py-1"
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
+
+  if (!doc) {
+    return <p className="text-launch-muted">Loading…</p>;
+  }
+
+  return (
+    <div className="space-y-6">
+      <div className="flex flex-wrap gap-2 border-b border-launch-steel/25 pb-4">
+        {(["meta", "slides", "workbook"] as const).map((t) => (
+          <button
+            key={t}
+            type="button"
+            onClick={() => setTab(t)}
+            className={`rounded px-3 py-1.5 text-sm capitalize ${
+              tab === t
+                ? "bg-launch-gold/20 text-launch-gold"
+                : "text-launch-muted"
+            }`}
+          >
+            {t}
+          </button>
+        ))}
+      </div>
+
+      {tab === "meta" && (
+        <div className="grid gap-4">
+          <Field
+            label="Title"
+            value={String(doc.title ?? "")}
+            onChange={(v) => setDoc({ ...doc, title: v })}
+          />
+          <Field
+            label="Short title"
+            value={String(doc.shortTitle ?? "")}
+            onChange={(v) => setDoc({ ...doc, shortTitle: v })}
+          />
+          <Field
+            label="Theme"
+            value={String(doc.theme ?? "")}
+            onChange={(v) => setDoc({ ...doc, theme: v })}
+          />
+          <label className="block">
+            <span className="text-sm text-launch-muted">Objective</span>
+            <textarea
+              value={String(doc.objective ?? "")}
+              onChange={(e) =>
+                setDoc({ ...doc, objective: e.target.value })
+              }
+              className="mt-1 w-full rounded border border-launch-steel/30 bg-black/30 p-2 text-sm"
+              rows={4}
+            />
+          </label>
+        </div>
+      )}
+
+      {tab === "slides" && slide && (
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          onDragEnd={onAdminDragEnd}
+        >
+          <div className="space-y-6">
+            <div className="flex flex-col items-stretch gap-4 lg:flex-row lg:items-start lg:gap-6">
+              <div className="shrink-0 lg:w-[min(100%,440px)] lg:max-w-[46%]">
+                <AdminSlidePreviewPanel
+                  sessionId={sessionId}
+                  slide={slide}
+                  builtSlidePreview={
+                    stackPreviewIx != null && deckStack[stackPreviewIx]
+                      ? deckStack[stackPreviewIx]
+                      : null
+                  }
+                  builtStackStepIndex={
+                    stackPreviewIx != null ? stackPreviewIx : undefined
+                  }
+                  builtStackStepCount={
+                    deckStack.length > 0 ? deckStack.length : undefined
+                  }
+                  layoutEditMode={layoutEditMode}
+                  onDeckPlacementChange={setDeckPlacementFull}
+                  onSlidePatch={(patch) => updateSlide(patch)}
+                />
+              </div>
+
+              <div className="min-w-0 flex-1 space-y-3">
+                <div className="rounded border border-launch-steel/25 bg-[#151b22] p-2.5">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <span className="text-xs font-medium uppercase tracking-wide text-launch-muted">
+                      Built deck stack
+                    </span>
+                    {stackPreviewIx != null && (
+                      <button
+                        type="button"
+                        onClick={() => setStackPreviewIx(null)}
+                        className="text-[10px] font-medium text-launch-gold underline decoration-launch-gold/40 underline-offset-2 hover:text-launch-gold"
+                      >
+                        Clear step preview → authoring
+                      </button>
+                    )}
+                  </div>
+                  {normalizedErr && (
+                    <p className="mt-1 text-[11px] text-amber-200/90">
+                      Could not load normalized deck: {normalizedErr}
+                    </p>
+                  )}
+                  <p className="mt-1 text-[10px] leading-snug text-launch-muted">
+                    Steps are from the saved{" "}
+                    <code className="text-launch-soft/90">
+                      {sessionId}.json
+                    </code>{" "}
+                    after normalize. Save authoring to refresh.
+                  </p>
+                  {deckStack.length === 0 && !normalizedErr && (
+                    <p className="mt-2 text-[11px] text-launch-muted">
+                      No matching rows for this slide id (new id, or normalize
+                      not run yet).
+                    </p>
+                  )}
+                  {deckStack.length > 0 && (
+                    <ul className="mt-2 max-h-[min(28vh,220px)] space-y-1 overflow-y-auto rounded border border-launch-steel/15 p-1">
+                      {deckStack.map((s, i) => {
+                        const selected = stackPreviewIx === i;
+                        const b =
+                          s.bulletRevealVisibleCount === undefined
+                            ? "all"
+                            : String(s.bulletRevealVisibleCount);
+                        const p =
+                          s.promptRevealVisibleCount === undefined
+                            ? "all"
+                            : String(s.promptRevealVisibleCount);
+                        return (
+                          <li key={`${s.id}-${i}`}>
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setStackPreviewIx(selected ? null : i)
+                              }
+                              className={`w-full rounded px-2 py-1.5 text-left text-[11px] leading-snug ring-1 transition-colors ${
+                                selected
+                                  ? "bg-launch-gold/15 text-launch-soft ring-launch-gold/45"
+                                  : "bg-black/25 text-launch-muted ring-launch-steel/20 hover:bg-black/40 hover:text-launch-soft"
+                              }`}
+                            >
+                              <span className="font-mono text-[10px] text-launch-gold/90">
+                                {i + 1}. {s.id}
+                              </span>
+                              <span className="mt-0.5 block text-launch-muted">
+                                bullets visible: {b} · prompts visible: {p}
+                                {s.emphasis ? " · subtitle on slide" : ""}
+                                {s.scripture ? " · scripture on slide" : ""}
+                              </span>
+                            </button>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={addSlide}
+                    className="rounded-lg border border-launch-steel/35 bg-launch-navy/40 px-3 py-1.5 text-sm text-launch-soft hover:bg-launch-navy/60"
+                  >
+                    Add slide
+                  </button>
+                  <button
+                    type="button"
+                    onClick={duplicateSlide}
+                    className="rounded-lg border border-launch-steel/35 bg-launch-navy/40 px-3 py-1.5 text-sm text-launch-soft hover:bg-launch-navy/60"
+                  >
+                    Duplicate slide
+                  </button>
+                  <button
+                    type="button"
+                    onClick={deleteSlide}
+                    className="rounded-lg border border-red-400/35 bg-red-950/30 px-3 py-1.5 text-sm text-red-200 hover:bg-red-950/50"
+                  >
+                    Delete slide
+                  </button>
+                </div>
+
+                <div>
+                  <span className="text-sm text-launch-muted">
+                    Slides (drag to reorder deck)
+                  </span>
+                  <SortableContext
+                    items={slideIds}
+                    strategy={verticalListSortingStrategy}
+                  >
+                    <ul className="mt-1 max-h-[min(40vh,320px)] space-y-1 overflow-y-auto rounded border border-launch-steel/20 p-1 lg:max-h-[min(52vh,400px)]">
+                      {doc.slides.map((s, i) => (
+                        <SortableSlideRow
+                          key={String((s as Record<string, unknown>).id)}
+                          id={String((s as Record<string, unknown>).id)}
+                          selected={i === slideIx}
+                          title={String(
+                            (s as Record<string, unknown>).title ?? "",
+                          )}
+                          onSelect={() => setSlideIx(i)}
+                        />
+                      ))}
+                    </ul>
+                  </SortableContext>
+                </div>
+              </div>
+            </div>
+
+            <div className="min-w-0 space-y-4">
+              <div className="rounded border border-launch-steel/25 bg-black/20 p-3 space-y-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setLayoutEditMode((v) => !v)}
+                  className={`rounded px-3 py-1 text-xs font-medium ${
+                    layoutEditMode
+                      ? "bg-amber-500/25 text-amber-100 ring-1 ring-amber-400/50"
+                      : "bg-launch-navy/50 text-launch-muted ring-1 ring-launch-steel/30"
+                  }`}
+                >
+                  {layoutEditMode
+                    ? "Done moving title / subtitle / content"
+                    : "Edit positions on preview (drag)"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    updateSlide({
+                      deckPlacement: {
+                        title: { ...DEFAULT_DECK_PLACEMENT.title },
+                        emphasis: { ...DEFAULT_DECK_PLACEMENT.emphasis },
+                        bullets: { ...DEFAULT_DECK_PLACEMENT.bullets },
+                      },
+                    })
+                  }
+                  className="rounded px-2 py-1 text-xs text-launch-muted ring-1 ring-launch-steel/25 hover:text-launch-soft"
+                >
+                  Apply default % layout
+                </button>
+                <button
+                  type="button"
+                  onClick={() => updateSlide({ deckPlacement: undefined })}
+                  className="rounded px-2 py-1 text-xs text-launch-muted ring-1 ring-launch-steel/25 hover:text-launch-soft"
+                >
+                  Clear custom layout
+                </button>
+              </div>
+              {hasDeckPlacement && (
+                <p className="text-[11px] leading-snug text-launch-muted">
+                  Custom layout is active on this slide. Adjust content block
+                  width with the field below (presentation lower stack).
+                </p>
+              )}
+              {hasDeckPlacement && (
+                <Field
+                  label="Content block width % (deck)"
+                  value={String(Math.round(deckMerged.bullets.widthPct))}
+                  onChange={(v) => {
+                    const n = Number(v);
+                    if (!Number.isFinite(n)) return;
+                    const w = Math.max(25, Math.min(100, Math.round(n)));
+                    const cur = mergeDeckPlacement(
+                      slide.deckPlacement as DeckPlacement | undefined,
+                    );
+                    updateSlide({
+                      deckPlacement: {
+                        title: cur.title,
+                        emphasis: cur.emphasis,
+                        bullets: { ...cur.bullets, widthPct: w },
+                      },
+                    });
+                  }}
+                />
+              )}
+            </div>
+
+            <Field
+              label="Slide id"
+              value={String(slide.id ?? "")}
+              onChange={(v) => {
+                const id = v.trim();
+                if (!id) return;
+                updateSlide({ id });
+              }}
+            />
+            <Field
+              label="Title"
+              value={String(slide.title ?? "")}
+              onChange={(v) => updateSlide({ title: v })}
+              labelExtra={
+                <PresentationFontSizeSelect
+                  field="titleRem"
+                  ariaLabel="Title font size on deck"
+                  value={slidePresentationFontSizes?.titleRem}
+                  onChange={(r) => patchSlideFont("titleRem", r)}
+                />
+              }
+            />
+            <Field
+              label="Section"
+              value={String(slide.section ?? "")}
+              onChange={(v) => updateSlide({ section: v || undefined })}
+              labelExtra={
+                <PresentationFontSizeSelect
+                  field="sectionRem"
+                  ariaLabel="Section label font size on deck"
+                  value={slidePresentationFontSizes?.sectionRem}
+                  onChange={(r) => patchSlideFont("sectionRem", r)}
+                />
+              }
+            />
+            <Field
+              label="Emphasis (subtitle on deck)"
+              value={String(slide.emphasis ?? "")}
+              onChange={(v) => updateSlide({ emphasis: v || undefined })}
+              labelExtra={
+                <PresentationFontSizeSelect
+                  field="emphasisRem"
+                  ariaLabel="Emphasis font size on deck"
+                  value={slidePresentationFontSizes?.emphasisRem}
+                  onChange={(r) => patchSlideFont("emphasisRem", r)}
+                />
+              }
+            />
+            <Field
+              label="Scripture"
+              value={String(slide.scripture ?? "")}
+              onChange={(v) => updateSlide({ scripture: v || undefined })}
+              labelExtra={
+                <PresentationFontSizeSelect
+                  field="scriptureRem"
+                  ariaLabel="Scripture font size on deck"
+                  value={slidePresentationFontSizes?.scriptureRem}
+                  onChange={(r) => patchSlideFont("scriptureRem", r)}
+                />
+              }
+            />
+            <label className="block">
+              <span className="flex flex-wrap items-center justify-between gap-2">
+                <span className="text-sm text-launch-muted">
+                  Bullets (one per line)
+                </span>
+                <PresentationFontSizeSelect
+                  field="bulletsRem"
+                  ariaLabel="Bullet list font size on deck"
+                  value={slidePresentationFontSizes?.bulletsRem}
+                  onChange={(r) => patchSlideFont("bulletsRem", r)}
+                />
+              </span>
+              <textarea
+                value={bullets.join("\n")}
+                onChange={(e) => {
+                  const raw = e.target.value;
+                  updateSlide({
+                    bullets: raw === "" ? [] : raw.split(/\r?\n/),
+                  });
+                }}
+                className="mt-1 w-full rounded border border-launch-steel/30 bg-black/30 p-2 font-mono text-sm"
+                rows={6}
+              />
+            </label>
+            {bullets.length > 1 && (
+              <div>
+                <span className="text-sm text-launch-muted">
+                  Reorder bullets (drag handles)
+                </span>
+                <SortableContext
+                  items={bulletSortIds}
+                  strategy={verticalListSortingStrategy}
+                >
+                  <ul className="mt-1 space-y-1 rounded border border-launch-steel/20 p-1">
+                    {bullets.map((line, i) => (
+                      <SortableBulletRow
+                        key={bulletSortIds[i]}
+                        id={bulletSortIds[i]}
+                        text={line}
+                      />
+                    ))}
+                  </ul>
+                </SortableContext>
+              </div>
+            )}
+            <label className="block">
+              <span className="text-sm text-launch-muted">
+                Presenter — cadence (spoken)
+              </span>
+              <textarea
+                value={String(slide.trainerCadence ?? "")}
+                onChange={(e) =>
+                  updateSlide({ trainerCadence: e.target.value })
+                }
+                className="mt-1 w-full rounded border border-launch-steel/30 bg-black/30 p-2 text-sm"
+                rows={6}
+              />
+            </label>
+            <label className="block">
+              <span className="text-sm text-launch-muted">
+                Presenter — transition
+              </span>
+              <textarea
+                value={String(slide.trainerTransition ?? "")}
+                onChange={(e) =>
+                  updateSlide({ trainerTransition: e.target.value })
+                }
+                className="mt-1 w-full rounded border border-launch-steel/30 bg-black/30 p-2 text-sm"
+                rows={3}
+              />
+            </label>
+            <label className="block">
+              <span className="text-sm text-launch-muted">
+                Presenter — script notes (internal)
+              </span>
+              <textarea
+                value={String(slide.trainerScriptNotes ?? "")}
+                onChange={(e) =>
+                  updateSlide({ trainerScriptNotes: e.target.value })
+                }
+                className="mt-1 w-full rounded border border-launch-steel/30 bg-black/30 p-2 text-sm"
+                rows={5}
+              />
+            </label>
+            <label className="block">
+              <span className="flex flex-wrap items-center justify-between gap-2">
+                <span className="text-sm text-launch-muted">
+                  Interaction / participant prompt
+                </span>
+                <PresentationFontSizeSelect
+                  field="interactionRem"
+                  ariaLabel="Interaction (Together box) font size on deck"
+                  value={slidePresentationFontSizes?.interactionRem}
+                  onChange={(r) => patchSlideFont("interactionRem", r)}
+                />
+              </span>
+              <textarea
+                value={String(slide.interaction ?? "")}
+                onChange={(e) =>
+                  updateSlide({
+                    interaction: e.target.value || undefined,
+                  })
+                }
+                className="mt-1 w-full rounded border border-launch-steel/30 bg-black/30 p-2 text-sm"
+                rows={4}
+              />
+            </label>
+            <label className="block">
+              <span className="text-sm text-launch-muted">
+                Interaction type
+              </span>
+              <select
+                value={String(slide.interactionType ?? "")}
+                onChange={(e) =>
+                  updateSlide({
+                    interactionType: e.target.value || undefined,
+                  })
+                }
+                className="mt-1 w-full rounded border border-launch-steel/30 bg-black/30 p-2 text-sm"
+              >
+                <option value="">(omit)</option>
+                <option value="none">none</option>
+                <option value="reflection">reflection</option>
+                <option value="fillIn">fillIn</option>
+                <option value="exercise">exercise</option>
+                <option value="discussion">discussion</option>
+                <option value="pairShare">pairShare</option>
+                <option value="prayer">prayer</option>
+                <option value="bibleStudy">bibleStudy</option>
+              </select>
+            </label>
+            <Field
+              label="Timing"
+              value={String(slide.timing ?? "")}
+              onChange={(v) => updateSlide({ timing: v || undefined })}
+            />
+            <Field
+              label="Transition cue"
+              value={String(slide.transitionCue ?? "")}
+              onChange={(v) =>
+                updateSlide({ transitionCue: v || undefined })
+              }
+            />
+            <Field
+              label="Discussion handoff"
+              value={String(slide.discussionHandoff ?? "")}
+              onChange={(v) =>
+                updateSlide({ discussionHandoff: v || undefined })
+              }
+            />
+            <label className="block">
+              <span className="flex flex-wrap items-center justify-between gap-2">
+                <span className="text-sm text-launch-muted">
+                  Room prompts (one per line)
+                </span>
+                <PresentationFontSizeSelect
+                  field="promptsRem"
+                  ariaLabel="Room prompts font size on deck"
+                  value={slidePresentationFontSizes?.promptsRem}
+                  onChange={(r) => patchSlideFont("promptsRem", r)}
+                />
+              </span>
+              <textarea
+                value={
+                  Array.isArray(slide.prompts)
+                    ? slide.prompts.map(String).join("\n")
+                    : ""
+                }
+                onChange={(e) => {
+                  const raw = e.target.value;
+                  const lines = raw === "" ? [] : raw.split(/\r?\n/);
+                  updateSlide({
+                    prompts: lines.length ? lines : undefined,
+                  });
+                }}
+                className="mt-1 w-full rounded border border-launch-steel/30 bg-black/30 p-2 text-sm"
+                rows={4}
+              />
+            </label>
+            <Field
+              label="Continuation group (optional)"
+              value={String(slide.continuationGroup ?? "")}
+              onChange={(v) =>
+                updateSlide({ continuationGroup: v || undefined })
+              }
+            />
+            </div>
+          </div>
+        </DndContext>
+      )}
+
+      {tab === "workbook" && (
+        <label className="block">
+          <span className="text-sm text-launch-muted">
+            Workbook JSON (sections, reflection prompts, fill-ins, etc.)
+          </span>
+          <textarea
+            value={workbookJson}
+            onChange={(e) => setWorkbookJson(e.target.value)}
+            className="mt-1 w-full rounded border border-launch-steel/30 bg-black/30 p-2 font-mono text-xs leading-relaxed"
+            rows={24}
+            spellCheck={false}
+          />
+        </label>
+      )}
+
+      <div className="flex flex-wrap items-center gap-3 border-t border-launch-steel/25 pt-4">
+        <button
+          type="button"
+          onClick={() => void save()}
+          className="rounded-lg bg-launch-gold/90 px-4 py-2 text-sm font-semibold text-launch-navy"
+        >
+          Save &amp; regenerate deck
+        </button>
+        {saveMsg && (
+          <span className="text-sm text-launch-soft">{saveMsg}</span>
+        )}
+        {saveErr && (
+          <span className="text-sm text-red-300">{saveErr}</span>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function SortableSlideRow({
+  id,
+  selected,
+  title,
+  onSelect,
+}: {
+  id: string;
+  selected: boolean;
+  title: string;
+  onSelect: () => void;
+}) {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.82 : 1,
+  };
+
+  return (
+    <li ref={setNodeRef} style={style} className="list-none">
+      <div
+        className={`flex items-center gap-1 rounded border px-1 py-1 text-sm ${
+          selected
+            ? "border-launch-gold/45 bg-launch-gold/12"
+            : "border-launch-steel/25 bg-black/25"
+        }`}
+      >
+        <button
+          type="button"
+          className="touch-none cursor-grab rounded px-1 text-launch-muted hover:text-launch-soft active:cursor-grabbing"
+          aria-label="Reorder slide"
+          {...attributes}
+          {...listeners}
+        >
+          ⠿
+        </button>
+        <button
+          type="button"
+          onClick={onSelect}
+          className="min-w-0 flex-1 truncate text-left"
+        >
+          <span className="font-mono text-xs text-launch-gold/90">{id}</span>
+          <span className="text-launch-muted"> · </span>
+          <span className="text-launch-soft/95">{title || "(no title)"}</span>
+        </button>
+      </div>
+    </li>
+  );
+}
+
+function SortableBulletRow({ id, text }: { id: string; text: string }) {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.85 : 1,
+  };
+
+  return (
+    <li ref={setNodeRef} style={style} className="list-none">
+      <div className="flex items-start gap-1 rounded border border-launch-steel/20 bg-black/20 px-1 py-1">
+        <button
+          type="button"
+          className="mt-0.5 touch-none cursor-grab text-launch-muted hover:text-launch-soft active:cursor-grabbing"
+          aria-label="Reorder bullet"
+          {...attributes}
+          {...listeners}
+        >
+          ⠿
+        </button>
+        <span className="min-w-0 flex-1 text-xs leading-snug text-launch-secondary">
+          {text}
+        </span>
+      </div>
+    </li>
+  );
+}
+
+function Field({
+  label,
+  value,
+  onChange,
+  readOnly,
+  labelExtra,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  readOnly?: boolean;
+  labelExtra?: ReactNode;
+}) {
+  return (
+    <label className="block">
+      <span className="flex flex-wrap items-center justify-between gap-2">
+        <span className="text-sm text-launch-muted">{label}</span>
+        {labelExtra}
+      </span>
+      <input
+        value={value}
+        readOnly={readOnly}
+        onChange={(e) => onChange(e.target.value)}
+        className="mt-1 w-full rounded border border-launch-steel/30 bg-black/30 p-2 text-sm read-only:opacity-70"
+      />
+    </label>
+  );
+}
