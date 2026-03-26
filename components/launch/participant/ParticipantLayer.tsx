@@ -4,8 +4,10 @@ import type { AudienceLaunchSlide } from "@/types/launch";
 import { useLaunchSession } from "@/contexts/LaunchSessionContext";
 import {
   getSlideInteraction,
+  getSlideInteractionLines,
   getSlideMomentType,
   getSlidePromptLines,
+  momentParticipantPromptVisible,
   promptsFullyRevealed,
   resolveParticipantInteractionType,
 } from "@/lib/slideContent";
@@ -24,6 +26,18 @@ export function ParticipantLayer({ slide, className = "" }: ParticipantLayerProp
   const Block = getParticipantInteraction(resolvedType);
   const interaction = getSlideInteraction(slide);
   const slidePrompts = getSlidePromptLines(slide).slice(0, 8);
+  const rawIxLines = getSlideInteractionLines(slide).slice(0, 8);
+  const interactionLines =
+    rawIxLines.length > 0 ? rawIxLines : interaction ? [interaction] : [];
+  const interactionRevealLimit =
+    interactionLines.length > 0
+      ? typeof slide.interactionRevealVisibleCount === "number"
+        ? Math.min(
+            interactionLines.length,
+            Math.max(0, Math.floor(slide.interactionRevealVisibleCount)),
+          )
+        : interactionLines.length
+      : 0;
   const promptRevealLimit =
     slidePrompts.length > 0
       ? typeof slide.promptRevealVisibleCount === "number"
@@ -126,22 +140,39 @@ export function ParticipantLayer({ slide, className = "" }: ParticipantLayerProp
                 slidePrompts.length > 0
                   ? "mt-5 border-t border-launch-steel/25 pt-5"
                   : "",
-                slidePrompts.length > 0 && !promptsFullyRevealed(slide)
+                !momentParticipantPromptVisible(slide)
                   ? "pointer-events-none opacity-0"
                   : "",
               ]
                 .filter(Boolean)
                 .join(" ")}
               aria-hidden={
-                slidePrompts.length > 0 && !promptsFullyRevealed(slide)
-                  ? true
-                  : undefined
+                !momentParticipantPromptVisible(slide) ? true : undefined
               }
             >
               <p className="launch-eyebrow text-launch-muted">On this slide</p>
-              <p className="mt-3 text-lg font-medium leading-relaxed text-launch-secondary md:text-xl">
-                {interaction}
-              </p>
+              <ul className="mt-3 space-y-3 text-lg font-medium leading-relaxed text-launch-secondary md:text-xl">
+                {interactionLines.map((line, i) => {
+                  const revealed = i < interactionRevealLimit;
+                  return (
+                    <li
+                      key={`${i}-${line.slice(0, 48)}`}
+                      className={`flex gap-3 ${
+                        revealed ? "" : "pointer-events-none opacity-0"
+                      }`.trim()}
+                      aria-hidden={!revealed}
+                    >
+                      <span
+                        className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-launch-gold/45 text-xs font-semibold text-launch-gold"
+                        aria-hidden
+                      >
+                        {i + 1}
+                      </span>
+                      <span>{line}</span>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           )}
         </section>

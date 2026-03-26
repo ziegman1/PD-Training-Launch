@@ -26,6 +26,10 @@
         "What do you hope changes for you through Launch?"
       ],
       "transitionCue": "Advance to complete the session roadmap on the next slide.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 3,
       "promptRevealVisibleCount": 0
     },
@@ -48,6 +52,10 @@
         "What do you hope changes for you through Launch?"
       ],
       "transitionCue": "Advance to complete the session roadmap on the next slide.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 3,
       "promptRevealVisibleCount": 1
     },
@@ -70,6 +78,10 @@
         "What do you hope changes for you through Launch?"
       ],
       "transitionCue": "Advance to complete the session roadmap on the next slide.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 3,
       "promptRevealVisibleCount": 2
     },
@@ -115,12 +127,16 @@
       "trainerTransition": "From here, we're going to ask the question almost everyone carries underneath the surface: is this way of living even biblical?",
       "trainerScriptNotes": "- Let the positive frame land after the negations—sequence matters.\n- Optional: repeat the anchor emphasis line for retention.\n- Invite a genuine question after, not a forced \"amen.\"",
       "emphasis": "You are not asking people to fund you. You are inviting them into what God is doing.",
-      "continuationGroup": "s1-002b",
+      "continuationGroup": "s1-002",
       "timing": "2 min",
       "prompts": [
         "How is partnership development different from ordinary fundraising?"
       ],
       "transitionCue": "Now address the question underneath most fears: is this actually biblical?",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 2,
       "promptRevealVisibleCount": 0
     },
@@ -135,12 +151,16 @@
       "trainerTransition": "From here, we're going to ask the question almost everyone carries underneath the surface: is this way of living even biblical?",
       "trainerScriptNotes": "- Let the positive frame land after the negations—sequence matters.\n- Optional: repeat the anchor emphasis line for retention.\n- Invite a genuine question after, not a forced \"amen.\"",
       "emphasis": "You are not asking people to fund you. You are inviting them into what God is doing.",
-      "continuationGroup": "s1-002b",
+      "continuationGroup": "s1-002",
       "timing": "2 min",
       "prompts": [
         "How is partnership development different from ordinary fundraising?"
       ],
       "transitionCue": "Now address the question underneath most fears: is this actually biblical?",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 2,
       "promptRevealVisibleCount": 1
     },
@@ -157,6 +177,10 @@
       "continuationGroup": "s1-003",
       "timing": "1 min",
       "transitionCue": "Move into the small-group Biblical Foundations study in breakout rooms.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 0
     },
     {
@@ -173,6 +197,10 @@
       "continuationGroup": "s1-003",
       "timing": "1 min",
       "transitionCue": "Move into the small-group Biblical Foundations study in breakout rooms.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 0
     },
     {
@@ -189,6 +217,10 @@
       "continuationGroup": "s1-003",
       "timing": "1 min",
       "transitionCue": "Move into the small-group Biblical Foundations study in breakout rooms.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 1
     },
     {
@@ -205,6 +237,10 @@
       "continuationGroup": "s1-003",
       "timing": "1 min",
       "transitionCue": "Move into the small-group Biblical Foundations study in breakout rooms.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 2
     },
     {
@@ -229,6 +265,10 @@
       "discussionHandoff": "After breakouts close, use the next slide for a whole-group debrief before you teach The Biblical Pattern.",
       "transitionCue": "Close breakouts—advance to the main-room debrief slide (What Did You See?).",
       "interactionType": "bibleStudy",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 3,
@@ -322,6 +362,10 @@
       "discussionHandoff": "After breakouts close, use the next slide for a whole-group debrief before you teach The Biblical Pattern.",
       "transitionCue": "Close breakouts—advance to the main-room debrief slide (What Did You See?).",
       "interactionType": "bibleStudy",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 3,
@@ -415,6 +459,10 @@
       "discussionHandoff": "After breakouts close, use the next slide for a whole-group debrief before you teach The Biblical Pattern.",
       "transitionCue": "Close breakouts—advance to the main-room debrief slide (What Did You See?).",
       "interactionType": "bibleStudy",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 3,
@@ -508,6 +556,10 @@
       "discussionHandoff": "After breakouts close, use the next slide for a whole-group debrief before you teach The Biblical Pattern.",
       "transitionCue": "Close breakouts—advance to the main-room debrief slide (What Did You See?).",
       "interactionType": "bibleStudy",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 3,
@@ -601,6 +653,10 @@
       "discussionHandoff": "After breakouts close, use the next slide for a whole-group debrief before you teach The Biblical Pattern.",
       "transitionCue": "Close breakouts—advance to the main-room debrief slide (What Did You See?).",
       "interactionType": "bibleStudy",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 3,
@@ -694,6 +750,10 @@
       "discussionHandoff": "After breakouts close, use the next slide for a whole-group debrief before you teach The Biblical Pattern.",
       "transitionCue": "Close breakouts—advance to the main-room debrief slide (What Did You See?).",
       "interactionType": "bibleStudy",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 3,
@@ -786,6 +846,10 @@
       "transitionCue": "Move into the overview slide on the broad biblical pattern.",
       "interaction": "In the main room, walk through the four prompts on the slide. Keep shares concise—honor both conviction and honest questions.",
       "interactionType": "discussion",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": false,
         "duration": "6 min",
@@ -797,7 +861,8 @@
         ]
       },
       "bulletRevealVisibleCount": 0,
-      "promptRevealVisibleCount": 0
+      "promptRevealVisibleCount": 0,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-003d__rg1",
@@ -821,6 +886,10 @@
       "transitionCue": "Move into the overview slide on the broad biblical pattern.",
       "interaction": "In the main room, walk through the four prompts on the slide. Keep shares concise—honor both conviction and honest questions.",
       "interactionType": "discussion",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": false,
         "duration": "6 min",
@@ -832,7 +901,8 @@
         ]
       },
       "bulletRevealVisibleCount": 0,
-      "promptRevealVisibleCount": 0
+      "promptRevealVisibleCount": 0,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-003d__rg2",
@@ -856,6 +926,10 @@
       "transitionCue": "Move into the overview slide on the broad biblical pattern.",
       "interaction": "In the main room, walk through the four prompts on the slide. Keep shares concise—honor both conviction and honest questions.",
       "interactionType": "discussion",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": false,
         "duration": "6 min",
@@ -867,7 +941,8 @@
         ]
       },
       "bulletRevealVisibleCount": 1,
-      "promptRevealVisibleCount": 0
+      "promptRevealVisibleCount": 0,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-003d__rg3",
@@ -891,6 +966,10 @@
       "transitionCue": "Move into the overview slide on the broad biblical pattern.",
       "interaction": "In the main room, walk through the four prompts on the slide. Keep shares concise—honor both conviction and honest questions.",
       "interactionType": "discussion",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": false,
         "duration": "6 min",
@@ -902,7 +981,8 @@
         ]
       },
       "bulletRevealVisibleCount": 2,
-      "promptRevealVisibleCount": 0
+      "promptRevealVisibleCount": 0,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-003d__rg4",
@@ -926,6 +1006,10 @@
       "transitionCue": "Move into the overview slide on the broad biblical pattern.",
       "interaction": "In the main room, walk through the four prompts on the slide. Keep shares concise—honor both conviction and honest questions.",
       "interactionType": "discussion",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": false,
         "duration": "6 min",
@@ -937,7 +1021,8 @@
         ]
       },
       "bulletRevealVisibleCount": 3,
-      "promptRevealVisibleCount": 0
+      "promptRevealVisibleCount": 0,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-003d__rg5",
@@ -961,6 +1046,10 @@
       "transitionCue": "Move into the overview slide on the broad biblical pattern.",
       "interaction": "In the main room, walk through the four prompts on the slide. Keep shares concise—honor both conviction and honest questions.",
       "interactionType": "discussion",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": false,
         "duration": "6 min",
@@ -972,7 +1061,8 @@
         ]
       },
       "bulletRevealVisibleCount": 3,
-      "promptRevealVisibleCount": 1
+      "promptRevealVisibleCount": 1,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-003d__rg6",
@@ -996,6 +1086,10 @@
       "transitionCue": "Move into the overview slide on the broad biblical pattern.",
       "interaction": "In the main room, walk through the four prompts on the slide. Keep shares concise—honor both conviction and honest questions.",
       "interactionType": "discussion",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": false,
         "duration": "6 min",
@@ -1007,7 +1101,48 @@
         ]
       },
       "bulletRevealVisibleCount": 3,
-      "promptRevealVisibleCount": 2
+      "promptRevealVisibleCount": 2,
+      "interactionRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-003d__rg7",
+      "title": "What Did You See?",
+      "bullets": [
+        "What stood out or challenged you",
+        "What became clearer",
+        "What surprised you"
+      ],
+      "trainerCadence": "Welcome back. Before we rush forward, I want us to process together in the main room—briefly, honestly, and without performance. Walk through what's on the slide: what stood out, what challenged you, what became clearer, what surprised you.\n\nKeep shares concise—we're listening for themes and tensions, not long teaching moments from each person.",
+      "trainerTransition": "When you've honored the room's voice, let's step into the overview slide on the broad biblical pattern.",
+      "trainerScriptNotes": "- Main-room debrief ~5–7 min; protect time for pattern teaching.\n- Listen for recurring words—mirror them back.\n- Honor both conviction and honest uncertainty.",
+      "emphasis": "Processing together after Scripture is part of the journey—not optional.",
+      "continuationGroup": "s1-003d",
+      "section": "Is Support Raising Biblical?",
+      "timing": "6 min",
+      "prompts": [
+        "What themes showed up across multiple groups?",
+        "Where did Scripture clearly reset an assumption?"
+      ],
+      "transitionCue": "Move into the overview slide on the broad biblical pattern.",
+      "interaction": "In the main room, walk through the four prompts on the slide. Keep shares concise—honor both conviction and honest questions.",
+      "interactionType": "discussion",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
+      "breakout": {
+        "enabled": false,
+        "duration": "6 min",
+        "instructions": [
+          "What stood out from your study or conversation?",
+          "What challenged you or your assumptions?",
+          "What became clearer?",
+          "What surprised you?"
+        ]
+      },
+      "bulletRevealVisibleCount": 3,
+      "promptRevealVisibleCount": 2,
+      "interactionRevealVisibleCount": 1
     },
     {
       "id": "s1-004",
@@ -1034,12 +1169,16 @@
       "trainerCadence": "Here's the rest of that same pattern: partners share in fruit, and provision serves mission—not private comfort, but missional purpose.\n\nWhat I want you to feel is that this isn't a weird side lane in the Bible. It's woven into how God advances his work through his people.",
       "trainerTransition": "Now let's get concrete with some New Testament texts where you can see this up close.",
       "trainerScriptNotes": "- Close the overview with confidence, not apology.\n- Optional prompt: \"What stands out about God's usual pattern of provision?\"\n- Bridge explicitly to specific passages next.",
-      "continuationGroup": "s1-004b",
+      "continuationGroup": "s1-004",
       "timing": "1 min",
       "prompts": [
         "What stands out about God's usual pattern of provision?"
       ],
       "transitionCue": "Move into specific New Testament support texts.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 2,
       "promptRevealVisibleCount": 0
     },
@@ -1053,12 +1192,16 @@
       "trainerCadence": "Here's the rest of that same pattern: partners share in fruit, and provision serves mission—not private comfort, but missional purpose.\n\nWhat I want you to feel is that this isn't a weird side lane in the Bible. It's woven into how God advances his work through his people.",
       "trainerTransition": "Now let's get concrete with some New Testament texts where you can see this up close.",
       "trainerScriptNotes": "- Close the overview with confidence, not apology.\n- Optional prompt: \"What stands out about God's usual pattern of provision?\"\n- Bridge explicitly to specific passages next.",
-      "continuationGroup": "s1-004b",
+      "continuationGroup": "s1-004",
       "timing": "1 min",
       "prompts": [
         "What stands out about God's usual pattern of provision?"
       ],
       "transitionCue": "Move into specific New Testament support texts.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 2,
       "promptRevealVisibleCount": 1
     },
@@ -1076,6 +1219,10 @@
       "continuationGroup": "s1-005",
       "timing": "4 min",
       "transitionCue": "Next show that Paul taught this explicitly.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 0
     },
     {
@@ -1093,6 +1240,10 @@
       "continuationGroup": "s1-005",
       "timing": "4 min",
       "transitionCue": "Next show that Paul taught this explicitly.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 0
     },
     {
@@ -1111,6 +1262,10 @@
       "timing": "4 min",
       "transitionCue": "Next show that Paul taught this explicitly.",
       "scripture": "[object Object]",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 0
     },
     {
@@ -1129,6 +1284,10 @@
       "timing": "4 min",
       "transitionCue": "Next show that Paul taught this explicitly.",
       "scripture": "[object Object]",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 1
     },
     {
@@ -1147,6 +1306,10 @@
       "timing": "4 min",
       "transitionCue": "Next show that Paul taught this explicitly.",
       "scripture": "[object Object]",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 2
     },
     {
@@ -1165,6 +1328,10 @@
       "timing": "4 min",
       "transitionCue": "Next show that Paul taught this explicitly.",
       "scripture": "[object Object]",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 3
     },
     {
@@ -1184,6 +1351,10 @@
         "What words does Paul use that sound more like partnership than donation?"
       ],
       "transitionCue": "Acknowledge tentmaking, but keep it in biblical proportion.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 0,
       "promptRevealVisibleCount": 0
     },
@@ -1205,6 +1376,10 @@
         "What words does Paul use that sound more like partnership than donation?"
       ],
       "transitionCue": "Acknowledge tentmaking, but keep it in biblical proportion.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 0,
       "promptRevealVisibleCount": 0
     },
@@ -1227,6 +1402,10 @@
       ],
       "transitionCue": "Acknowledge tentmaking, but keep it in biblical proportion.",
       "scripture": "[object Object]",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 0,
       "promptRevealVisibleCount": 0
     },
@@ -1249,6 +1428,10 @@
       ],
       "transitionCue": "Acknowledge tentmaking, but keep it in biblical proportion.",
       "scripture": "[object Object]",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 1,
       "promptRevealVisibleCount": 0
     },
@@ -1271,6 +1454,10 @@
       ],
       "transitionCue": "Acknowledge tentmaking, but keep it in biblical proportion.",
       "scripture": "[object Object]",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 2,
       "promptRevealVisibleCount": 0
     },
@@ -1293,6 +1480,10 @@
       ],
       "transitionCue": "Acknowledge tentmaking, but keep it in biblical proportion.",
       "scripture": "[object Object]",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 3,
       "promptRevealVisibleCount": 0
     },
@@ -1315,6 +1506,10 @@
       ],
       "transitionCue": "Acknowledge tentmaking, but keep it in biblical proportion.",
       "scripture": "[object Object]",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 3,
       "promptRevealVisibleCount": 1
     },
@@ -1345,12 +1540,16 @@
       "trainerTransition": "From here we're going to shift from biblical basis to what's happening inside us when we resist these truths.",
       "trainerScriptNotes": "- Land \"mission determines method\" as a memorable line.\n- Optional prompt: why supported ministry can feel \"less noble.\"\n- Emotional temperature may rise—keep tone pastoral.",
       "emphasis": "Tentmaking can be a tool, but it is not the universal biblical standard.",
-      "continuationGroup": "s1-007b",
+      "continuationGroup": "s1-007",
       "timing": "2 min",
       "prompts": [
         "Why do you think supported ministry can feel less noble to some people?"
       ],
       "transitionCue": "Move from biblical basis into internal resistance.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 2,
       "promptRevealVisibleCount": 0
     },
@@ -1365,12 +1564,16 @@
       "trainerTransition": "From here we're going to shift from biblical basis to what's happening inside us when we resist these truths.",
       "trainerScriptNotes": "- Land \"mission determines method\" as a memorable line.\n- Optional prompt: why supported ministry can feel \"less noble.\"\n- Emotional temperature may rise—keep tone pastoral.",
       "emphasis": "Tentmaking can be a tool, but it is not the universal biblical standard.",
-      "continuationGroup": "s1-007b",
+      "continuationGroup": "s1-007",
       "timing": "2 min",
       "prompts": [
         "Why do you think supported ministry can feel less noble to some people?"
       ],
       "transitionCue": "Move from biblical basis into internal resistance.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 2,
       "promptRevealVisibleCount": 1
     },
@@ -1390,6 +1593,10 @@
       "transitionCue": "Now shift into philosophy and attitude.",
       "interaction": "In pairs, process what you heard today — work through the three prompts above.",
       "interactionType": "discussion",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 2,
@@ -1405,7 +1612,8 @@
           "What truth stood out?"
         ]
       },
-      "bulletRevealVisibleCount": 0
+      "bulletRevealVisibleCount": 0,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-008__rg1",
@@ -1424,6 +1632,10 @@
       "transitionCue": "Now shift into philosophy and attitude.",
       "interaction": "In pairs, process what you heard today — work through the three prompts above.",
       "interactionType": "discussion",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 2,
@@ -1439,7 +1651,8 @@
           "What truth stood out?"
         ]
       },
-      "bulletRevealVisibleCount": 0
+      "bulletRevealVisibleCount": 0,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-008__rg2",
@@ -1458,6 +1671,10 @@
       "transitionCue": "Now shift into philosophy and attitude.",
       "interaction": "In pairs, process what you heard today — work through the three prompts above.",
       "interactionType": "discussion",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 2,
@@ -1473,7 +1690,8 @@
           "What truth stood out?"
         ]
       },
-      "bulletRevealVisibleCount": 1
+      "bulletRevealVisibleCount": 1,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-008__rg3",
@@ -1492,6 +1710,10 @@
       "transitionCue": "Now shift into philosophy and attitude.",
       "interaction": "In pairs, process what you heard today — work through the three prompts above.",
       "interactionType": "discussion",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 2,
@@ -1507,7 +1729,8 @@
           "What truth stood out?"
         ]
       },
-      "bulletRevealVisibleCount": 2
+      "bulletRevealVisibleCount": 2,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-008__rg4",
@@ -1526,6 +1749,10 @@
       "transitionCue": "Now shift into philosophy and attitude.",
       "interaction": "In pairs, process what you heard today — work through the three prompts above.",
       "interactionType": "discussion",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 2,
@@ -1541,7 +1768,47 @@
           "What truth stood out?"
         ]
       },
-      "bulletRevealVisibleCount": 3
+      "bulletRevealVisibleCount": 3,
+      "interactionRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-008__rg5",
+      "title": "Process What You Heard",
+      "bullets": [
+        "Still uncomfortable",
+        "What challenged",
+        "Still questioning"
+      ],
+      "trainerCadence": "You've heard a lot of Scripture in a short window—so I want to give you space to process honestly. In your pairs, work through what's on the slide: what still feels uncomfortable or \"unbiblical\" to you, what challenged your thinking, and what question you're still carrying.\n\nYou're not being graded on having it all resolved. Honest questions after Scripture are healthy—not a failure of faith.",
+      "trainerTransition": "When you reconvene, we're going to pivot into philosophy and attitude—how you see God, people, and yourself.",
+      "trainerScriptNotes": "- ~5 minutes in pairs, then debrief within the 8-minute block.\n- Capture recurring tensions verbally or on whiteboard if helpful.\n- Watch for shame language—normalize questions.\n- Clear time boundary so you can land the pivot.",
+      "emphasis": "Honest questions after Scripture are healthy — not a failure of faith.",
+      "continuationGroup": "s1-008",
+      "timing": "8 min",
+      "transitionCue": "Now shift into philosophy and attitude.",
+      "interaction": "In pairs, process what you heard today — work through the three prompts above.",
+      "interactionType": "discussion",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
+      "breakout": {
+        "enabled": true,
+        "groupSize": 2,
+        "duration": "5 min",
+        "instructions": [
+          "Share what still feels unbiblical or uncomfortable",
+          "Discuss what challenged your thinking",
+          "Identify one question you still have"
+        ],
+        "debrief": [
+          "What did you notice in your conversation?",
+          "What tension still remains?",
+          "What truth stood out?"
+        ]
+      },
+      "bulletRevealVisibleCount": 3,
+      "interactionRevealVisibleCount": 1
     },
     {
       "id": "s1-009__rg0",
@@ -1556,6 +1823,10 @@
       "continuationGroup": "s1-009",
       "timing": "1 min",
       "transitionCue": "Start with God as provider.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 0
     },
     {
@@ -1572,6 +1843,10 @@
       "continuationGroup": "s1-009",
       "timing": "1 min",
       "transitionCue": "Start with God as provider.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 0
     },
     {
@@ -1588,6 +1863,10 @@
       "continuationGroup": "s1-009",
       "timing": "1 min",
       "transitionCue": "Start with God as provider.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 1
     },
     {
@@ -1604,6 +1883,10 @@
       "continuationGroup": "s1-009",
       "timing": "1 min",
       "transitionCue": "Start with God as provider.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 2
     },
     {
@@ -1633,12 +1916,16 @@
       "trainerTransition": "Now that we've named God as provider, we're going to get very honest about what partnership development is not.",
       "trainerScriptNotes": "- Land dependence without sounding passive or careless.\n- Optional prompt: what changes when God is truly seen as provider?\n- Bridge clearly to the \"is not\" slide—anticipate fear of manipulation.",
       "emphasis": "Your job is faithful invitation. God's job is provision.",
-      "continuationGroup": "s1-010b",
+      "continuationGroup": "s1-010",
       "timing": "2 min",
       "prompts": [
         "What changes when God is truly seen as the provider?"
       ],
       "transitionCue": "Now define what partnership development is not.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 2,
       "promptRevealVisibleCount": 0
     },
@@ -1653,12 +1940,16 @@
       "trainerTransition": "Now that we've named God as provider, we're going to get very honest about what partnership development is not.",
       "trainerScriptNotes": "- Land dependence without sounding passive or careless.\n- Optional prompt: what changes when God is truly seen as provider?\n- Bridge clearly to the \"is not\" slide—anticipate fear of manipulation.",
       "emphasis": "Your job is faithful invitation. God's job is provision.",
-      "continuationGroup": "s1-010b",
+      "continuationGroup": "s1-010",
       "timing": "2 min",
       "prompts": [
         "What changes when God is truly seen as the provider?"
       ],
       "transitionCue": "Now define what partnership development is not.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 2,
       "promptRevealVisibleCount": 1
     },
@@ -1747,12 +2038,16 @@
       "trainerCadence": "Fear weakens clarity. Faith strengthens invitation—and people often sense your posture before they evaluate your words.\n\nSo we're not polishing a script while hiding anxiety. We're doing heart work that makes the script sound like a human being who actually believes God.",
       "trainerTransition": "That leads us straight into the internal barriers—limiting beliefs.",
       "trainerScriptNotes": "- Optional prompt: how fear shows up in the way people ask.\n- Keep compassionate; many have trauma around money conversations.\n- Bridge to limiting beliefs without shaming.",
-      "continuationGroup": "s1-013b",
+      "continuationGroup": "s1-013",
       "timing": "2 min",
       "prompts": [
         "How does fear show up in the way people ask?"
       ],
       "transitionCue": "Now surface the internal barriers.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 2,
       "promptRevealVisibleCount": 0
     },
@@ -1766,12 +2061,16 @@
       "trainerCadence": "Fear weakens clarity. Faith strengthens invitation—and people often sense your posture before they evaluate your words.\n\nSo we're not polishing a script while hiding anxiety. We're doing heart work that makes the script sound like a human being who actually believes God.",
       "trainerTransition": "That leads us straight into the internal barriers—limiting beliefs.",
       "trainerScriptNotes": "- Optional prompt: how fear shows up in the way people ask.\n- Keep compassionate; many have trauma around money conversations.\n- Bridge to limiting beliefs without shaming.",
-      "continuationGroup": "s1-013b",
+      "continuationGroup": "s1-013",
       "timing": "2 min",
       "prompts": [
         "How does fear show up in the way people ask?"
       ],
       "transitionCue": "Now surface the internal barriers.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 2,
       "promptRevealVisibleCount": 1
     },
@@ -1788,6 +2087,10 @@
       "continuationGroup": "s1-014",
       "timing": "1 min",
       "transitionCue": "Start by naming common lies.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 0
     },
     {
@@ -1804,6 +2107,10 @@
       "continuationGroup": "s1-014",
       "timing": "1 min",
       "transitionCue": "Start by naming common lies.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 0
     },
     {
@@ -1820,6 +2127,10 @@
       "continuationGroup": "s1-014",
       "timing": "1 min",
       "transitionCue": "Start by naming common lies.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 1
     },
     {
@@ -1836,6 +2147,10 @@
       "continuationGroup": "s1-014",
       "timing": "1 min",
       "transitionCue": "Start by naming common lies.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 2
     },
     {
@@ -1912,6 +2227,10 @@
       "transitionCue": "Now reframe identity.",
       "interaction": "Write down your biggest fear about partnership development. Then identify the belief beneath it. What truth from today confronts that belief? Afterward, meet in pairs to share what you wrote.",
       "interactionType": "reflection",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 2,
@@ -1927,7 +2246,8 @@
           "What felt most freeing?"
         ]
       },
-      "bulletRevealVisibleCount": 0
+      "bulletRevealVisibleCount": 0,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-017__rg1",
@@ -1946,6 +2266,10 @@
       "transitionCue": "Now reframe identity.",
       "interaction": "Write down your biggest fear about partnership development. Then identify the belief beneath it. What truth from today confronts that belief? Afterward, meet in pairs to share what you wrote.",
       "interactionType": "reflection",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 2,
@@ -1961,7 +2285,8 @@
           "What felt most freeing?"
         ]
       },
-      "bulletRevealVisibleCount": 0
+      "bulletRevealVisibleCount": 0,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-017__rg2",
@@ -1980,6 +2305,10 @@
       "transitionCue": "Now reframe identity.",
       "interaction": "Write down your biggest fear about partnership development. Then identify the belief beneath it. What truth from today confronts that belief? Afterward, meet in pairs to share what you wrote.",
       "interactionType": "reflection",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 2,
@@ -1995,7 +2324,8 @@
           "What felt most freeing?"
         ]
       },
-      "bulletRevealVisibleCount": 1
+      "bulletRevealVisibleCount": 1,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-017__rg3",
@@ -2014,6 +2344,10 @@
       "transitionCue": "Now reframe identity.",
       "interaction": "Write down your biggest fear about partnership development. Then identify the belief beneath it. What truth from today confronts that belief? Afterward, meet in pairs to share what you wrote.",
       "interactionType": "reflection",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 2,
@@ -2029,7 +2363,8 @@
           "What felt most freeing?"
         ]
       },
-      "bulletRevealVisibleCount": 2
+      "bulletRevealVisibleCount": 2,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-017__rg4",
@@ -2048,6 +2383,10 @@
       "transitionCue": "Now reframe identity.",
       "interaction": "Write down your biggest fear about partnership development. Then identify the belief beneath it. What truth from today confronts that belief? Afterward, meet in pairs to share what you wrote.",
       "interactionType": "reflection",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 2,
@@ -2063,7 +2402,47 @@
           "What felt most freeing?"
         ]
       },
-      "bulletRevealVisibleCount": 3
+      "bulletRevealVisibleCount": 3,
+      "interactionRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-017__rg5",
+      "title": "Name the Fear, Name the Truth",
+      "bullets": [
+        "Name fear",
+        "Name belief",
+        "Name truth"
+      ],
+      "trainerCadence": "I want to give you a few minutes of quiet first—let God surface what's under the fear before you talk. You'll name your fear, name the belief underneath, and name one truth from today that confronts it.\n\nAfter that, you'll meet in pairs to share what you wrote—honesty before polish.",
+      "trainerTransition": "When you come back together, we're going to reframe identity in a more explicit way.",
+      "trainerScriptNotes": "- Quiet writing first protects honesty.\n- Pairs ~7 min—protect debrief time.\n- Emphasize slide emphasis: silence is part of the work.\n- Watch for overwhelm—normalize small steps.",
+      "emphasis": "Silence is part of the work — let God surface what's under the fear.",
+      "continuationGroup": "s1-017",
+      "timing": "8 min",
+      "transitionCue": "Now reframe identity.",
+      "interaction": "Write down your biggest fear about partnership development. Then identify the belief beneath it. What truth from today confronts that belief? Afterward, meet in pairs to share what you wrote.",
+      "interactionType": "reflection",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
+      "breakout": {
+        "enabled": true,
+        "groupSize": 2,
+        "duration": "7 min",
+        "instructions": [
+          "Share your biggest fear about partnership development",
+          "Identify the belief underneath that fear",
+          "Speak one truth that confronts that belief"
+        ],
+        "debrief": [
+          "What belief patterns were common?",
+          "What truths directly challenge those beliefs?",
+          "What felt most freeing?"
+        ]
+      },
+      "bulletRevealVisibleCount": 3,
+      "interactionRevealVisibleCount": 1
     },
     {
       "id": "s1-018",
@@ -2110,6 +2489,10 @@
       "continuationGroup": "s1-019",
       "timing": "4 min",
       "transitionCue": "Now introduce the roadmap for the rest of Launch.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 0
     },
     {
@@ -2127,6 +2510,10 @@
       "continuationGroup": "s1-019",
       "timing": "4 min",
       "transitionCue": "Now introduce the roadmap for the rest of Launch.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 0
     },
     {
@@ -2144,6 +2531,10 @@
       "continuationGroup": "s1-019",
       "timing": "4 min",
       "transitionCue": "Now introduce the roadmap for the rest of Launch.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 1
     },
     {
@@ -2161,6 +2552,10 @@
       "continuationGroup": "s1-019",
       "timing": "4 min",
       "transitionCue": "Now introduce the roadmap for the rest of Launch.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 2
     },
     {
@@ -2178,6 +2573,10 @@
       "continuationGroup": "s1-019",
       "timing": "4 min",
       "transitionCue": "Now introduce the roadmap for the rest of Launch.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 3
     },
     {
@@ -2194,6 +2593,10 @@
       "continuationGroup": "s1-020",
       "timing": "1 min",
       "transitionCue": "Show the overview.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 0
     },
     {
@@ -2211,6 +2614,10 @@
       "continuationGroup": "s1-020",
       "timing": "1 min",
       "transitionCue": "Show the overview.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 0
     },
     {
@@ -2228,6 +2635,10 @@
       "continuationGroup": "s1-020",
       "timing": "1 min",
       "transitionCue": "Show the overview.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 1
     },
     {
@@ -2245,6 +2656,10 @@
       "continuationGroup": "s1-020",
       "timing": "1 min",
       "transitionCue": "Show the overview.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 2
     },
     {
@@ -2262,6 +2677,10 @@
       "continuationGroup": "s1-020",
       "timing": "1 min",
       "transitionCue": "Show the overview.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 3
     },
     {
@@ -2318,12 +2737,16 @@
       "trainerCadence": "What you're looking at is a practical pathway, a reproducible process, and a faith-filled framework. And it's connected directly to the next three sessions—you're not supposed to master this tonight.\n\nYou're supposed to leave oriented, encouraged, and curious about what's next.",
       "trainerTransition": "Let's land this session with a focused reflection before we pray.",
       "trainerScriptNotes": "- Optional prompt: which part of the pathway feels most eager to learn?\n- Reduce performance pressure explicitly.\n- Bridge to closing reflection and prayer.",
-      "continuationGroup": "s1-022b",
+      "continuationGroup": "s1-022",
       "timing": "2 min",
       "prompts": [
         "Which part of the pathway do you feel most eager to learn?"
       ],
       "transitionCue": "Move toward response and prayer.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 3,
       "promptRevealVisibleCount": 0
     },
@@ -2338,12 +2761,16 @@
       "trainerCadence": "What you're looking at is a practical pathway, a reproducible process, and a faith-filled framework. And it's connected directly to the next three sessions—you're not supposed to master this tonight.\n\nYou're supposed to leave oriented, encouraged, and curious about what's next.",
       "trainerTransition": "Let's land this session with a focused reflection before we pray.",
       "trainerScriptNotes": "- Optional prompt: which part of the pathway feels most eager to learn?\n- Reduce performance pressure explicitly.\n- Bridge to closing reflection and prayer.",
-      "continuationGroup": "s1-022b",
+      "continuationGroup": "s1-022",
       "timing": "2 min",
       "prompts": [
         "Which part of the pathway do you feel most eager to learn?"
       ],
       "transitionCue": "Move toward response and prayer.",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "bulletRevealVisibleCount": 3,
       "promptRevealVisibleCount": 1
     },
@@ -2363,6 +2790,10 @@
       "transitionCue": "End by praying for boldness, faith, and clarity.",
       "interaction": "What needs to change in your thinking after today? What truth do you need to carry into Session 2?",
       "interactionType": "reflection",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": false,
         "duration": "5 min",
@@ -2372,7 +2803,8 @@
           "Write one step of faith you will take"
         ]
       },
-      "bulletRevealVisibleCount": 0
+      "bulletRevealVisibleCount": 0,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-023__rg1",
@@ -2391,6 +2823,10 @@
       "transitionCue": "End by praying for boldness, faith, and clarity.",
       "interaction": "What needs to change in your thinking after today? What truth do you need to carry into Session 2?",
       "interactionType": "reflection",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": false,
         "duration": "5 min",
@@ -2400,7 +2836,8 @@
           "Write one step of faith you will take"
         ]
       },
-      "bulletRevealVisibleCount": 0
+      "bulletRevealVisibleCount": 0,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-023__rg2",
@@ -2419,6 +2856,10 @@
       "transitionCue": "End by praying for boldness, faith, and clarity.",
       "interaction": "What needs to change in your thinking after today? What truth do you need to carry into Session 2?",
       "interactionType": "reflection",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": false,
         "duration": "5 min",
@@ -2428,7 +2869,8 @@
           "Write one step of faith you will take"
         ]
       },
-      "bulletRevealVisibleCount": 1
+      "bulletRevealVisibleCount": 1,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-023__rg3",
@@ -2447,6 +2889,10 @@
       "transitionCue": "End by praying for boldness, faith, and clarity.",
       "interaction": "What needs to change in your thinking after today? What truth do you need to carry into Session 2?",
       "interactionType": "reflection",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": false,
         "duration": "5 min",
@@ -2456,7 +2902,8 @@
           "Write one step of faith you will take"
         ]
       },
-      "bulletRevealVisibleCount": 2
+      "bulletRevealVisibleCount": 2,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-023__rg4",
@@ -2475,6 +2922,10 @@
       "transitionCue": "End by praying for boldness, faith, and clarity.",
       "interaction": "What needs to change in your thinking after today? What truth do you need to carry into Session 2?",
       "interactionType": "reflection",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": false,
         "duration": "5 min",
@@ -2484,7 +2935,41 @@
           "Write one step of faith you will take"
         ]
       },
-      "bulletRevealVisibleCount": 3
+      "bulletRevealVisibleCount": 3,
+      "interactionRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-023__rg5",
+      "title": "Carry This Into Session 2",
+      "bullets": [
+        "Surrender belief",
+        "Embrace truth",
+        "Faith step"
+      ],
+      "trainerCadence": "Before we close, I want you to carry this into Session 2 with honesty: a belief to surrender, a truth to embrace, and a step of faith to take.\n\nOne honest shift in thinking is enough to leave with today—you don't need a ten-point transformation story by dinner.",
+      "trainerTransition": "When you're ready, we'll end in prayer—asking God for boldness, faith, and clarity.",
+      "trainerScriptNotes": "- Invite specificity in writing without forcing public disclosure.\n- Protect time—this is a landing, not a new lecture.\n- Watch for people still processing—validate silently.",
+      "emphasis": "One honest shift in thinking is enough to leave with today.",
+      "continuationGroup": "s1-023",
+      "timing": "5 min",
+      "transitionCue": "End by praying for boldness, faith, and clarity.",
+      "interaction": "What needs to change in your thinking after today? What truth do you need to carry into Session 2?",
+      "interactionType": "reflection",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
+      "breakout": {
+        "enabled": false,
+        "duration": "5 min",
+        "instructions": [
+          "Write down one belief that needs to change",
+          "Write one truth you are choosing to believe",
+          "Write one step of faith you will take"
+        ]
+      },
+      "bulletRevealVisibleCount": 3,
+      "interactionRevealVisibleCount": 1
     },
     {
       "id": "s1-024__rg0",
@@ -2501,6 +2986,10 @@
       "timing": "4 min",
       "interaction": "Pray in pairs or as a whole group for freedom from fear and fresh trust in God as provider.",
       "interactionType": "prayer",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 2,
@@ -2514,7 +3003,8 @@
           "Optional: one word from anyone who wants to share before you close"
         ]
       },
-      "bulletRevealVisibleCount": 0
+      "bulletRevealVisibleCount": 0,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-024__rg1",
@@ -2532,6 +3022,10 @@
       "timing": "4 min",
       "interaction": "Pray in pairs or as a whole group for freedom from fear and fresh trust in God as provider.",
       "interactionType": "prayer",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 2,
@@ -2545,7 +3039,8 @@
           "Optional: one word from anyone who wants to share before you close"
         ]
       },
-      "bulletRevealVisibleCount": 0
+      "bulletRevealVisibleCount": 0,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-024__rg2",
@@ -2563,6 +3058,10 @@
       "timing": "4 min",
       "interaction": "Pray in pairs or as a whole group for freedom from fear and fresh trust in God as provider.",
       "interactionType": "prayer",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 2,
@@ -2576,7 +3075,8 @@
           "Optional: one word from anyone who wants to share before you close"
         ]
       },
-      "bulletRevealVisibleCount": 1
+      "bulletRevealVisibleCount": 1,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-024__rg3",
@@ -2594,6 +3094,10 @@
       "timing": "4 min",
       "interaction": "Pray in pairs or as a whole group for freedom from fear and fresh trust in God as provider.",
       "interactionType": "prayer",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 2,
@@ -2607,7 +3111,8 @@
           "Optional: one word from anyone who wants to share before you close"
         ]
       },
-      "bulletRevealVisibleCount": 2
+      "bulletRevealVisibleCount": 2,
+      "interactionRevealVisibleCount": 0
     },
     {
       "id": "s1-024__rg4",
@@ -2625,6 +3130,10 @@
       "timing": "4 min",
       "interaction": "Pray in pairs or as a whole group for freedom from fear and fresh trust in God as provider.",
       "interactionType": "prayer",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
       "breakout": {
         "enabled": true,
         "groupSize": 2,
@@ -2638,7 +3147,44 @@
           "Optional: one word from anyone who wants to share before you close"
         ]
       },
-      "bulletRevealVisibleCount": 3
+      "bulletRevealVisibleCount": 3,
+      "interactionRevealVisibleCount": 0
+    },
+    {
+      "id": "s1-024__rg5",
+      "title": "Close in Prayer",
+      "bullets": [
+        "Boldness and faith in the invitation",
+        "Freedom from fear around money",
+        "Trust that God is the provider"
+      ],
+      "trainerCadence": "Let's close in prayer. However your setting works best, invite God to meet us in the places we feel fear, tighten up around money, or forget that he is the provider.\n\nPray for boldness, faith, freedom from fear, clarity of calling, and fresh trust in God's provision—short turns if you're in pairs; one voice if you're together.",
+      "trainerTransition": "Thank them sincerely for the focus they've brought—bless them as they go.",
+      "trainerScriptNotes": "- You lead prayer or pairs—match your context.\n- Keep prayers short if in pairs; give clear instructions.\n- Optional one-word share after—only if time and tone fit.\n- End warm, grateful, unhurried.",
+      "emphasis": "Lord, align our hearts with Your mission and teach us to invite others into it with faith.",
+      "continuationGroup": "s1-024",
+      "timing": "4 min",
+      "interaction": "Pray in pairs or as a whole group for freedom from fear and fresh trust in God as provider.",
+      "interactionType": "prayer",
+      "stackStableBelowTitle": true,
+      "stackStableBelowEmphasis": true,
+      "stackStableBelowScripture": true,
+      "stackStableBelowSlideTable": true,
+      "breakout": {
+        "enabled": true,
+        "groupSize": 2,
+        "duration": "3 min",
+        "instructions": [
+          "Pray briefly together for boldness, faith, freedom from fear, and trust in God's provision",
+          "Take turns: one prays, then the other — keep each turn short",
+          "Or: remain in the main room and pray as one group (facilitator leads)"
+        ],
+        "debrief": [
+          "Optional: one word from anyone who wants to share before you close"
+        ]
+      },
+      "bulletRevealVisibleCount": 3,
+      "interactionRevealVisibleCount": 1
     }
   ],
   "workbook": {

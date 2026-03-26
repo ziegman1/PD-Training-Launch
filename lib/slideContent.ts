@@ -2,11 +2,35 @@ import type { AudienceLaunchSlide, InteractionType } from "@/types/launch";
 
 export type SlideMomentType = "standard" | "discussion" | "reflection" | "pairShare";
 
+type InteractionFields = Pick<
+  AudienceLaunchSlide,
+  "interaction" | "interactionPrompt"
+>;
+
 /** Canonical audience/participant prompt (`interaction` preferred; `interactionPrompt` legacy). */
-export function getSlideInteraction(slide: AudienceLaunchSlide): string | undefined {
+export function getSlideInteraction(slide: InteractionFields): string | undefined {
   const t = slide.interaction ?? slide.interactionPrompt;
   const s = t?.trim();
   return s ? s : undefined;
+}
+
+/** Non-empty trimmed lines from `interaction` / `interactionPrompt` (Together progressive steps). */
+export function getSlideInteractionLines(slide: InteractionFields): string[] {
+  const t = getSlideInteraction(slide);
+  if (!t) return [];
+  return t
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0);
+}
+
+/** True when progressive interaction (Together lines) is complete or unused. */
+export function interactionFullyRevealed(slide: AudienceLaunchSlide): boolean {
+  const lines = getSlideInteractionLines(slide);
+  if (lines.length === 0) return true;
+  const v = slide.interactionRevealVisibleCount;
+  if (v == null) return true;
+  return v >= lines.length;
 }
 
 /** Participant / presentation prompts (after normalize merge). */
@@ -22,6 +46,19 @@ export function promptsFullyRevealed(slide: AudienceLaunchSlide): boolean {
   const v = slide.promptRevealVisibleCount;
   if (v == null) return true;
   return v >= lines.length;
+}
+
+/**
+ * Discussion / pair / prayer layouts: show the main participant prompt card (below numbered prompts)
+ * only after room prompts are complete **and**, when the deck uses `interactionRevealVisibleCount`,
+ * after advancing past the “prompts-only” beat (`iv` > 0). Keeps facilitation copy off the same step
+ * as the last room prompt.
+ */
+export function momentParticipantPromptVisible(slide: AudienceLaunchSlide): boolean {
+  if (!getSlideInteraction(slide)) return false;
+  if (!promptsFullyRevealed(slide)) return false;
+  if (typeof slide.interactionRevealVisibleCount !== "number") return true;
+  return slide.interactionRevealVisibleCount > 0;
 }
 
 /**

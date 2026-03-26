@@ -35,11 +35,21 @@ export function writeAuthoringJson(
   fs.writeFileSync(p, `${JSON.stringify(data, null, 2)}\n`, "utf8");
 }
 
-export function runNormalizeScript(sessionId: EditableSessionId): void {
+export type NormalizePaths = { authoringPath: string; outPath: string };
+
+export function runNormalizeScript(
+  sessionId: EditableSessionId,
+  paths?: NormalizePaths,
+): void {
   const script =
     sessionId === "session-1"
       ? "normalize-session-1.mjs"
       : "normalize-session-2.mjs";
+  const env = { ...process.env };
+  if (paths) {
+    env.LAUNCH_NORMALIZE_AUTHORING_PATH = paths.authoringPath;
+    env.LAUNCH_NORMALIZE_OUT_PATH = paths.outPath;
+  }
   execFileSync(
     process.execPath,
     [path.join(process.cwd(), "scripts", script)],
@@ -47,6 +57,7 @@ export function runNormalizeScript(sessionId: EditableSessionId): void {
       cwd: process.cwd(),
       stdio: "pipe",
       encoding: "utf8",
+      env,
     },
   );
 }

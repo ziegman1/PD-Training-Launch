@@ -17,6 +17,13 @@ export function toAudienceSlide(slide: LaunchSlide): AudienceLaunchSlide {
     breakout: _breakout,
     progressiveReveal: _progressiveReveal,
     progressiveRevealLeadIn: _progressiveRevealLeadIn,
+    emphasisWithTitle: _emphasisWithTitle,
+    progressiveBulletBatchSize: _progressiveBulletBatchSize,
+    progressivePromptBatchSize: _progressivePromptBatchSize,
+    progressiveInteractionBatchSize: _progressiveInteractionBatchSize,
+    bulletRevealWithSubtitle: _bulletRevealWithSubtitle,
+    promptRevealWithSubtitle: _promptRevealWithSubtitle,
+    interactionRevealWithSubtitle: _interactionRevealWithSubtitle,
     ...audience
   } = slide;
   return audience;

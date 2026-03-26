@@ -12,7 +12,7 @@ type PageProps = {
 
 export default async function PresentPage({ params }: PageProps) {
   const { sessionId } = await params;
-  const session = resolveSession(sessionId);
+  const session = await resolveSession(sessionId);
   if (!session) notFound();
   return <SessionPresentation session={session} />;
 }

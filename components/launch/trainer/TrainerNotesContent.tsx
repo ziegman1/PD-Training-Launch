@@ -1,6 +1,6 @@
 import type { LaunchSlide } from "@/types/launch";
 import { useLaunchSession } from "@/contexts/LaunchSessionContext";
-import { getSlideInteraction } from "@/lib/slideContent";
+import { getSlideInteraction, getSlideInteractionLines } from "@/lib/slideContent";
 import { getSlidePrompts } from "@/lib/slideTrainer";
 import { BreakoutTrainerPanel } from "@/components/launch/trainer/BreakoutTrainerPanel";
 import { BibleStudyTrainerPanel } from "@/components/launch/trainer/BibleStudyTrainerPanel";
@@ -84,6 +84,18 @@ export function TrainerNotesContent({ slide }: TrainerNotesContentProps) {
   }
 
   const interaction = getSlideInteraction(slide);
+  const rawIxLines = getSlideInteractionLines(slide);
+  const interactionLines =
+    rawIxLines.length > 0 ? rawIxLines : interaction ? [interaction] : [];
+  const interactionRevealLimit =
+    interactionLines.length > 0
+      ? typeof slide.interactionRevealVisibleCount === "number"
+        ? Math.min(
+            interactionLines.length,
+            Math.max(0, Math.floor(slide.interactionRevealVisibleCount)),
+          )
+        : interactionLines.length
+      : 0;
   const prompts = getSlidePrompts(slide);
   const promptRevealLimit =
     prompts && prompts.length > 0
@@ -227,9 +239,25 @@ export function TrainerNotesContent({ slide }: TrainerNotesContentProps) {
       {interaction && (
         <div className="rounded-xl border border-launch-soft/20 bg-launch-soft/[0.06] px-4 py-4">
           <p className="launch-eyebrow text-launch-steel/90">Room prompt (on slide)</p>
-          <p className="mt-2 text-sm leading-relaxed text-launch-secondary md:text-base">
-            {interaction}
-          </p>
+          <ul className="mt-2 space-y-2 text-sm leading-relaxed text-launch-secondary md:text-base">
+            {interactionLines.map((line, i) => {
+              const revealed = i < interactionRevealLimit;
+              return (
+                <li
+                  key={`${i}-${line.slice(0, 32)}`}
+                  className={`flex gap-2 ${
+                    revealed ? "" : "pointer-events-none opacity-0"
+                  }`.trim()}
+                >
+                  <span
+                    className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-launch-gold/80"
+                    aria-hidden
+                  />
+                  <span>{line}</span>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       )}
     </div>

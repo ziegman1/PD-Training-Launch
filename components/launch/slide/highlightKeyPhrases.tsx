@@ -65,20 +65,26 @@ export function renderSlideRichText(
     parts.push(
       <span
         key={`${keyPrefix}blank-${blankIdx}-${m.index}`}
-        className="presentation-fill-in-blank mx-[0.12em] inline-grid max-w-[min(18ch,100%)] shrink-0 justify-items-center gap-[0.14em] align-baseline [vertical-align:baseline]"
-        style={{ minWidth: `${minCh.toFixed(2)}ch` }}
+        className="presentation-fill-in-blank mx-[0.12em] inline-grid max-w-[min(18ch,100%)] shrink-0 gap-[0.14em] align-baseline [vertical-align:baseline] [justify-items:stretch]"
+        style={{
+          gridTemplateColumns: `minmax(${minCh.toFixed(2)}ch, max-content)`,
+        }}
         aria-label={hint ? `Fill-in ${hint}` : "Fill-in blank"}
       >
         <span
-          className="box-border block w-full min-w-full shrink-0 opacity-90"
+          className="box-border min-h-0 min-w-0 shrink-0 opacity-90"
           style={{
+            width: "100%",
             paddingBottom: "0.03em",
             borderBottom: "max(1px, 0.055em) solid currentColor",
           }}
           aria-hidden
         />
         {hint ? (
-          <span className="w-full max-w-full text-center text-[0.62em] font-normal leading-snug text-launch-muted">
+          <span
+            className="min-w-0 max-w-full text-balance text-center text-[0.62em] font-normal leading-snug text-launch-muted [text-align:center]"
+            style={{ width: "100%" }}
+          >
             {hint}
           </span>
         ) : null}

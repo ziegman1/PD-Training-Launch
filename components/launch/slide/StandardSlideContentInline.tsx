@@ -7,13 +7,18 @@ import {
   mergeDeckPlacement,
   type ResolvedDeckPlacement,
 } from "@/lib/deckPlacement";
-import { getSlideInteraction, getSlidePromptLines } from "@/lib/slideContent";
+import {
+  getSlideInteraction,
+  getSlideMomentType,
+  getSlidePromptLines,
+} from "@/lib/slideContent";
 import {
   EditablePresentationBulletList,
   EditablePresentationPromptList,
   InlineEditable,
   ScriptureRichEditor,
 } from "@/components/launch/slide/presentationInlineEdit";
+import { SlideDeckTableHtml } from "@/components/launch/slide/SlideDeckTableHtml";
 import {
   PresentationSlideColumn,
   PRESENTATION_AFTER_BULLETS_MB,
@@ -35,6 +40,7 @@ type Props = {
   slide: AudienceLaunchSlide;
   continuationBulletSlotCount?: number;
   continuationPromptSlotCount?: number;
+  continuationInteractionSlotCount?: number;
   deckPlacementLive?: ResolvedDeckPlacement;
   presentationScrollable?: boolean;
   onPatch: (patch: Record<string, unknown>) => void;
@@ -48,6 +54,7 @@ export function StandardSlideContentInline({
   slide,
   continuationBulletSlotCount,
   continuationPromptSlotCount,
+  continuationInteractionSlotCount,
   deckPlacementLive,
   presentationScrollable = false,
   onPatch,
@@ -57,16 +64,53 @@ export function StandardSlideContentInline({
   const hasBulletList = bullets.length > 0;
   const hasPromptList = promptLines.length > 0;
   const interaction = getSlideInteraction(slide) ?? "";
+  const hasSlideTable = Boolean(slide.slideTableHtml?.trim());
+  const showTogetherBox =
+    Boolean(interaction.trim()) && getSlideMomentType(slide) === "standard";
 
+  const hasBelowTitleDyn =
+    Boolean(slide.emphasis?.trim()) ||
+    hasSlideTable ||
+    Boolean(slide.scripture?.trim()) ||
+    hasBulletList ||
+    hasPromptList ||
+    showTogetherBox;
+  const hasBelowEmphasisDyn =
+    hasSlideTable ||
+    Boolean(slide.scripture?.trim()) ||
+    hasBulletList ||
+    hasPromptList ||
+    showTogetherBox;
+  const hasBelowScriptureDyn =
+    hasBulletList || hasPromptList || showTogetherBox;
+  const hasContentBelowSlideTableDyn =
+    Boolean(slide.scripture?.trim()) ||
+    hasBulletList ||
+    hasPromptList ||
+    showTogetherBox;
+
+  const hasBelowTitle =
+    typeof slide.stackStableBelowTitle === "boolean"
+      ? slide.stackStableBelowTitle
+      : hasBelowTitleDyn;
+  const hasBelowEmphasis =
+    typeof slide.stackStableBelowEmphasis === "boolean"
+      ? slide.stackStableBelowEmphasis
+      : hasBelowEmphasisDyn;
   const hasBelowScripture =
-    hasBulletList || hasPromptList || Boolean(interaction.trim());
-  const hasBelowEmphasis = true;
-  const hasBelowTitle = true;
+    typeof slide.stackStableBelowScripture === "boolean"
+      ? slide.stackStableBelowScripture
+      : hasBelowScriptureDyn;
+  const hasContentBelowSlideTable =
+    typeof slide.stackStableBelowSlideTable === "boolean"
+      ? slide.stackStableBelowSlideTable
+      : hasContentBelowSlideTableDyn;
 
   const continuationLock =
     Boolean(slide.continuationGroup) &&
     ((continuationBulletSlotCount ?? 0) > 0 ||
-      (continuationPromptSlotCount ?? 0) > 0);
+      (continuationPromptSlotCount ?? 0) > 0 ||
+      (continuationInteractionSlotCount ?? 0) > 0);
 
   const deckCustom = hasCustomDeckPlacement(slide);
   const listRailFree = deckCustom ? "!mx-0 !max-w-none" : "";
@@ -74,6 +118,13 @@ export function StandardSlideContentInline({
 
   const lowerInner = (
     <>
+      {hasSlideTable && slide.slideTableHtml ? (
+        <SlideDeckTableHtml
+          html={slide.slideTableHtml}
+          scriptureRem={fs?.scriptureRem}
+          hasContentBelow={hasContentBelowSlideTable}
+        />
+      ) : null}
       <div className={presentationScriptureWrapClass(hasBelowScripture)}>
         <ScriptureRichEditor
           value={slide.scripture ?? ""}
@@ -96,7 +147,12 @@ export function StandardSlideContentInline({
             ? continuationBulletSlotCount
             : undefined
         }
-        onChange={(next) => onPatch({ bullets: next })}
+        onChange={(next) => {
+          const all = slide.bullets.map(String);
+          const tail =
+            all.length > MAX_BULLETS ? all.slice(MAX_BULLETS) : [];
+          onPatch({ bullets: [...next, ...tail] });
+        }}
         className={[
           "min-h-0 shrink-0",
           listRailFree,
@@ -117,9 +173,13 @@ export function StandardSlideContentInline({
             ? continuationPromptSlotCount
             : undefined
         }
-        onChange={(next) =>
-          onPatch({ prompts: next.length ? next : undefined })
-        }
+        onChange={(next) => {
+          const all = getSlidePromptLines(slide);
+          const tail =
+            all.length > MAX_PROMPTS ? all.slice(MAX_PROMPTS) : [];
+          const merged = [...next, ...tail];
+          onPatch({ prompts: merged.length ? merged : undefined });
+        }}
         className={[
           "min-h-0 shrink-0",
           listRailFree,
@@ -151,8 +211,8 @@ export function StandardSlideContentInline({
   );
 
   const clipClass = presentationScrollable
-    ? "min-h-min flex-1 overflow-visible"
-    : "min-h-0 flex-1 overflow-hidden";
+    ? "min-h-min max-h-full shrink-0 overflow-y-auto overflow-x-visible"
+    : "min-h-0 max-h-full shrink-0 overflow-y-auto overflow-x-hidden";
 
   if (deckCustom) {
     const pos =
@@ -179,7 +239,7 @@ export function StandardSlideContentInline({
             />
           </header>
 
-          <div className="relative mt-1 min-h-[min(48vh,26rem)] w-full flex-1 shrink-0 overflow-visible">
+          <div className="relative mt-1 min-h-0 w-full shrink-0 overflow-visible">
             <InlineEditable
               as="h2"
               style={{

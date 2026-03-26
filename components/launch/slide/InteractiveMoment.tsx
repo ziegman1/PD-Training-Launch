@@ -6,6 +6,7 @@ import type { SlideMomentType } from "@/lib/slideContent";
 import {
   getSlideInteraction,
   getSlidePromptLines,
+  momentParticipantPromptVisible,
   promptsFullyRevealed,
 } from "@/lib/slideContent";
 import { EmphasisText } from "@/components/launch/slide/EmphasisText";
@@ -17,9 +18,8 @@ import {
   PresentationPromptList,
   PresentationSlideColumn,
   PRESENTATION_INTERACTIVE_AFTER_STACK_MB,
-  PRESENTATION_INTERACTIVE_RAIL_WRAPPER_CLASS,
-  PRESENTATION_INTERACTIVE_SLOT_CLASS,
   PRESENTATION_MOMENT_LABEL_CLASS,
+  PRESENTATION_RAIL_MAX_CLASS,
   PRESENTATION_SECTION_HEADER_CLASS,
   PRESENTATION_TEAMS_LOWER_SAFE_CLASS,
   presentationEmphasisWrapClass,
@@ -54,6 +54,7 @@ function MomentFrame({
   const hasBulletList = bullets.length > 0;
   const hasPromptList = promptLines.length > 0;
   const promptsDone = promptsFullyRevealed(slide);
+  const showParticipantPromptSlot = momentParticipantPromptVisible(slide);
   const revealLimit =
     typeof slide.bulletRevealVisibleCount === "number"
       ? Math.min(
@@ -80,14 +81,20 @@ function MomentFrame({
   if (viewportLocked) {
     const hasEmphasis = Boolean(slide.emphasis?.trim());
     const hasBelowTitle =
-      hasEmphasis || hasBulletList || hasPromptList || Boolean(children);
+      typeof slide.stackStableBelowTitle === "boolean"
+        ? slide.stackStableBelowTitle
+        : hasEmphasis || hasBulletList || hasPromptList || Boolean(children);
     const hasBelowEmphasis =
-      hasBulletList || hasPromptList || Boolean(children);
+      typeof slide.stackStableBelowEmphasis === "boolean"
+        ? slide.stackStableBelowEmphasis
+        : hasBulletList || hasPromptList || Boolean(children);
 
     return (
       <div
-        className={`moment-frame flex min-h-0 w-full max-w-full flex-1 flex-col items-center justify-start ${
-          presentationScrollable ? "overflow-visible" : "overflow-hidden"
+        className={`moment-frame flex min-h-0 w-full max-w-full flex-col items-center justify-start ${
+          presentationScrollable
+            ? "max-h-full shrink-0 overflow-y-auto overflow-x-visible"
+            : "max-h-full shrink-0 overflow-y-auto overflow-x-hidden"
         }`}
       >
         <PresentationSlideColumn>
@@ -117,6 +124,7 @@ function MomentFrame({
             <div className={presentationEmphasisWrapClass(hasBelowEmphasis)}>
               <EmphasisText
                 spacious={false}
+                disableMotionEntrance={viewportLocked}
                 className="moment-slide-emphasis !my-0 max-w-[40ch] text-balance !text-center sm:max-w-[44ch]"
               >
                 {renderSlideRichText(slide.emphasis, phrases, "e-")}
@@ -125,7 +133,7 @@ function MomentFrame({
           )}
 
           <div
-            className={`${PRESENTATION_TEAMS_LOWER_SAFE_CLASS} flex min-h-0 w-full flex-1 flex-col`}
+            className={`${PRESENTATION_TEAMS_LOWER_SAFE_CLASS} flex min-h-0 w-full flex-col`}
           >
             {hasBulletList && (
               <PresentationBulletList
@@ -170,7 +178,7 @@ function MomentFrame({
             )}
 
             <div
-              className={`moment-children-slot ${PRESENTATION_INTERACTIVE_SLOT_CLASS}${
+              className={`moment-children-slot flex min-h-0 w-full flex-col overflow-hidden${
                 hasBulletList || hasPromptList
                   ? ` ${PRESENTATION_INTERACTIVE_AFTER_STACK_MB}`
                   : ""
@@ -178,12 +186,14 @@ function MomentFrame({
             >
               <div
                 className={[
-                  PRESENTATION_INTERACTIVE_RAIL_WRAPPER_CLASS,
-                  !promptsDone ? "pointer-events-none opacity-0 [contain:layout]" : "",
+                  `${PRESENTATION_RAIL_MAX_CLASS} mx-auto flex w-full min-h-0 flex-col`,
+                  !showParticipantPromptSlot
+                    ? "pointer-events-none opacity-0 [contain:layout]"
+                    : "",
                 ]
                   .filter(Boolean)
                   .join(" ")}
-                aria-hidden={!promptsDone}
+                aria-hidden={!showParticipantPromptSlot}
               >
                 {children}
               </div>
@@ -289,9 +299,9 @@ function MomentFrame({
 
       <div
         className={`moment-children-slot mt-14 w-full max-w-2xl md:mt-20 ${
-          !promptsDone ? "pointer-events-none opacity-0" : ""
+          !showParticipantPromptSlot ? "pointer-events-none opacity-0" : ""
         }`.trim()}
-        aria-hidden={!promptsDone}
+        aria-hidden={!showParticipantPromptSlot}
       >
         {children}
       </div>
@@ -450,6 +460,8 @@ type InteractiveMomentProps = {
   viewportLocked?: boolean;
   continuationBulletSlotCount?: number;
   continuationPromptSlotCount?: number;
+  /** Reserved for layout parity with standard slides (Together uses this on standard layout only). */
+  continuationInteractionSlotCount?: number;
   presentationScrollable?: boolean;
 };
 
@@ -459,8 +471,10 @@ export function InteractiveMoment({
   viewportLocked = false,
   continuationBulletSlotCount,
   continuationPromptSlotCount,
+  continuationInteractionSlotCount: _continuationInteractionSlotCount,
   presentationScrollable = false,
 }: InteractiveMomentProps) {
+  void _continuationInteractionSlotCount;
   const prompt = getSlideInteraction(slide);
   if (!prompt) {
     return null;

@@ -50,7 +50,8 @@ export function WorkbookGuidedView({ session, sections }: Props) {
     const id = section.sourceSlideId;
     const full =
       session.slides.find((s) => s.id === id) ??
-      session.slides.find((s) => s.continuationGroup === id);
+      session.slides.find((s) => s.continuationGroup === id) ??
+      session.slides.find((s) => s.continuationGroup === `${id}__ix`);
     return full ? toAudienceSlide(full) : undefined;
   }, [session.slides, section.kind, section.sourceSlideId]);
 

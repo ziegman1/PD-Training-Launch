@@ -1,11 +1,12 @@
 import { verifyAdminRequest } from "@/lib/admin/verifyAdminRequest";
-import {
-  isEditableSessionId,
-  loadNormalizedSessionFromDisk,
-  type EditableSessionId,
-} from "@/lib/admin/sessionFiles";
+import { isEditableSessionId, type EditableSessionId } from "@/lib/admin/sessionFiles";
+import { buildLaunchSessionFromAuthoringSource } from "@/lib/server/buildLaunchSession";
 
 type RouteCtx = { params: Promise<{ sessionId: string }> };
+
+const adminJsonNoStore = {
+  headers: { "Cache-Control": "private, no-store, must-revalidate" },
+} as const;
 
 export async function GET(request: Request, ctx: RouteCtx) {
   const denied = verifyAdminRequest(request);
@@ -18,8 +19,10 @@ export async function GET(request: Request, ctx: RouteCtx) {
     });
   }
   try {
-    const data = loadNormalizedSessionFromDisk(sessionId as EditableSessionId);
-    return Response.json(data);
+    const data = await buildLaunchSessionFromAuthoringSource(
+      sessionId as EditableSessionId,
+    );
+    return Response.json(data, adminJsonNoStore);
   } catch (e) {
     const msg = e instanceof Error ? e.message : "Read failed";
     return new Response(JSON.stringify({ error: msg }), {

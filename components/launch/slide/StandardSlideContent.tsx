@@ -5,11 +5,14 @@ import {
 } from "@/lib/deckPlacement";
 import {
   getSlideInteraction,
+  getSlideInteractionLines,
   getSlideMomentType,
   getSlidePromptLines,
+  momentParticipantPromptVisible,
   promptsFullyRevealed,
 } from "@/lib/slideContent";
 import { EmphasisText } from "@/components/launch/slide/EmphasisText";
+import { SlideDeckTableHtml } from "@/components/launch/slide/SlideDeckTableHtml";
 import { renderSlideRichText } from "@/components/launch/slide/highlightKeyPhrases";
 import { presentationFontSizeStyle } from "@/lib/presentationFontSizes";
 import {
@@ -27,6 +30,7 @@ import {
 
 const MAX_BULLETS = 5;
 const MAX_PROMPTS = 8;
+const MAX_INTERACTION_LINES = 8;
 
 type StandardSlideContentProps = {
   slide: AudienceLaunchSlide;
@@ -34,6 +38,7 @@ type StandardSlideContentProps = {
   /** Presentation: fixed bullet row count within a continuation group */
   continuationBulletSlotCount?: number;
   continuationPromptSlotCount?: number;
+  continuationInteractionSlotCount?: number;
   /** Admin deck preview: allow tall content to extend for outer scroll. */
   presentationScrollable?: boolean;
 };
@@ -46,10 +51,15 @@ export function StandardSlideContent({
   viewportLocked = false,
   continuationBulletSlotCount,
   continuationPromptSlotCount,
+  continuationInteractionSlotCount,
   presentationScrollable = false,
 }: StandardSlideContentProps) {
   const bullets = slide.bullets.slice(0, MAX_BULLETS);
   const promptLines = getSlidePromptLines(slide).slice(0, MAX_PROMPTS);
+  const interactionLines = getSlideInteractionLines(slide).slice(
+    0,
+    MAX_INTERACTION_LINES,
+  );
   /** Always mount the list when bullets exist so layout stays fixed (opacity hides unrevealed rows). */
   const hasBulletList = bullets.length > 0;
   const hasPromptList = promptLines.length > 0;
@@ -70,32 +80,70 @@ export function StandardSlideContent({
   const phrases = slide.keyPhrases;
   const pfs = slide.presentationFontSizes;
   const interaction = getSlideInteraction(slide);
+  const togetherBodyLines =
+    interactionLines.length > 0
+      ? interactionLines
+      : interaction
+        ? [interaction]
+        : [];
+  const revealInteractionTrainer =
+    typeof slide.interactionRevealVisibleCount === "number"
+      ? Math.min(
+          togetherBodyLines.length,
+          Math.max(0, Math.floor(slide.interactionRevealVisibleCount)),
+        )
+      : togetherBodyLines.length;
   const showTogetherBox = Boolean(
     interaction && getSlideMomentType(slide) === "standard",
   );
   const promptsDone = promptsFullyRevealed(slide);
+  const togetherParticipantVisible = momentParticipantPromptVisible(slide);
+  const hasSlideTable = Boolean(slide.slideTableHtml?.trim());
 
   if (viewportLocked) {
     const hasEmphasis = Boolean(slide.emphasis?.trim());
     const hasScripture = Boolean(slide.scripture?.trim());
 
     const hasBelowTitle =
-      hasEmphasis ||
+      typeof slide.stackStableBelowTitle === "boolean"
+        ? slide.stackStableBelowTitle
+        : hasEmphasis ||
+          hasSlideTable ||
+          hasScripture ||
+          hasBulletList ||
+          hasPromptList ||
+          showTogetherBox;
+    const hasBelowEmphasis =
+      typeof slide.stackStableBelowEmphasis === "boolean"
+        ? slide.stackStableBelowEmphasis
+        : hasSlideTable ||
+          hasScripture ||
+          hasBulletList ||
+          hasPromptList ||
+          showTogetherBox;
+    const hasBelowScripture =
+      typeof slide.stackStableBelowScripture === "boolean"
+        ? slide.stackStableBelowScripture
+        : hasBulletList || hasPromptList || showTogetherBox;
+    const hasContentBelowSlideTable =
+      typeof slide.stackStableBelowSlideTable === "boolean"
+        ? slide.stackStableBelowSlideTable
+        : hasScripture ||
+          hasBulletList ||
+          hasPromptList ||
+          showTogetherBox;
+    const hasTeamsLowerBody =
+      hasSlideTable ||
       hasScripture ||
       hasBulletList ||
       hasPromptList ||
       showTogetherBox;
-    const hasBelowEmphasis =
-      hasScripture || hasBulletList || hasPromptList || showTogetherBox;
-    const hasBelowScripture =
-      hasBulletList || hasPromptList || showTogetherBox;
-    const hasTeamsLowerBody =
-      hasScripture || hasBulletList || hasPromptList || showTogetherBox;
 
     const continuationLock =
       Boolean(slide.continuationGroup) &&
       ((continuationBulletSlotCount ?? 0) > 0 ||
-        (continuationPromptSlotCount ?? 0) > 0);
+        (continuationPromptSlotCount ?? 0) > 0 ||
+        (continuationInteractionSlotCount ?? 0) > 0);
 
     const deckCustom = hasCustomDeckPlacement(slide);
     const listRailFree = deckCustom ? "!mx-0 !max-w-none" : "";
@@ -103,6 +151,13 @@ export function StandardSlideContent({
     const mkLowerBody = () =>
       hasTeamsLowerBody ? (
         <div className={PRESENTATION_TEAMS_LOWER_SAFE_CLASS}>
+          {hasSlideTable && slide.slideTableHtml ? (
+            <SlideDeckTableHtml
+              html={slide.slideTableHtml}
+              scriptureRem={pfs?.scriptureRem}
+              hasContentBelow={hasContentBelowSlideTable}
+            />
+          ) : null}
           {slide.scripture && (
             <div className={presentationScriptureWrapClass(hasBelowScripture)}>
               <p
@@ -167,19 +222,30 @@ export function StandardSlideContent({
           {showTogetherBox && (
             <div
               className={`${PRESENTATION_TOGETHER_BOX_CLASS} shrink-0 ${listRailFree} ${
-                !promptsDone
+                !togetherParticipantVisible
                   ? "pointer-events-none opacity-0 [contain:layout]"
                   : ""
               }`.trim()}
-              aria-hidden={!promptsDone}
+              aria-hidden={!togetherParticipantVisible}
             >
               <p className="launch-eyebrow text-launch-steel/90">Together</p>
-              <p
-                className="slide-supporting-block-text mt-1.5 font-medium leading-snug text-launch-secondary"
-                style={presentationFontSizeStyle(pfs?.interactionRem)}
-              >
-                {interaction}
-              </p>
+              <PresentationPromptList
+                prompts={togetherBodyLines}
+                phrases={phrases}
+                lineKeyPrefix="it-"
+                fontSizeRem={pfs?.interactionRem}
+                lockedVisualRowTarget={
+                  continuationInteractionSlotCount != null &&
+                  continuationInteractionSlotCount > 0
+                    ? continuationInteractionSlotCount
+                    : undefined
+                }
+                visiblePromptCount={
+                  slide.interactionRevealVisibleCount ??
+                  togetherBodyLines.length
+                }
+                className="slide-supporting-block-text mt-1.5 text-launch-secondary [&_li]:font-medium [&_li]:leading-snug"
+              />
             </div>
           )}
         </div>
@@ -188,8 +254,8 @@ export function StandardSlideContent({
     const lowerBody = mkLowerBody();
 
     const clipClass = presentationScrollable
-      ? "min-h-min flex-1 overflow-visible"
-      : "min-h-0 flex-1 overflow-hidden";
+      ? "min-h-min max-h-full shrink-0 overflow-y-auto overflow-x-visible"
+      : "min-h-0 max-h-full shrink-0 overflow-y-auto overflow-x-hidden";
 
     if (hasCustomDeckPlacement(slide)) {
       const pos = mergeDeckPlacement(slide.deckPlacement);
@@ -216,7 +282,7 @@ export function StandardSlideContent({
               </header>
             )}
 
-            <div className="relative mt-1 min-h-[min(48vh,26rem)] w-full flex-1 shrink-0 overflow-visible">
+            <div className="relative mt-1 min-h-0 w-full shrink-0 overflow-visible">
               <h2
                 className={`${presentationTitleClass(false)} pointer-events-none`}
                 style={{
@@ -244,6 +310,7 @@ export function StandardSlideContent({
                 >
                   <EmphasisText
                     spacious={false}
+                    disableMotionEntrance={viewportLocked}
                     style={presentationFontSizeStyle(pfs?.emphasisRem)}
                     className="!my-0 max-w-[40ch] text-balance !text-center sm:max-w-[44ch]"
                   >
@@ -304,6 +371,7 @@ export function StandardSlideContent({
             <div className={presentationEmphasisWrapClass(hasBelowEmphasis)}>
               <EmphasisText
                 spacious={false}
+                disableMotionEntrance={viewportLocked}
                 style={presentationFontSizeStyle(pfs?.emphasisRem)}
                 className="!my-0 max-w-[40ch] text-balance !text-center sm:max-w-[44ch]"
               >
@@ -351,6 +419,21 @@ export function StandardSlideContent({
         </EmphasisText>
       )}
 
+      {hasSlideTable && slide.slideTableHtml ? (
+        <div className="mx-auto mt-10 w-full max-w-2xl md:mt-12">
+          <SlideDeckTableHtml
+            html={slide.slideTableHtml}
+            scriptureRem={pfs?.scriptureRem}
+            hasContentBelow={Boolean(
+              slide.scripture?.trim() ||
+                hasBulletList ||
+                hasPromptList ||
+                showTogetherBox,
+            )}
+          />
+        </div>
+      ) : null}
+
       {slide.scripture && (
         <div className="mx-auto mt-10 max-w-2xl text-left md:mt-12">
           <p
@@ -366,7 +449,7 @@ export function StandardSlideContent({
         <ul
           style={presentationFontSizeStyle(pfs?.bulletsRem)}
           className={`mx-auto w-full max-w-2xl space-y-8 text-left text-slide-bullet font-medium leading-[1.55] md:space-y-10 ${
-            slide.scripture
+            slide.scripture || hasSlideTable
               ? "mt-10 md:mt-12"
               : slide.emphasis
                 ? "mt-6 md:mt-8"
@@ -407,7 +490,7 @@ export function StandardSlideContent({
           className={`mx-auto w-full max-w-2xl space-y-6 text-left text-slide-bullet font-medium leading-[1.55] md:space-y-8 ${
             hasBulletList
               ? "mt-10 md:mt-12"
-              : slide.scripture
+              : slide.scripture || hasSlideTable
                 ? "mt-10 md:mt-12"
                 : slide.emphasis
                   ? "mt-6 md:mt-8"
@@ -447,17 +530,41 @@ export function StandardSlideContent({
       {showTogetherBox && (
         <div
           className={`mx-auto mt-12 max-w-2xl rounded-lg border border-launch-neutral/35 bg-launch-navy/50 px-6 py-5 text-left md:mt-14 md:px-8 md:py-6 ${
-            !promptsDone ? "pointer-events-none opacity-0" : ""
+            !togetherParticipantVisible ? "pointer-events-none opacity-0" : ""
           }`.trim()}
-          aria-hidden={!promptsDone}
+          aria-hidden={!togetherParticipantVisible}
         >
           <p className="launch-eyebrow text-launch-steel/90">Together</p>
-          <p
-            className="slide-supporting-block-text mt-3 font-medium leading-[1.55] text-launch-secondary"
+          <ul
             style={presentationFontSizeStyle(pfs?.interactionRem)}
+            className="slide-supporting-block-text mt-3 space-y-5 text-left font-medium leading-[1.55] text-launch-secondary md:space-y-6"
           >
-            {interaction}
-          </p>
+            {togetherBodyLines.map((line, i) => {
+              const revealed = i < revealInteractionTrainer;
+              return (
+                <li
+                  key={`${i}-${line}`}
+                  className={[
+                    "flex gap-4 md:gap-5",
+                    revealed ? "" : "pointer-events-none opacity-0",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                  aria-hidden={!revealed}
+                >
+                  <span
+                    className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-launch-gold/50 text-xs font-bold text-launch-gold"
+                    aria-hidden
+                  >
+                    {i + 1}
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    {renderSlideRichText(line, phrases, `it-${i}-`)}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       )}
     </div>

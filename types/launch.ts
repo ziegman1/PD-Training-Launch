@@ -113,6 +113,11 @@ export type LaunchSlide = {
   interaction?: string;
   /** Optional verse or passage reference shown on the slide */
   scripture?: string;
+  /**
+   * Optional HTML table shown between emphasis and scripture (sanitized on render).
+   * Paste from Excel / Word / Sheets in admin; first header row matches scripture styling.
+   */
+  slideTableHtml?: string;
   emphasis?: string;
   keyPhrases?: string[];
 
@@ -121,6 +126,16 @@ export type LaunchSlide = {
    * key, no deck transition between them. Use the first slide’s `id` as the canonical group id.
    */
   continuationGroup?: string;
+
+  /**
+   * Set by expand when a slide becomes multiple deck steps: reserve margins from beat 1 as if the
+   * full stack were visible so title / subtitle / scripture rhythm does not shift mid-sequence.
+   */
+  stackStableBelowTitle?: boolean;
+  stackStableBelowEmphasis?: boolean;
+  stackStableBelowScripture?: boolean;
+  /** Margin hint for `slideTableHtml`: eventual content exists below the table in the stack. */
+  stackStableBelowSlideTable?: boolean;
 
   /**
    * Progressive bullet reveal: how many bullets are visible (opacity 1). All bullets stay in the
@@ -137,6 +152,12 @@ export type LaunchSlide = {
   promptRevealVisibleCount?: number;
 
   /**
+   * Progressive reveal for `interaction` (Together box lines). One step per non-empty trimmed line.
+   * Omitted = show full interaction text. Expanded after bullets and room prompts in the deck.
+   */
+  interactionRevealVisibleCount?: number;
+
+  /**
    * Authoring only (stripped by normalize): set `false` to skip auto-expansion into reveal steps.
    */
   progressiveReveal?: boolean;
@@ -147,6 +168,52 @@ export type LaunchSlide = {
    * to start with the first bullet visible (no title-only beat; multi-bullet still expands 1..N).
    */
   progressiveRevealLeadIn?: boolean;
+
+  /**
+   * Authoring only (stripped by expand). When true, the subtitle (`emphasis`) appears on the same
+   * beat as the title (no separate title-only step before the subtitle). Use when duplicating
+   * slides for continuation so the stack still shows title + subtitle immediately.
+   */
+  emphasisWithTitle?: boolean;
+
+  /**
+   * Authoring only (stripped by expand). When progressive bullet stepping runs (`B > 1` or lead-in),
+   * how many bullets to reveal per deck step. Default `1` = one new bullet per advance. Use `2` to
+   * show two at a time, etc. Clamped 1–20. Ignored when `continuationGroup` disables bullet stepping.
+   */
+  progressiveBulletBatchSize?: number;
+
+  /**
+   * Authoring only (stripped by expand). When progressive **room prompt** stepping runs (`P > 1` or lead-in),
+   * how many prompt lines to reveal per deck step. Default `1`. Clamped 1–20. Same semantics as
+   * `progressiveBulletBatchSize` for the prompts list.
+   */
+  progressivePromptBatchSize?: number;
+
+  /**
+   * Authoring only (stripped by expand). Progressive **interaction** (Together) lines per deck step after
+   * bullets and room prompts. Default `1`. Clamped 1–20.
+   */
+  progressiveInteractionBatchSize?: number;
+
+  /**
+   * Authoring only (stripped by expand). When progressive interaction stepping runs, also reveal the
+   * first batch on the same deck step as the subtitle first appears. Requires subtitle text.
+   */
+  interactionRevealWithSubtitle?: boolean;
+
+  /**
+   * Authoring only (stripped by expand). When progressive bullet stepping runs, also reveal the first
+   * batch of bullets on the **same deck step** as the subtitle (`emphasis`) first appears (instead of
+   * waiting until after subtitle/scripture lead beats). Requires subtitle text.
+   */
+  bulletRevealWithSubtitle?: boolean;
+
+  /**
+   * Authoring only (stripped by expand). When progressive room prompt stepping runs, also reveal the
+   * first batch of prompts on the same deck step as the subtitle first appears. Requires subtitle text.
+   */
+  promptRevealWithSubtitle?: boolean;
 
   /**
    * Participant workbook behavior. If omitted: no `interaction` → none;
@@ -206,6 +273,13 @@ export type AudienceLaunchSlide = Omit<
   | "breakout"
   | "progressiveReveal"
   | "progressiveRevealLeadIn"
+  | "emphasisWithTitle"
+  | "progressiveBulletBatchSize"
+  | "progressivePromptBatchSize"
+  | "progressiveInteractionBatchSize"
+  | "bulletRevealWithSubtitle"
+  | "promptRevealWithSubtitle"
+  | "interactionRevealWithSubtitle"
 >;
 
 /** One prompt field in a guided workbook reflection section */

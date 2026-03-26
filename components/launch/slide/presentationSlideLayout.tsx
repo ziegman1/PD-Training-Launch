@@ -240,6 +240,8 @@ export function PresentationBulletList({
 type PresentationPromptListProps = {
   prompts: string[];
   phrases?: string[];
+  /** Prefix for rich-text / highlight ids (default `pr-`; use `it-` for Together lines). */
+  lineKeyPrefix?: string;
   lockedVisualRowTarget?: number;
   visiblePromptCount?: number;
   fontSizeRem?: number;
@@ -252,6 +254,7 @@ type PresentationPromptListProps = {
 export function PresentationPromptList({
   prompts,
   phrases,
+  lineKeyPrefix = "pr-",
   lockedVisualRowTarget,
   visiblePromptCount,
   fontSizeRem,
@@ -325,7 +328,7 @@ export function PresentationPromptList({
               {i + 1}
             </span>
             <span className="min-w-0 flex-1 text-left">
-              {renderSlideRichText(line, phrases, `pr-${i}-`)}
+              {renderSlideRichText(line, phrases, `${lineKeyPrefix}${i}-`)}
             </span>
           </li>
         );

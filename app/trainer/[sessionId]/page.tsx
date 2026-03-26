@@ -10,7 +10,7 @@ type PageProps = {
 
 export default async function TrainerPage({ params }: PageProps) {
   const { sessionId } = await params;
-  const session = resolveSession(sessionId);
+  const session = await resolveSession(sessionId);
   if (!session) notFound();
   return (
     <SessionTrainer

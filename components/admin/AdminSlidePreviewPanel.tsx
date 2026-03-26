@@ -196,7 +196,7 @@ export function AdminSlidePreviewPanel({
     };
 
   return (
-    <div className="flex flex-col gap-2 lg:sticky lg:top-4">
+    <div className="flex flex-col gap-2">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="min-w-0 space-y-0.5">
           <p className="text-xs font-medium uppercase tracking-wide text-launch-muted">

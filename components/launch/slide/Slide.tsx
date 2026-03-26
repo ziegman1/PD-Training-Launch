@@ -45,6 +45,9 @@ export function Slide({
       ? slide.continuationGroup
       : slide.id;
 
+  const stackJustify =
+    presentationLock && slide.continuationGroup ? "justify-start" : "justify-center";
+
   return (
     <SlideContainer
       className={containerClassName}
@@ -77,8 +80,8 @@ export function Slide({
           className={`will-change-transform ${
             presentationLock
               ? presentationScrollable
-                ? "flex min-h-min w-full flex-1 flex-col"
-                : "flex h-full min-h-0 flex-1 flex-col overflow-hidden"
+                ? `flex min-h-min w-full flex-1 flex-col ${stackJustify} overflow-y-auto overflow-x-hidden`
+                : `flex min-h-0 h-full w-full flex-1 flex-col ${stackJustify} overflow-y-auto overflow-x-hidden`
               : ""
           }`}
         >

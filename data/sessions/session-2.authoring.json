@@ -70,7 +70,11 @@
       "trainerCadence": "Same title, different job: now they apply the framework in one line.\n\nWalk the three blanks slowly—rough drafts are welcome.",
       "trainerTransition": "Mission names the doing; vision names the horizon—next slide.",
       "trainerScriptNotes": "- Do not mix vision into this slide.\n- Optional: one live example, then let them think.",
-      "scripture": "I am_______________(name/title)________ who _________(does what/for who)___________, so that ____________(end results)________________."
+      "scripture": "I am_______________(name/title)________ who _________(does what/for who)___________, so that ____________(end result)________________.",
+      "presentationFontSizes": {
+        "scriptureRem": 1.75
+      },
+      "emphasis": "Your simple one sentence Mission Statement framework"
     },
     {
       "id": "s2-003c",
@@ -79,9 +83,9 @@
       "section": "Focus Your Vision",
       "title": "Vision Statement",
       "bullets": [
-        "Future you long to see God bless",
-        "Orients plans and partnerships",
-        "Not the same as a funding goal"
+        "Your desired end state",
+        "What will you want to see achieved when the mission is complete",
+        "Needs to be goal oriented"
       ],
       "emphasis": "Vision answers what will be true if God blesses this work.",
       "timing": "3 min",

@@ -6,7 +6,9 @@ import {
 
 export { isRegisteredSessionId };
 
-export function resolveSession(id: string): LaunchSession | null {
+export async function resolveSession(
+  id: string,
+): Promise<LaunchSession | null> {
   if (!isRegisteredSessionId(id)) return null;
   return getLaunchSession(id);
 }

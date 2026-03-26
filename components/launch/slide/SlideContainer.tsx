@@ -28,6 +28,10 @@ export function SlideContainer({
     ? "px-0 pt-[clamp(0.3rem,0.85vh,0.7rem)] pb-[clamp(0.7rem,1.9vh,1.75rem)]"
     : "px-6 py-16 md:px-16 md:py-24";
 
+  /** Locked presentation: vertical centering runs on the inner `motion` wrapper (`justify-center` + `flex-1`). */
+  const useVCenter = Boolean(viewportLocked);
+
+  /** Vertical centering is done on the inner `motion` wrapper (`justify-center` + `flex-1`), not here. */
   const mainAxis = viewportLocked ? "justify-start" : "justify-center";
 
   const lockedClip =
@@ -57,6 +61,7 @@ export function SlideContainer({
     <div
       data-slide-stage
       data-presentation-viewport={viewportLocked ? "locked" : undefined}
+      data-presentation-vertical-center={useVCenter ? "true" : undefined}
       data-admin-deck-scroll={presentationScrollable ? "true" : undefined}
       className={`flex min-h-0 flex-1 flex-col ${mainAxis} ${pad} ${lockedClip} ${lockedScrollable} ${className}`}
     >

@@ -10,7 +10,8 @@ export function participantSlideKey(
   if (
     slide.continuationGroup &&
     (typeof slide.bulletRevealVisibleCount === "number" ||
-      typeof slide.promptRevealVisibleCount === "number")
+      typeof slide.promptRevealVisibleCount === "number" ||
+      typeof slide.interactionRevealVisibleCount === "number")
   ) {
     return slide.continuationGroup;
   }

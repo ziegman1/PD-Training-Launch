@@ -1,5 +1,3 @@
-import type { EditableSessionId } from "@/lib/admin/sessionFiles";
-import { loadNormalizedSessionFromDisk } from "@/lib/admin/sessionFiles";
 import type { LaunchSession } from "@/types/launch";
 import sampleSession from "./sample-session.json";
 /**
@@ -20,31 +18,14 @@ const sessions = {
 
 export type RegisteredSessionId = keyof typeof sessions;
 
-/**
- * When true, `session-1` / `session-2` are read from `data/sessions/*.json` on each request
- * so admin save + normalize is visible without rebuilding. Enable in development by default, or
- * set `LAUNCH_LOAD_SESSIONS_FROM_DISK=1` in production (self-hosted with writable deploy dir).
- */
-function loadSessionsFromDisk(): boolean {
-  if (
-    process.env.LAUNCH_LOAD_SESSIONS_FROM_DISK === "0" ||
-    process.env.LAUNCH_LOAD_SESSIONS_FROM_DISK === "false"
-  ) {
-    return false;
-  }
-  return (
-    process.env.NODE_ENV === "development" ||
-    process.env.LAUNCH_LOAD_SESSIONS_FROM_DISK === "1" ||
-    process.env.LAUNCH_LOAD_SESSIONS_FROM_DISK === "true"
-  );
-}
-
-export function getLaunchSession(id: RegisteredSessionId): LaunchSession {
-  if (
-    loadSessionsFromDisk() &&
-    (id === "session-1" || id === "session-2")
-  ) {
-    return loadNormalizedSessionFromDisk(id as EditableSessionId) as LaunchSession;
+export async function getLaunchSession(
+  id: RegisteredSessionId,
+): Promise<LaunchSession> {
+  if (id === "session-1" || id === "session-2") {
+    const { buildLaunchSessionFromAuthoringSource } = await import(
+      "@/lib/server/buildLaunchSession"
+    );
+    return buildLaunchSessionFromAuthoringSource(id);
   }
   return sessions[id];
 }

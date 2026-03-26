@@ -5,6 +5,7 @@ import type { AudienceLaunchSlide } from "@/types/launch";
 import { useLaunchSession } from "@/contexts/LaunchSessionContext";
 import {
   getContinuationMaxBulletCount,
+  getContinuationMaxInteractionLineCount,
   getContinuationMaxPromptCount,
 } from "@/lib/continuationLayout";
 import type { ResolvedDeckPlacement } from "@/lib/deckPlacement";
@@ -49,6 +50,14 @@ export function SlideContent({
     [viewportLocked, session, slide],
   );
 
+  const continuationInteractionSlotCount = useMemo(
+    () =>
+      viewportLocked
+        ? getContinuationMaxInteractionLineCount(session, slide)
+        : undefined,
+    [viewportLocked, session, slide],
+  );
+
   if (moment !== "standard") {
     return (
       <InteractiveMoment
@@ -57,6 +66,7 @@ export function SlideContent({
         viewportLocked={viewportLocked}
         continuationBulletSlotCount={continuationBulletSlotCount}
         continuationPromptSlotCount={continuationPromptSlotCount}
+        continuationInteractionSlotCount={continuationInteractionSlotCount}
         presentationScrollable={presentationScrollable}
       />
     );
@@ -68,6 +78,7 @@ export function SlideContent({
         slide={slide}
         continuationBulletSlotCount={continuationBulletSlotCount}
         continuationPromptSlotCount={continuationPromptSlotCount}
+        continuationInteractionSlotCount={continuationInteractionSlotCount}
         deckPlacementLive={presentationInlineEdit.deckPlacementLive}
         presentationScrollable={presentationScrollable}
         onPatch={presentationInlineEdit.onPatch}
@@ -81,6 +92,7 @@ export function SlideContent({
       viewportLocked={viewportLocked}
       continuationBulletSlotCount={continuationBulletSlotCount}
       continuationPromptSlotCount={continuationPromptSlotCount}
+      continuationInteractionSlotCount={continuationInteractionSlotCount}
       presentationScrollable={presentationScrollable}
     />
   );

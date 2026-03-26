@@ -2,8 +2,9 @@ import type { LaunchSlide } from "@/types/launch";
 
 /**
  * Returns contiguous `LaunchSlide[]` rows from the normalized session JSON that correspond to one
- * authoring slide: either all slides sharing `continuationGroup === authoringSlideId`, or the single
- * slide whose `id` matches when nothing was auto-expanded. Falls back to ids prefixed `baseId__rg`.
+ * authoring slide: slides sharing `continuationGroup === authoringSlideId` (bullets/prompts stack)
+ * or `authoringSlideId + "__ix"` (interaction / participation prompt subset). Falls back to id match
+ * or ids prefixed `baseId__rg`.
  */
 export function deckStackForAuthoringSlide(
   slides: LaunchSlide[],
@@ -11,8 +12,11 @@ export function deckStackForAuthoringSlide(
 ): LaunchSlide[] {
   if (!authoringSlideId) return [];
 
+  const ixGroup = `${authoringSlideId}__ix`;
   const grouped = slides.filter(
-    (s) => s.continuationGroup === authoringSlideId,
+    (s) =>
+      s.continuationGroup === authoringSlideId ||
+      s.continuationGroup === ixGroup,
   );
   if (grouped.length > 0) {
     return grouped;

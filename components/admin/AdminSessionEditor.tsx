@@ -1,6 +1,15 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
+import { flushSync } from "react-dom";
 import Link from "next/link";
 import {
   DndContext,
@@ -33,12 +42,34 @@ import type {
   PresentationFontSizes,
 } from "@/types/launch";
 import { mergePresentationFontSizes } from "@/lib/presentationFontSizes";
+import { SlideTablePasteField } from "@/components/admin/SlideTablePasteField";
 import { PresentationFontSizeSelect } from "@/components/launch/slide/PresentationFontSizeSelect";
 import { deckStackForAuthoringSlide } from "@/lib/admin/deckStack";
 
 type AuthoringDoc = Record<string, unknown> & {
   slides: Record<string, unknown>[];
 };
+
+function adminCurrentSlideStorageKey(sid: string) {
+  return `launch-admin-current-slide:${sid}`;
+}
+
+/** URL `slide` query first (shareable), then sessionStorage — survives refresh. */
+function readPersistedAdminSlideId(sessionId: string): string {
+  if (typeof window === "undefined") return "";
+  try {
+    const fromUrl = new URLSearchParams(window.location.search)
+      .get("slide")
+      ?.trim();
+    if (fromUrl) return fromUrl;
+    return (
+      sessionStorage.getItem(adminCurrentSlideStorageKey(sessionId))?.trim() ??
+      ""
+    );
+  } catch {
+    return "";
+  }
+}
 
 export function AdminSessionEditor({
   sessionId,
@@ -61,6 +92,12 @@ export function AdminSessionEditor({
   const [workbookJson, setWorkbookJson] = useState("");
   const [layoutEditMode, setLayoutEditMode] = useState(false);
 
+  /** Latest authoring doc — updated in layout effect so Save reads commits from deck blur. */
+  const docRef = useRef<AuthoringDoc | null>(null);
+  useLayoutEffect(() => {
+    docRef.current = doc;
+  }, [doc]);
+
   /** Pointer only: KeyboardSensor used Space/Enter for drag and could fight form fields. */
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
@@ -72,9 +109,11 @@ export function AdminSessionEditor({
       setNormalizedErr(null);
       const [rAuth, rNorm] = await Promise.all([
         fetch(`/api/admin/session/${sessionId}/authoring`, {
+          cache: "no-store",
           headers: adminAuthFetchHeaders(),
         }),
         fetch(`/api/admin/session/${sessionId}/normalized`, {
+          cache: "no-store",
           headers: adminAuthFetchHeaders(),
         }),
       ]);
@@ -91,12 +130,30 @@ export function AdminSessionEditor({
           ? `${JSON.stringify(data.workbook, null, 2)}\n`
           : "",
       );
-      const keepId = opts?.preserveSlideId?.trim();
+      const keepId =
+        opts?.preserveSlideId?.trim() ||
+        readPersistedAdminSlideId(sessionId);
       if (keepId) {
         const ix = data.slides.findIndex(
           (s) => String((s as Record<string, unknown>).id) === keepId,
         );
-        setSlideIx(ix >= 0 ? ix : 0);
+        if (ix >= 0) {
+          setSlideIx(ix);
+        } else {
+          setSlideIx(0);
+          try {
+            sessionStorage.removeItem(adminCurrentSlideStorageKey(sessionId));
+            const url = new URL(window.location.href);
+            url.searchParams.delete("slide");
+            window.history.replaceState(
+              null,
+              "",
+              `${url.pathname}${url.search}${url.hash}`,
+            );
+          } catch {
+            /* ignore */
+          }
+        }
       } else {
         setSlideIx(0);
       }
@@ -121,6 +178,32 @@ export function AdminSessionEditor({
   useEffect(() => {
     void load();
   }, [load]);
+
+  /** Keep ?slide= and sessionStorage aligned so refresh stays on the same row. */
+  useEffect(() => {
+    if (!doc?.slides?.length) return;
+    const safeIx = Math.max(
+      0,
+      Math.min(slideIx, doc.slides.length - 1),
+    );
+    const row = doc.slides[safeIx] as Record<string, unknown>;
+    const id = String(row?.id ?? "");
+    if (!id) return;
+    try {
+      sessionStorage.setItem(adminCurrentSlideStorageKey(sessionId), id);
+      const url = new URL(window.location.href);
+      if (url.searchParams.get("slide") !== id) {
+        url.searchParams.set("slide", id);
+        window.history.replaceState(
+          null,
+          "",
+          `${url.pathname}${url.search}${url.hash}`,
+        );
+      }
+    } catch {
+      /* private mode / quota */
+    }
+  }, [doc, slideIx, sessionId]);
 
   const updateSlideAt = (index: number, patch: Record<string, unknown>) => {
     if (!doc) return;
@@ -162,6 +245,22 @@ export function AdminSessionEditor({
     [doc],
   );
 
+  /** Unique non-empty `section` values across the session (for editor datalist). */
+  const distinctSessionSections = useMemo(() => {
+    if (!doc) return [];
+    const seen = new Set<string>();
+    for (const s of doc.slides) {
+      const sec = (s as Record<string, unknown>).section;
+      if (typeof sec === "string") {
+        const t = sec.trim();
+        if (t) seen.add(t);
+      }
+    }
+    return [...seen].sort((a, b) =>
+      a.localeCompare(b, undefined, { sensitivity: "base" }),
+    );
+  }, [doc]);
+
   const bullets = useMemo(
     () =>
       slide && Array.isArray(slide.bullets)
@@ -174,6 +273,25 @@ export function AdminSessionEditor({
     () => bullets.map((_, i) => `bu-${slideIx}-${i}`),
     [bullets.length, slideIx],
   );
+
+  const roomPromptLines = useMemo(
+    () =>
+      slide && Array.isArray(slide.prompts)
+        ? slide.prompts.map((x) => String(x))
+        : [],
+    [slide],
+  );
+  const roomPromptsNonEmpty = useMemo(
+    () => roomPromptLines.filter((p) => p.trim()).length,
+    [roomPromptLines],
+  );
+
+  const interactionLinesNonEmpty = useMemo(() => {
+    const raw = String(slide?.interaction ?? "");
+    return raw === ""
+      ? 0
+      : raw.split(/\r?\n/).filter((l) => l.trim().length > 0).length;
+  }, [slide]);
 
   const deckMerged = useMemo(() => {
     if (!slide?.deckPlacement || typeof slide.deckPlacement !== "object") {
@@ -256,9 +374,14 @@ export function AdminSessionEditor({
       trainerTransition: "",
       trainerScriptNotes: "",
     };
-    const slides = [...doc.slides, blank];
+    const insertAt = slideIx + 1;
+    const slides = [
+      ...doc.slides.slice(0, insertAt),
+      blank,
+      ...doc.slides.slice(insertAt),
+    ];
     setDoc({ ...doc, slides });
-    setSlideIx(slides.length - 1);
+    setSlideIx(insertAt);
   };
 
   const duplicateSlide = () => {
@@ -270,6 +393,7 @@ export function AdminSessionEditor({
     copy.id = `${String(copy.id)}-copy-${Date.now()}`;
     delete copy.bulletRevealVisibleCount;
     delete copy.promptRevealVisibleCount;
+    delete copy.interactionRevealVisibleCount;
     delete copy.progressiveReveal;
     delete copy.progressiveRevealLeadIn;
     const slides = [
@@ -309,13 +433,21 @@ export function AdminSessionEditor({
   };
 
   const save = async () => {
-    if (!doc) return;
+    flushSync(() => {
+      (document.activeElement as HTMLElement | null)?.blur();
+    });
+    const docToSave = docRef.current;
+    if (!docToSave) return;
+    const ix = Math.min(
+      slideIx,
+      Math.max(0, docToSave.slides.length - 1),
+    );
     const preserveSlideId = String(
-      (doc.slides[slideIx] as Record<string, unknown> | undefined)?.id ?? "",
+      (docToSave.slides[ix] as Record<string, unknown> | undefined)?.id ?? "",
     );
     setSaveMsg(null);
     setSaveErr(null);
-    const merged: Record<string, unknown> = { ...doc };
+    const merged: Record<string, unknown> = { ...docToSave };
     if (workbookJson.trim()) {
       try {
         merged.workbook = JSON.parse(workbookJson) as unknown;
@@ -359,9 +491,54 @@ export function AdminSessionEditor({
   }
 
   if (loadErr) {
+    let loadErrMessage = loadErr;
+    try {
+      const j = JSON.parse(loadErr) as { error?: string };
+      if (typeof j.error === "string") loadErrMessage = j.error;
+    } catch {
+      /* raw text */
+    }
+    const needsVercelSecret =
+      loadErrMessage.includes("LAUNCH_ADMIN_SECRET") ||
+      loadErrMessage.includes("Admin is disabled");
+
     return (
-      <div className="space-y-4">
-        <p className="text-red-300">{loadErr}</p>
+      <div className="max-w-xl space-y-4">
+        <p className="text-red-300">{loadErrMessage}</p>
+        {needsVercelSecret && (
+          <div className="space-y-2 rounded-lg border border-launch-steel/30 bg-black/25 p-4 text-sm leading-relaxed text-launch-soft/95">
+            <p className="font-medium text-launch-soft">Production (Vercel)</p>
+            <ol className="list-decimal space-y-2 pl-5 text-launch-muted">
+              <li>
+                Open{" "}
+                <a
+                  className="text-launch-gold underline decoration-launch-gold/40 underline-offset-2"
+                  href="https://vercel.com/docs/projects/environment-variables"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Environment Variables
+                </a>{" "}
+                for this project.
+              </li>
+              <li>
+                Add <code className="text-launch-soft/90">LAUNCH_ADMIN_SECRET</code>{" "}
+                with a long random value (e.g.{" "}
+                <code className="text-launch-soft/90">openssl rand -hex 32</code>
+                ).
+              </li>
+              <li>Apply to Production and redeploy (or wait for the next deploy).</li>
+              <li>
+                On{" "}
+                <Link href="/admin" className="text-launch-gold underline">
+                  Admin home
+                </Link>
+                , paste the <strong>same</strong> value as your token so API calls
+                authenticate.
+              </li>
+            </ol>
+          </div>
+        )}
         <button
           type="button"
           onClick={() => void load()}
@@ -434,8 +611,8 @@ export function AdminSessionEditor({
           onDragEnd={onAdminDragEnd}
         >
           <div className="space-y-6">
-            <div className="flex flex-col items-stretch gap-4 lg:flex-row lg:items-start lg:gap-6">
-              <div className="shrink-0 lg:w-[min(100%,440px)] lg:max-w-[46%]">
+            <div className="sticky top-4 z-20 w-full self-start">
+              <div className="max-h-[calc(100vh-2rem)] overflow-y-auto">
                 <AdminSlidePreviewPanel
                   sessionId={sessionId}
                   slide={slide}
@@ -455,8 +632,9 @@ export function AdminSessionEditor({
                   onSlidePatch={(patch) => updateSlide(patch)}
                 />
               </div>
+            </div>
 
-              <div className="min-w-0 flex-1 space-y-3">
+            <div className="w-full min-w-0 space-y-3">
                 <div className="rounded border border-launch-steel/25 bg-[#151b22] p-2.5">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <span className="text-xs font-medium uppercase tracking-wide text-launch-muted">
@@ -502,6 +680,10 @@ export function AdminSessionEditor({
                           s.promptRevealVisibleCount === undefined
                             ? "all"
                             : String(s.promptRevealVisibleCount);
+                        const ix =
+                          s.interactionRevealVisibleCount === undefined
+                            ? "all"
+                            : String(s.interactionRevealVisibleCount);
                         return (
                           <li key={`${s.id}-${i}`}>
                             <button
@@ -519,7 +701,8 @@ export function AdminSessionEditor({
                                 {i + 1}. {s.id}
                               </span>
                               <span className="mt-0.5 block text-launch-muted">
-                                bullets visible: {b} · prompts visible: {p}
+                                bullets visible: {b} · prompts visible: {p} ·
+                                Together lines: {ix}
                                 {s.emphasis ? " · subtitle on slide" : ""}
                                 {s.scripture ? " · scripture on slide" : ""}
                               </span>
@@ -577,10 +760,9 @@ export function AdminSessionEditor({
                     </ul>
                   </SortableContext>
                 </div>
-              </div>
             </div>
 
-            <div className="min-w-0 space-y-4">
+            <div className="w-full min-w-0 space-y-4">
               <div className="rounded border border-launch-steel/25 bg-black/20 p-3 space-y-2">
               <div className="flex flex-wrap items-center gap-2">
                 <button
@@ -670,19 +852,66 @@ export function AdminSessionEditor({
                 />
               }
             />
-            <Field
-              label="Section"
-              value={String(slide.section ?? "")}
-              onChange={(v) => updateSlide({ section: v || undefined })}
-              labelExtra={
+            <label className="block">
+              <span className="flex flex-wrap items-center justify-between gap-2">
+                <span className="text-sm text-launch-muted">Section</span>
                 <PresentationFontSizeSelect
                   field="sectionRem"
                   ariaLabel="Section label font size on deck"
                   value={slidePresentationFontSizes?.sectionRem}
                   onChange={(r) => patchSlideFont("sectionRem", r)}
                 />
-              }
-            />
+              </span>
+              <div className="mt-1 flex flex-col gap-2 sm:flex-row sm:items-stretch">
+                <input
+                  type="text"
+                  list="launch-session-section-picks"
+                  value={String(slide.section ?? "")}
+                  onChange={(e) =>
+                    updateSlide({
+                      section: e.target.value
+                        ? e.target.value
+                        : undefined,
+                    })
+                  }
+                  placeholder={
+                    distinctSessionSections.length
+                      ? "Type or use list →"
+                      : "Section label (optional)"
+                  }
+                  className="w-full min-w-0 flex-1 rounded border border-launch-steel/30 bg-black/30 p-2 text-sm"
+                  autoComplete="off"
+                />
+                <select
+                  className="w-full shrink-0 rounded border border-launch-steel/30 bg-black/30 p-2 text-sm text-launch-soft sm:w-72"
+                  aria-label="Set section to one already used in this session"
+                  value=""
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    if (v) {
+                      updateSlide({ section: v });
+                      e.currentTarget.selectedIndex = 0;
+                    }
+                  }}
+                >
+                  <option value="">
+                    {distinctSessionSections.length
+                      ? "All sections in session…"
+                      : "No sections yet in session"}
+                  </option>
+                  {distinctSessionSections.map((opt) => (
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <datalist id="launch-session-section-picks">
+                {distinctSessionSections.map((opt) => (
+                  <option key={opt} value={opt} />
+                ))}
+              </datalist>
+            </label>
             <Field
               label="Emphasis (subtitle on deck)"
               value={String(slide.emphasis ?? "")}
@@ -696,6 +925,149 @@ export function AdminSessionEditor({
                 />
               }
             />
+            <label
+              className={`flex cursor-pointer items-start gap-2 rounded border border-launch-steel/20 px-2 py-2 ${
+                String(slide.emphasis ?? "").trim()
+                  ? "bg-black/20"
+                  : "cursor-not-allowed bg-black/10 opacity-60"
+              }`}
+            >
+              <input
+                type="checkbox"
+                className="mt-1 shrink-0"
+                checked={slide.emphasisWithTitle === true}
+                disabled={!String(slide.emphasis ?? "").trim()}
+                onChange={(e) =>
+                  updateSlide({
+                    emphasisWithTitle: e.target.checked ? true : undefined,
+                  })
+                }
+              />
+              <span className="min-w-0 text-sm leading-snug">
+                <span className="font-medium text-launch-soft">
+                  Show subtitle on first slide display (with title)
+                </span>
+                <span className="mt-0.5 block text-[11px] text-launch-muted">
+                  When on, the first deck step for this slide shows title and subtitle
+                  together—no separate title-only step before the subtitle. When off, the
+                  deck can show title only first, then reveal subtitle (then scripture, then
+                  lists). Save & regenerate to update the deck.
+                  {String(slide.emphasis ?? "").trim() ? "" : " Add subtitle text to enable."}
+                </span>
+              </span>
+            </label>
+            <div
+              className={`rounded border border-launch-steel/20 px-2 py-2 ${
+                String(slide.emphasis ?? "").trim()
+                  ? "bg-black/20"
+                  : "bg-black/10 opacity-60"
+              }`}
+            >
+              <p className="text-sm font-medium text-launch-soft">
+                Reveal first list batch with subtitle
+              </p>
+              <p className="mt-0.5 text-[11px] leading-snug text-launch-muted">
+                For progressive bullets, room prompts, or Together lines, show the first
+                batch on the same advance as the subtitle (instead of only after
+                subtitle/scripture lead beats). Respects per-step counts. Save & regenerate.
+              </p>
+              <label className="mt-2 flex cursor-pointer items-start gap-2">
+                <input
+                  type="checkbox"
+                  className="mt-1 shrink-0"
+                  checked={slide.bulletRevealWithSubtitle === true}
+                  disabled={
+                    !String(slide.emphasis ?? "").trim() ||
+                    bullets.filter((b) => b.trim()).length < 1 ||
+                    Boolean(
+                      String(slide.continuationGroup ?? "").trim() &&
+                        bullets.filter((b) => b.trim()).length >= 1,
+                    )
+                  }
+                  onChange={(e) =>
+                    updateSlide({
+                      bulletRevealWithSubtitle: e.target.checked
+                        ? true
+                        : undefined,
+                    })
+                  }
+                />
+                <span className="min-w-0 text-sm leading-snug text-launch-soft">
+                  Bullets with subtitle
+                  <span className="mt-0.5 block text-[11px] font-normal text-launch-muted">
+                    Not used when a continuation group shows all bullets at once.
+                  </span>
+                </span>
+              </label>
+              <label className="mt-2 flex cursor-pointer items-start gap-2">
+                <input
+                  type="checkbox"
+                  className="mt-1 shrink-0"
+                  checked={slide.promptRevealWithSubtitle === true}
+                  disabled={
+                    !String(slide.emphasis ?? "").trim() ||
+                    roomPromptsNonEmpty < 1
+                  }
+                  onChange={(e) =>
+                    updateSlide({
+                      promptRevealWithSubtitle: e.target.checked
+                        ? true
+                        : undefined,
+                    })
+                  }
+                />
+                <span className="min-w-0 text-sm leading-snug text-launch-soft">
+                  Room prompts with subtitle
+                </span>
+              </label>
+              <label className="mt-2 flex cursor-pointer items-start gap-2">
+                <input
+                  type="checkbox"
+                  className="mt-1 shrink-0"
+                  checked={slide.interactionRevealWithSubtitle === true}
+                  disabled={
+                    !String(slide.emphasis ?? "").trim() ||
+                    interactionLinesNonEmpty < 1
+                  }
+                  onChange={(e) =>
+                    updateSlide({
+                      interactionRevealWithSubtitle: e.target.checked
+                        ? true
+                        : undefined,
+                    })
+                  }
+                />
+                <span className="min-w-0 text-sm leading-snug text-launch-soft">
+                  Interaction (Together) with subtitle
+                  <span className="mt-0.5 block text-[11px] font-normal text-launch-muted">
+                    Stepping runs after bullets and room prompts in the deck order.
+                  </span>
+                </span>
+              </label>
+              {!String(slide.emphasis ?? "").trim() ? (
+                <p className="mt-2 text-[11px] text-launch-muted">
+                  Add subtitle (emphasis) text to enable these options.
+                </p>
+              ) : null}
+            </div>
+            <label className="block">
+              <span className="text-sm text-launch-muted">
+                Table (optional)
+              </span>
+              <p className="mt-0.5 text-[11px] leading-snug text-launch-muted/90">
+                Paste from Excel, Word, or Google Sheets to keep rows and columns.
+                Header row and first row use the same typography as scripture. Uses
+                the scripture font size control below.
+              </p>
+              <div className="mt-1">
+                <SlideTablePasteField
+                  value={String(slide.slideTableHtml ?? "")}
+                  onChange={(html) =>
+                    updateSlide({ slideTableHtml: html })
+                  }
+                />
+              </div>
+            </label>
             <Field
               label="Scripture"
               value={String(slide.scripture ?? "")}
@@ -732,6 +1104,50 @@ export function AdminSessionEditor({
                 className="mt-1 w-full rounded border border-launch-steel/30 bg-black/30 p-2 font-mono text-sm"
                 rows={6}
               />
+              <div className="mt-3 block">
+                <span className="text-sm text-launch-muted">
+                  Bullets per reveal step
+                </span>
+                <p className="mt-0.5 text-[11px] leading-snug text-launch-muted/90">
+                  For slides that expand into multiple deck steps, how many bullet lines to show at
+                  each advance (default 1). Example: 2 shows two new bullets per click. Max 20. Not
+                  used when this slide uses continuation grouping (all bullets show at once). Save
+                  & regenerate.
+                </p>
+                <input
+                  type="number"
+                  min={1}
+                  max={20}
+                  step={1}
+                  disabled={bullets.filter((b) => b.trim()).length < 2}
+                  value={(() => {
+                    const raw = slide.progressiveBulletBatchSize;
+                    if (
+                      typeof raw === "number" &&
+                      Number.isFinite(raw) &&
+                      raw > 1
+                    ) {
+                      return String(Math.min(20, Math.max(1, Math.round(raw))));
+                    }
+                    return "1";
+                  })()}
+                  onChange={(e) => {
+                    const n = parseInt(e.target.value, 10);
+                    if (!Number.isFinite(n)) return;
+                    const c = Math.min(20, Math.max(1, n));
+                    updateSlide({
+                      progressiveBulletBatchSize:
+                        c <= 1 ? undefined : c,
+                    });
+                  }}
+                  className="mt-1 w-24 rounded border border-launch-steel/30 bg-black/30 px-2 py-1.5 font-mono text-sm disabled:cursor-not-allowed disabled:opacity-50"
+                />
+                {bullets.filter((b) => b.trim()).length < 2 ? (
+                  <p className="mt-1 text-[11px] text-launch-muted">
+                    Add at least two non-empty bullet lines to enable.
+                  </p>
+                ) : null}
+              </div>
             </label>
             {bullets.length > 1 && (
               <div>
@@ -815,6 +1231,49 @@ export function AdminSessionEditor({
                 className="mt-1 w-full rounded border border-launch-steel/30 bg-black/30 p-2 text-sm"
                 rows={4}
               />
+              <div className="mt-3 block">
+                <span className="text-sm text-launch-muted">
+                  Together / interaction lines per reveal step
+                </span>
+                <p className="mt-0.5 text-[11px] leading-snug text-launch-muted/90">
+                  Non-empty lines (one per row) reveal like room prompts, after bullets and
+                  room prompts in the deck. Default 1 line per advance. Set to the line count
+                  to show all on the first interaction beat. Max 20. Save & regenerate.
+                </p>
+                <input
+                  type="number"
+                  min={1}
+                  max={20}
+                  step={1}
+                  disabled={interactionLinesNonEmpty < 2}
+                  value={(() => {
+                    const raw = slide.progressiveInteractionBatchSize;
+                    if (
+                      typeof raw === "number" &&
+                      Number.isFinite(raw) &&
+                      raw > 1
+                    ) {
+                      return String(Math.min(20, Math.max(1, Math.round(raw))));
+                    }
+                    return "1";
+                  })()}
+                  onChange={(e) => {
+                    const n = parseInt(e.target.value, 10);
+                    if (!Number.isFinite(n)) return;
+                    const c = Math.min(20, Math.max(1, n));
+                    updateSlide({
+                      progressiveInteractionBatchSize:
+                        c <= 1 ? undefined : c,
+                    });
+                  }}
+                  className="mt-1 w-24 rounded border border-launch-steel/30 bg-black/30 px-2 py-1.5 font-mono text-sm disabled:cursor-not-allowed disabled:opacity-50"
+                />
+                {interactionLinesNonEmpty < 2 ? (
+                  <p className="mt-1 text-[11px] text-launch-muted">
+                    Add at least two non-empty lines in interaction to enable.
+                  </p>
+                ) : null}
+              </div>
             </label>
             <label className="block">
               <span className="text-sm text-launch-muted">
@@ -887,6 +1346,48 @@ export function AdminSessionEditor({
                 className="mt-1 w-full rounded border border-launch-steel/30 bg-black/30 p-2 text-sm"
                 rows={4}
               />
+              <div className="mt-3 block">
+                <span className="text-sm text-launch-muted">
+                  Room prompts per reveal step
+                </span>
+                <p className="mt-0.5 text-[11px] leading-snug text-launch-muted/90">
+                  When this slide expands into multiple deck steps for room prompts, how many lines to
+                  show per advance (default 1). Set to the number of prompts to show them all on the
+                  first prompt beat after lead-in. Max 20. Save & regenerate.
+                </p>
+                <input
+                  type="number"
+                  min={1}
+                  max={20}
+                  step={1}
+                  disabled={roomPromptsNonEmpty < 2}
+                  value={(() => {
+                    const raw = slide.progressivePromptBatchSize;
+                    if (
+                      typeof raw === "number" &&
+                      Number.isFinite(raw) &&
+                      raw > 1
+                    ) {
+                      return String(Math.min(20, Math.max(1, Math.round(raw))));
+                    }
+                    return "1";
+                  })()}
+                  onChange={(e) => {
+                    const n = parseInt(e.target.value, 10);
+                    if (!Number.isFinite(n)) return;
+                    const c = Math.min(20, Math.max(1, n));
+                    updateSlide({
+                      progressivePromptBatchSize: c <= 1 ? undefined : c,
+                    });
+                  }}
+                  className="mt-1 w-24 rounded border border-launch-steel/30 bg-black/30 px-2 py-1.5 font-mono text-sm disabled:cursor-not-allowed disabled:opacity-50"
+                />
+                {roomPromptsNonEmpty < 2 ? (
+                  <p className="mt-1 text-[11px] text-launch-muted">
+                    Add at least two non-empty room prompt lines to enable.
+                  </p>
+                ) : null}
+              </div>
             </label>
             <Field
               label="Continuation group (optional)"

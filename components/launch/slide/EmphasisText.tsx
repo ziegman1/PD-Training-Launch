@@ -8,6 +8,11 @@ type EmphasisTextProps = {
   className?: string;
   spacious?: boolean;
   style?: CSSProperties;
+  /**
+   * Presentation / locked viewport: skip the subtitle fade-in so copy is visible as soon as the
+   * slide is shown (avoids stacked opacity animations with the deck transition).
+   */
+  disableMotionEntrance?: boolean;
 };
 
 /**
@@ -18,17 +23,19 @@ export function EmphasisText({
   className = "",
   spacious = true,
   style,
+  disableMotionEntrance = false,
 }: EmphasisTextProps) {
   const reduceMotion = useReducedMotion();
+  const skipEntrance = disableMotionEntrance || reduceMotion;
 
   return (
     <motion.p
       style={style}
-      initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+      initial={skipEntrance ? false : { opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
-        duration: reduceMotion ? 0 : 0.55,
-        delay: reduceMotion ? 0 : 0.08,
+        duration: skipEntrance ? 0 : 0.55,
+        delay: skipEntrance ? 0 : 0.08,
         ease: [0.22, 1, 0.36, 1],
       }}
       className={`launch-emphasis-text mx-auto w-full max-w-3xl text-balance text-left text-[clamp(1.15rem,1.9vw+0.65rem,1.75rem)] font-semibold leading-snug tracking-[-0.02em] text-launch-gold md:text-[clamp(1.25rem,2.1vw+0.45rem,1.95rem)] md:leading-snug ${spacious ? "my-10 md:my-12" : "my-4"} ${className}`}

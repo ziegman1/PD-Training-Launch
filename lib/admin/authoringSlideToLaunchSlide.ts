@@ -63,6 +63,9 @@ export function authoringSlideToLaunchSlide(
     ...(typeof s.scripture === "string" && s.scripture.trim()
       ? { scripture: s.scripture }
       : {}),
+    ...(typeof s.slideTableHtml === "string" && s.slideTableHtml.trim()
+      ? { slideTableHtml: s.slideTableHtml }
+      : {}),
     ...(typeof s.continuationGroup === "string" && s.continuationGroup.trim()
       ? { continuationGroup: s.continuationGroup }
       : {}),
@@ -71,6 +74,9 @@ export function authoringSlideToLaunchSlide(
       : {}),
     ...(typeof s.promptRevealVisibleCount === "number"
       ? { promptRevealVisibleCount: s.promptRevealVisibleCount }
+      : {}),
+    ...(typeof s.interactionRevealVisibleCount === "number"
+      ? { interactionRevealVisibleCount: s.interactionRevealVisibleCount }
       : {}),
     ...(Array.isArray(s.prompts) && s.prompts.length > 0
       ? { prompts: s.prompts.map((p) => String(p)) }
